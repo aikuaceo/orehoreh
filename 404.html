@@ -1,0 +1,681 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; manifest-src 'self'; base-uri 'none'; form-action 'none'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>OREH 오레</title>
+<meta name="oreh-mode" content="static">
+<meta name="description" content="오레(OREH)는 세계 곳곳의 의인 이야기를 찾아 알리고, 함께 기억하고 후원하는 가치참여 플랫폼입니다.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans+JP:wght@400;500;700&family=IBM+Plex+Sans+KR:wght@400;500;700&family=IBM+Plex+Sans:wght@400;500;700&family=Jua&family=M+PLUS+Rounded+1c:wght@700;800&family=Noto+Sans+SC:wght@400;500;700;900&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+
+<link rel="icon" type="image/svg+xml" href="assets/img/logo.svg">
+<link rel="canonical" href="https://orehoreh.com/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://orehoreh.com/">
+<meta property="og:title" content="OREH 오레 · Good People News">
+<meta property="og:description" content="잊혀진 영웅을 찾아, 기억을 이어가다. 세계 곳곳의 의인 이야기를 함께 기억하고 후원하는 가치참여 플랫폼">
+<meta property="og:image" content="https://orehoreh.com/assets/img/leo3d.jpg">
+</head>
+<body>
+<a class="skip" href="#main" data-i18n="skip">본문 바로가기</a>
+<svg class="sr" aria-hidden="true" focusable="false"><symbol id="oreh-mark" viewBox="0 0 221 212"><path fill-rule="evenodd" d="M112.00 25.76 L109.50 25.88 L108.00 25.65 L105.50 24.73 L103.97 23.75 L102.00 21.75 L101.12 20.25 L100.20 17.25 L100.25 14.18 L101.00 11.66 L102.00 9.94 L103.75 8.10 L105.00 7.18 L108.00 5.92 L112.50 5.99 L115.25 7.11 L117.75 9.23 L118.68 10.50 L119.83 13.00 L120.08 15.75 L119.85 18.50 L118.62 21.25 L116.50 23.62 L115.00 24.67 L113.25 24.90 L112.00 25.76Z M210.75 90.01 L208.25 89.85 L206.86 88.75 L160.41 42.25 L159.25 41.87 L60.50 41.92 L13.68 88.75 L12.25 89.72 L11.50 89.92 L10.00 90.06 L8.25 89.85 L6.00 87.72 L5.67 85.50 L6.00 83.54 L7.00 82.06 L45.51 43.75 L55.00 34.04 L56.50 32.99 L58.75 32.64 L162.00 32.65 L164.00 33.02 L165.47 34.25 L213.50 82.36 L214.79 84.75 L214.86 85.75 L214.59 87.00 L213.64 88.75 L212.12 89.75 L210.75 90.01Z M111.75 205.79 L110.25 205.96 L107.50 205.68 L106.00 204.66 L104.89 202.50 L104.90 138.75 L104.77 137.50 L104.50 137.15 L104.00 137.42 L101.75 140.68 L101.06 141.25 L97.75 145.65 L97.00 146.12 L95.75 147.86 L90.00 153.95 L88.75 155.66 L85.65 158.75 L84.00 159.97 L79.45 164.50 L74.23 169.00 L73.64 169.75 L73.00 170.00 L70.30 172.25 L67.75 174.69 L66.96 175.00 L65.25 176.24 L63.67 177.75 L62.75 178.13 L60.25 180.04 L59.67 180.75 L58.75 181.11 L56.75 182.74 L54.25 184.13 L53.71 184.75 L52.75 185.09 L51.25 186.11 L50.75 186.72 L49.75 187.06 L45.80 189.75 L44.94 190.00 L41.00 192.15 L39.25 193.15 L38.71 193.75 L37.50 194.07 L36.75 194.76 L34.70 195.50 L33.00 195.61 L31.00 194.74 L30.00 193.75 L29.23 192.50 L28.86 191.00 L29.03 189.25 L30.50 187.19 L42.75 180.70 L44.50 179.62 L45.05 179.00 L46.00 178.72 L47.75 177.68 L50.00 176.00 L50.75 175.74 L53.00 174.02 L53.75 173.71 L66.90 163.75 L78.40 153.50 L88.75 142.81 L90.00 141.08 L93.75 136.88 L97.72 131.75 L98.07 131.00 L98.67 130.50 L104.60 121.75 L104.88 120.00 L104.90 61.00 L105.20 59.75 L106.25 58.19 L108.25 57.03 L110.25 56.87 L111.50 57.14 L112.87 58.00 L113.80 59.00 L114.56 61.25 L114.51 119.00 L115.04 121.50 L116.75 124.00 L117.13 125.00 L124.00 135.01 L129.17 141.50 L130.75 143.10 L131.23 144.00 L139.25 152.61 L147.92 160.75 L159.00 169.70 L159.75 170.01 L161.75 171.62 L162.67 172.00 L163.25 172.71 L169.00 176.56 L170.93 177.75 L171.75 178.01 L172.50 178.70 L175.75 180.62 L176.80 181.00 L177.75 181.72 L178.77 182.00 L179.68 182.75 L185.50 185.65 L186.81 186.00 L187.75 186.70 L189.00 187.09 L190.75 188.74 L191.50 191.25 L190.75 193.75 L188.89 195.75 L186.75 196.83 L185.25 196.67 L182.95 195.75 L182.00 195.06 L180.90 194.75 L179.84 194.00 L178.91 193.75 L170.82 189.00 L170.00 188.75 L169.25 188.07 L160.89 182.75 L158.75 181.06 L158.00 180.74 L149.00 173.75 L142.00 167.73 L136.78 162.75 L127.97 153.75 L120.14 144.50 L115.58 138.25 L115.00 138.08 L114.60 138.50 L114.51 139.50 L114.54 202.00 L113.50 204.41 L111.75 205.79Z M90.00 136.79 L87.00 136.81 L85.25 135.59 L79.82 130.00 L76.75 127.10 L76.09 126.75 L71.50 122.22 L65.75 117.08 L65.00 116.69 L62.50 114.21 L58.75 111.07 L58.07 110.75 L57.50 110.04 L56.50 109.48 L56.00 109.77 L53.60 114.50 L48.56 122.50 L43.75 128.73 L40.00 132.60 L37.75 133.13 L35.50 132.75 L34.09 131.75 L33.05 130.00 L32.86 129.00 L32.97 127.75 L33.85 126.00 L37.76 121.75 L41.62 116.75 L44.75 111.97 L47.65 106.75 L50.65 100.25 L51.00 98.91 L52.68 95.00 L54.13 90.00 L54.69 88.75 L55.11 86.50 L55.72 85.00 L55.93 83.00 L56.89 80.00 L57.25 79.33 L58.74 78.00 L60.75 77.53 L63.50 78.11 L64.75 79.11 L65.69 81.50 L65.56 83.00 L64.07 88.00 L63.75 89.97 L63.04 91.75 L62.85 93.50 L62.07 94.75 L60.75 99.07 L60.14 100.25 L60.18 101.50 L62.99 103.75 L63.67 104.00 L64.25 104.72 L69.00 108.65 L69.75 109.03 L75.00 113.73 L75.75 114.08 L76.25 114.75 L82.93 120.75 L84.75 122.09 L92.58 129.75 L93.20 132.25 L92.75 134.46 L91.75 135.76 L90.00 136.79Z M185.00 136.80 L182.00 136.80 L180.25 135.57 L172.80 128.00 L171.11 126.75 L170.55 126.00 L164.38 120.25 L160.75 117.05 L160.00 116.68 L157.50 114.16 L153.75 111.02 L153.10 110.75 L152.50 110.00 L151.50 109.51 L151.00 109.81 L147.61 116.25 L142.72 123.75 L138.75 128.78 L135.75 131.96 L134.75 132.79 L132.50 133.13 L130.50 132.73 L128.92 131.50 L128.25 130.12 L127.91 128.75 L128.17 127.25 L129.00 125.84 L132.75 121.83 L136.65 116.75 L139.64 112.25 L142.71 106.75 L145.61 100.50 L147.72 95.00 L149.74 88.75 L150.11 86.75 L150.75 85.01 L150.93 83.00 L151.93 80.00 L153.75 78.00 L156.00 77.53 L158.50 78.08 L159.86 79.25 L160.54 80.75 L160.88 82.25 L160.00 84.76 L159.79 86.75 L159.11 88.00 L157.77 93.75 L157.12 94.75 L156.77 96.75 L156.15 97.50 L155.24 100.25 L155.25 101.49 L158.00 103.73 L158.75 104.07 L159.25 104.72 L163.00 107.75 L163.65 108.00 L168.87 112.75 L170.67 114.00 L171.25 114.74 L177.75 120.53 L178.75 121.10 L179.19 121.75 L187.50 129.60 L188.26 132.00 L187.84 134.50 L186.75 135.78 L185.00 136.80Z"/></symbol></svg>
+
+<header class="top">
+  <div class="top__in">
+    <a class="logo" href="#home" aria-label="OREH">
+      <svg class="logo__mark" viewBox="0 0 221 212" aria-hidden="true"><use href="#oreh-mark"/></svg>
+      <span class="logo__word">OREH</span><span class="logo__ko">오레</span>
+    </a>
+    <button type="button" class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="nav" data-i18n="nav.menu">메뉴</button>
+    <nav class="nav" id="nav">
+      <a href="#about" data-i18n="nav.about">오레 소개</a>
+      <a href="#characters" data-i18n="nav.characters">캐릭터</a>
+      <a href="#funding" data-i18n="nav.funding">크라우드펀딩</a>
+      <a href="#heroes" data-i18n="nav.heroes">나라별 영웅</a>
+      <a href="#report" data-i18n="nav.report">제보하기</a>
+      <a href="#contact" data-i18n="nav.contact">문의하기</a>
+    </nav>
+    <div class="lang" role="group" id="langGroup">
+      <button type="button" data-lang="ko" lang="ko">KO</button>
+      <button type="button" data-lang="en" lang="en">EN</button>
+      <button type="button" data-lang="zh" lang="zh">中文</button>
+      <button type="button" data-lang="ja" lang="ja">日本語</button>
+    </div>
+    <a class="subbtn" href="#subscribe"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v12H4zM4 7l8 6 8-6"/></svg><span data-i18n="nav.subscribe"></span></a>
+  </div>
+</header>
+
+<main id="main" tabindex="-1">
+
+<!-- HOME -->
+<section class="view" data-view="home">
+  <div class="hero">
+    <canvas class="embers" id="embers" aria-hidden="true"></canvas>
+    <div class="wrap hero__grid">
+      <div class="hero__text">
+        <p class="eyebrow" data-i18n="hero.eyebrow"></p>
+        <h1 class="hero__title" data-i18n="hero.title"></h1>
+        <p class="hero__lead" data-i18n="hero.lead"></p>
+        <div class="btns">
+          <a class="btn btn--gold" href="#funding" data-i18n="hero.cta1"></a>
+          <a class="btn btn--line" href="#report" data-i18n="hero.cta2"></a>
+        </div>
+      </div>
+      <div class="hero__cast">
+        <figure class="tile tile--leo"><img src="assets/img/leo3d.jpg" width="439" height="457" data-i18n-alt="leo.name" alt=""><figcaption data-i18n="hero.leo"></figcaption></figure>
+        <figure class="tile tile--leon"><img src="assets/img/leon3d.jpg" width="378" height="457" data-i18n-alt="leon.name" alt=""><figcaption data-i18n="hero.leon"></figcaption></figure>
+      </div>
+    </div>
+  </div>
+
+  <div class="band"><div class="wrap">
+    <h2 class="h2" data-i18n="two.title"></h2>
+    <div class="duo">
+      <article class="ip ip--leo">
+        <img class="ip__img" src="assets/img/leo2d.jpg" alt="" width="460" height="457">
+        <div class="ip__body">
+          <p class="kicker">Leo</p>
+          <h3>Good People News</h3>
+          <p data-i18n="two.news.body"></p>
+          <a class="link" href="#heroes" data-i18n="two.news.link"></a>
+        </div>
+      </article>
+      <article class="ip ip--leon">
+        <img class="ip__img" src="assets/img/leon2d.jpg" alt="" width="460" height="458">
+        <div class="ip__body">
+          <p class="kicker">Leon</p>
+          <h3>Value Partners</h3>
+          <p data-i18n="two.partner.body"></p>
+          <a class="link" href="#contact" data-topic="company" data-i18n="two.partner.link"></a>
+        </div>
+      </article>
+    </div>
+  </div></div>
+
+  <div class="band band--cream"><div class="wrap">
+    <p class="kicker">Meaning out</p>
+    <h2 class="h2" data-i18n="gen.title"></h2>
+    <div class="gen">
+      <div class="gen__card gen__card--old"><span class="gen__label" data-i18n="gen.old.label"></span><p data-i18n="gen.old.body"></p></div>
+      <div class="gen__arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></svg></div>
+      <div class="gen__card gen__card--new"><span class="gen__label" data-i18n="gen.new.label"></span><p data-i18n="gen.new.body"></p></div>
+    </div>
+    <p class="note" data-i18n="gen.note"></p>
+  </div></div>
+
+  <div class="band"><div class="wrap">
+    <h2 class="h2" data-i18n="steps.title"></h2>
+    <ol class="steps">
+      <li><b data-i18n="step1.t"></b><span data-i18n="step1.b"></span></li>
+      <li><b data-i18n="step2.t"></b><span data-i18n="step2.b"></span></li>
+      <li><b data-i18n="step3.t"></b><span data-i18n="step3.b"></span></li>
+      <li><b data-i18n="step4.t"></b><span data-i18n="step4.b"></span></li>
+    </ol>
+  </div></div>
+
+  <div class="band band--navy"><div class="wrap">
+    <p class="kicker">Good People News</p>
+    <h2 class="h2" data-i18n="latest.title"></h2>
+    <div class="cn-row" id="latest"></div>
+    <div class="stack">
+      <p class="note" data-i18n="latest.note"></p>
+      <div><a class="btn btn--line btn--sm" href="#heroes" data-i18n="latest.all"></a></div>
+    </div>
+  </div></div>
+
+  <div class="band"><div class="wrap cta">
+    <div class="stack">
+      <h2 class="h2" data-i18n="cta.title"></h2>
+      <p class="muted" data-i18n="cta.body"></p>
+    </div>
+    <div class="btns">
+      <a class="btn btn--navy" href="#funding" data-i18n="hero.cta1"></a>
+      <a class="btn btn--ghost" href="#report" data-i18n="hero.cta2"></a>
+    </div>
+  </div></div>
+</section>
+
+<!-- ABOUT -->
+<section class="view" data-view="about" hidden>
+  <div class="pagehead"><div class="wrap pagehead__in">
+    <div class="pagehead__text">
+      <p class="kicker" data-i18n="about.kicker"></p>
+      <h1 data-i18n="about.title"></h1>
+      <p class="lead" data-i18n="about.position"></p>
+    </div>
+  </div></div>
+  <div class="band"><div class="wrap about-grid">
+    <div class="stack">
+      <p class="lead" data-i18n="about.p1"></p>
+      <p data-i18n="about.p2"></p>
+      <p class="muted" data-i18n="about.company"></p>
+    </div>
+    <blockquote class="quote"><p data-i18n="about.quote"></p><footer>OREH</footer></blockquote>
+  </div></div>
+  <div class="band band--navy mission"><div class="wrap mission__in">
+    <p class="kicker" data-i18n="mission.kicker"></p>
+    <p class="mission__text" data-i18n="mission.text"></p>
+    <div class="mission__tags" id="missionTags"></div>
+  </div></div>
+  <div class="band band--cream"><div class="wrap">
+    <h2 class="h2" data-i18n="about.pr.title"></h2>
+    <div class="grid2">
+      <article class="principle"><h3 data-i18n="pr1.t"></h3><p data-i18n="pr1.b"></p></article>
+      <article class="principle"><h3 data-i18n="pr2.t"></h3><p data-i18n="pr2.b"></p></article>
+      <article class="principle"><h3 data-i18n="pr3.t"></h3><p data-i18n="pr3.b"></p></article>
+      <article class="principle"><h3 data-i18n="pr4.t"></h3><p data-i18n="pr4.b"></p></article>
+    </div>
+  </div></div>
+  <div class="band"><div class="wrap">
+    <p class="kicker" data-i18n="hist.kicker"></p>
+    <h2 class="h2" data-i18n="hist.title"></h2>
+    <div class="hist">
+      <article class="hist__gen hist__gen--1">
+        <img class="hist__shot" src="assets/img/app1.png" width="226" height="437" data-i18n-alt="hist.shot" alt="">
+        <div class="stack hist__text">
+          <p class="gen__label" data-i18n="hist.g1.label"></p>
+          <h3 data-i18n="hist.g1.name"></h3>
+          <ul class="plain"><li data-i18n="hist.g1.b1"></li><li data-i18n="hist.g1.b2"></li><li data-i18n="hist.g1.b3"></li></ul>
+        </div>
+      </article>
+      <div class="gen__arrow hist__arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></svg></div>
+      <article class="hist__gen hist__gen--2">
+        <div class="hist__faces"><img src="assets/img/leo_face.jpg" alt="" width="200" height="200"><img src="assets/img/leon_face.jpg" alt="" width="200" height="200"></div>
+        <div class="stack hist__text">
+          <p class="gen__label" data-i18n="hist.g2.label"></p>
+          <h3 class="hist__oreh"><svg class="logo__mark" viewBox="0 0 221 212" aria-hidden="true"><use href="#oreh-mark"/></svg><span data-i18n="hist.g2.name"></span></h3>
+          <ul class="plain"><li data-i18n="hist.g2.b1"></li><li data-i18n="hist.g2.b2"></li><li data-i18n="hist.g2.b3"></li><li data-i18n="hist.g2.b4"></li></ul>
+        </div>
+      </article>
+    </div>
+  </div></div>
+  <div class="band"><div class="wrap">
+    <h2 class="h2" data-i18n="about.tl.title"></h2>
+    <ol class="timeline">
+      <li><span class="yr">2015</span><span data-i18n="tl.2015"></span></li>
+      <li><span class="yr">2018</span><span data-i18n="tl.2018"></span></li>
+      <li><span class="yr">2025</span><span data-i18n="tl.2025"></span></li>
+      <li><span class="yr">2026</span><span data-i18n="tl.2026"></span></li>
+      <li class="is-next"><span class="yr" data-i18n="tl.nextLabel"></span><span data-i18n="tl.next"></span></li>
+    </ol>
+  </div></div>
+  <div class="band band--cream"><div class="wrap">
+    <p class="kicker">Roadmap</p>
+    <h2 class="h2" data-i18n="rm.title"></h2>
+    <div class="tablewrap">
+      <table class="rm">
+        <thead><tr><th scope="col" data-i18n="rm.item"></th><th scope="col">2025</th><th scope="col">2026</th><th scope="col">2027</th></tr></thead>
+        <tbody><tr><th scope="row" data-i18n="rm.db"></th><td><ul class="plain"><li data-i18n="rm.a1"></li><li data-i18n="rm.a2"></li><li data-i18n="rm.a3"></li></ul></td><td><ul class="plain"><li data-i18n="rm.b1"></li><li data-i18n="rm.b2"></li><li data-i18n="rm.b3"></li></ul></td><td><ul class="plain"><li data-i18n="rm.c1"></li><li data-i18n="rm.c2"></li><li data-i18n="rm.c3"></li><li data-i18n="rm.c4"></li></ul></td></tr></tbody>
+      </table>
+    </div>
+  </div></div>
+  <div class="band"><div class="wrap">
+    <p class="kicker">Leadership</p>
+    <h2 class="h2" data-i18n="exec.title"></h2>
+    <p class="muted" data-i18n="exec.lead"></p>
+    <div class="execs">
+      <article class="exec exec--leo">
+        <div class="exec__head">
+          <img class="exec__av" src="assets/img/leo_face.jpg" alt="" width="200" height="200">
+          <div class="exec__id"><span class="exec__sym" data-i18n="exec.jung.symbol"></span><h3 class="exec__name" data-i18n="exec.jung.name"></h3><p class="exec__title" data-i18n="exec.jung.title"></p></div>
+        </div>
+        <p data-i18n="exec.jung.role"></p>
+        <p class="exec__label" data-i18n="exec.label"></p>
+        <ul class="exec__list">
+        <li data-i18n="exec.jung.b1"></li>
+        <li data-i18n="exec.jung.b2"></li>
+        <li data-i18n="exec.jung.b3"></li>
+        <li data-i18n="exec.jung.b4"></li>
+        <li data-i18n="exec.jung.b5"></li>
+        <li data-i18n="exec.jung.b6"></li>
+        </ul>
+      </article>
+      <article class="exec exec--leon">
+        <div class="exec__head">
+          <img class="exec__av" src="assets/img/leon_face.jpg" alt="" width="200" height="200">
+          <div class="exec__id"><span class="exec__sym" data-i18n="exec.lee.symbol"></span><h3 class="exec__name" data-i18n="exec.lee.name"></h3><p class="exec__title" data-i18n="exec.lee.title"></p></div>
+        </div>
+        <p data-i18n="exec.lee.role"></p>
+        <p class="exec__label" data-i18n="exec.label"></p>
+        <ul class="exec__list">
+        <li data-i18n="exec.lee.b1"></li>
+        <li data-i18n="exec.lee.b2"></li>
+        <li data-i18n="exec.lee.b4"></li>
+        <li data-i18n="exec.lee.b5"></li>
+        <li data-i18n="exec.lee.b6"></li>
+        </ul>
+      </article>
+    </div>
+  </div></div>
+</section>
+
+<!-- CHARACTERS -->
+<section class="view" data-view="characters" hidden>
+  <div class="pagehead"><div class="wrap pagehead__in">
+    <div class="pagehead__text">
+      <p class="kicker" data-i18n="ch.kicker"></p>
+      <h1 data-i18n="ch.title"></h1>
+      <p class="lead" data-i18n="ch.lead"></p>
+    </div>
+  </div></div>
+  <div class="band"><div class="wrap">
+    <article class="chr chr--leo">
+      <div class="chr__img"><img src="assets/img/leo3d.jpg" width="439" height="457" data-i18n-alt="leo.name" alt=""></div>
+      <div class="chr__body">
+        <div><h2 class="chr__name" data-i18n="leo.name"></h2><p class="chr__latin">LEO</p></div>
+        <p class="chr__tag" data-i18n="leo.tagline"></p>
+        <p data-i18n="leo.desc"></p>
+        <dl class="dl"><dt data-i18n="ch.role"></dt><dd data-i18n="leo.role"></dd></dl>
+        <div class="chips" id="leoKw"></div>
+        <p class="say" data-i18n="leo.say"></p>
+      </div>
+    </article>
+    <article class="chr chr--leon chr--rev">
+      <div class="chr__img"><img src="assets/img/leon3d.jpg" width="378" height="457" data-i18n-alt="leon.name" alt=""></div>
+      <div class="chr__body">
+        <div><h2 class="chr__name" data-i18n="leon.name"></h2><p class="chr__latin">LEON</p></div>
+        <p class="chr__tag" data-i18n="leon.tagline"></p>
+        <p data-i18n="leon.desc"></p>
+        <dl class="dl"><dt data-i18n="ch.role"></dt><dd data-i18n="leon.role"></dd></dl>
+        <div class="chips" id="leonKw"></div>
+        <p class="say" data-i18n="leon.say"></p>
+      </div>
+    </article>
+  </div></div>
+  <div class="band band--cream"><div class="wrap rule">
+    <article class="principle"><h3 data-i18n="ch.voice.t"></h3><p data-i18n="ch.voice.b"></p></article>
+    <article class="principle"><h3 data-i18n="ch.rule.t"></h3><p data-i18n="ch.rule.b"></p></article>
+  </div></div>
+  <div class="band"><div class="wrap">
+    <p class="kicker">Value Partners</p>
+    <h2 class="h2" data-i18n="partners.title"></h2>
+    <p class="muted" data-i18n="partners.lead"></p>
+    <div class="partners">
+      <article class="partner"><div class="partner__logo">LOGO</div><div class="partner__top"><h3 data-i18n="partner.a"></h3><span class="pill pill--sample" data-i18n="sample"></span></div><p class="muted" data-i18n="partner.a.how"></p></article>
+      <article class="partner"><div class="partner__logo">LOGO</div><div class="partner__top"><h3 data-i18n="partner.b"></h3><span class="pill pill--sample" data-i18n="sample"></span></div><p class="muted" data-i18n="partner.b.how"></p></article>
+      <article class="partner"><div class="partner__logo">LOGO</div><div class="partner__top"><h3 data-i18n="partner.c"></h3><span class="pill pill--sample" data-i18n="sample"></span></div><p class="muted" data-i18n="partner.c.how"></p></article>
+    </div>
+    <div class="btns partners-cta"><a class="btn btn--navy" href="#contact" data-topic="company" data-i18n="partners.cta"></a></div>
+  </div></div>
+</section>
+
+<!-- FUNDING -->
+<section class="view" data-view="funding" hidden>
+  <div class="pagehead"><div class="wrap pagehead__in">
+    <div class="pagehead__text">
+      <p class="kicker" data-i18n="fund.kicker"></p>
+      <h1 data-i18n="fund.title"></h1>
+      <p class="lead" data-i18n="fund.lead"></p>
+    </div>
+    <img class="pagehead__av" src="assets/img/leon_face.jpg" alt="" width="200" height="200">
+  </div></div>
+  <div class="band"><div class="wrap stack">
+    <div class="notice"><span class="pill pill--soon" data-i18n="fund.status"></span><p data-i18n="fund.notice"></p></div>
+    <div class="flist__head">
+      <h2 class="h2" data-i18n="fund.camps"></h2>
+      <a class="btn btn--gold" href="#create" data-i18n="fund.createCta"></a>
+    </div>
+    <p class="muted" data-i18n="fund.createLead"></p>
+    <div class="tools__row flist__tools">
+      <div class="seg" id="fundSeg" role="group">
+        <button type="button" data-fs="all" aria-pressed="true" data-i18n="fund.filter.all"></button>
+        <button type="button" data-fs="live" aria-pressed="false" data-i18n="fund.filter.live"></button>
+        <button type="button" data-fs="soon" aria-pressed="false" data-i18n="fund.filter.soon"></button>
+      </div>
+      <label class="lbl flist__sortlbl" for="fundSort" data-i18n="fund.sort.label"></label>
+      <select id="fundSort"><option value="popular" data-i18n="fund.sort.popular"></option><option value="amount" data-i18n="fund.sort.amount"></option><option value="ending" data-i18n="fund.sort.ending"></option></select>
+    </div>
+    <div class="pgrid" id="pgrid"></div>
+  </div></div>
+  <div class="band band--cream"><div class="wrap">
+    <h2 class="h2" data-i18n="fund.ways"></h2>
+    <div class="ways">
+      <article class="way"><h3 data-i18n="way1.t"></h3><p class="muted" data-i18n="way1.b"></p></article>
+      <article class="way"><h3 data-i18n="way2.t"></h3><p class="muted" data-i18n="way2.b"></p></article>
+      <article class="way"><h3 data-i18n="way3.t"></h3><p class="muted" data-i18n="way3.b"></p></article>
+      <article class="way"><h3 data-i18n="way4.t"></h3><p class="muted" data-i18n="way4.b"></p></article>
+    </div>
+  </div></div>
+  <div class="band"><div class="wrap stack">
+    <h2 class="h2" data-i18n="fund.form"></h2>
+    <p class="muted" data-i18n="fund.form.lead"></p>
+    <form class="form" id="form-funding" data-form="funding" novalidate>
+      <div class="field"><label for="fu-email" data-i18n="f.email"></label><input id="fu-email" name="email" type="email" autocomplete="email" maxlength="254" aria-describedby="fu-email-err"><p class="err" id="fu-email-err"></p></div>
+      <div class="field"><label for="fu-country" data-i18n="f.myCountry"></label><select id="fu-country" name="country" data-countries aria-describedby="fu-country-err"></select><p class="err" id="fu-country-err"></p></div>
+      <div class="field full"><label for="fu-interest" data-i18n="fund.interest"></label><select id="fu-interest" name="interest" data-campaigns></select></div>
+      <div class="field full">
+        <label class="check"><input id="fu-consentPrivacy" name="consentPrivacy" type="checkbox" value="1" aria-describedby="fu-consentPrivacy-err"><span data-i18n="f.consentFunding"></span></label><p class="err" id="fu-consentPrivacy-err"></p>
+        <label class="check"><input id="fu-newsOk" name="newsOk" type="checkbox" value="1"><span data-i18n="fund.newsOk"></span></label>
+      </div>
+      <div class="hp" aria-hidden="true"><label for="fu-website">Website</label><input id="fu-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+      <div class="form__actions"><button class="btn btn--navy" type="submit" data-i18n="fund.submit"></button><span class="hint" data-i18n="fund.global"></span></div>
+      <p class="status" role="status" hidden></p>
+    </form>
+  </div></div>
+</section>
+
+<!-- PROJECT (one value project, Tumblbug-style) -->
+<section class="view" data-view="project" hidden>
+  <div class="band pj-band"><div class="wrap">
+    <a class="link" href="#funding" data-i18n="pj.back"></a>
+    <p class="pj__sample"><span class="pill pill--sample" data-i18n="sample"></span><span data-i18n="pj.sample"></span></p>
+    <div class="pj__head"><p class="pj__cat" id="pjCat"></p><h1 class="pj__title" id="pjTitle"></h1><p class="muted" id="pjCrea"></p></div>
+    <div class="pj__top">
+      <div class="pj__img" id="pjImgBox"><img id="pjImg" alt="" width="460" height="460"></div>
+      <div class="pj__stats">
+        <div class="stat"><p class="stat__label" data-i18n="pj.raised"></p><p class="stat__num" id="pjRaised"></p></div>
+        <div class="stat"><p class="stat__label" data-i18n="pj.left"></p><p class="stat__num" id="pjLeft"></p></div>
+        <div class="stat"><p class="stat__label" data-i18n="pj.backers"></p><p class="stat__num" id="pjBackers"></p></div>
+        <dl class="dl pj__info"><dt data-i18n="pj.goal"></dt><dd id="pjGoal"></dd><dt data-i18n="pj.period"></dt><dd class="mono" id="pjPeriod"></dd><dt data-i18n="pj.pay"></dt><dd id="pjPay"></dd></dl>
+        <div class="pj__cta">
+          <button type="button" class="iconbtn" id="pjLike" aria-pressed="false"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.3s-7.2-4.4-9.3-8.8C1.2 8.3 3.2 4.8 6.7 4.8c2.2 0 3.6 1.3 5.3 3.2 1.7-1.9 3.1-3.2 5.3-3.2 3.5 0 5.5 3.5 4 6.7-2.1 4.4-9.3 8.8-9.3 8.8Z"/></svg><span id="pjLikeN"></span></button>
+          <button type="button" class="iconbtn" id="pjShare"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3M7 8l5-5 5 5M5 13v7h14v-7"/></svg><span data-i18n="pj.share"></span></button>
+          <button type="button" class="btn btn--navy pj__main-cta" id="pjCta"></button>
+        </div>
+        <p class="copied" id="pjMsg" role="status"></p>
+      </div>
+    </div>
+    <div class="pj__tabs" role="tablist">
+      <button type="button" role="tab" id="tab-plan" aria-controls="panel-plan" aria-selected="true" data-tab="plan" data-i18n="pj.tab.plan"></button>
+      <button type="button" role="tab" id="tab-news" aria-controls="panel-news" aria-selected="false" data-tab="news" data-i18n="pj.tab.news"></button>
+      <button type="button" role="tab" id="tab-cheer" aria-controls="panel-cheer" aria-selected="false" data-tab="cheer" data-i18n="pj.tab.cheer"></button>
+      <button type="button" role="tab" id="tab-trust" aria-controls="panel-trust" aria-selected="false" data-tab="trust" data-i18n="pj.tab.trust"></button>
+    </div>
+    <div class="pj__body">
+      <div class="pj__main">
+        <div role="tabpanel" id="panel-plan" aria-labelledby="tab-plan" class="stack">
+          <section class="pj__sec"><h2 data-i18n="pj.h.intro"></h2><p id="pjStory"></p></section>
+          <section class="pj__sec"><h2 data-i18n="pj.h.budget"></h2><div class="budget-bar" id="pjBudgetBar" role="img"></div><ul class="budget-list" id="pjBudget"></ul><p class="note" data-i18n="pj.budgetNote"></p></section>
+          <section class="pj__sec"><h2 data-i18n="pj.h.schedule"></h2><ol class="sched" id="pjSched"></ol></section>
+          <section class="pj__sec"><h2 data-i18n="pj.h.team"></h2><ul class="plain"><li data-i18n="team.oreh"></li><li data-i18n="team.partner"></li><li data-i18n="team.goods"></li></ul></section>
+          <section class="pj__sec"><h2 data-i18n="pj.h.rewards"></h2><p data-i18n="pj.rewardsBody"></p></section>
+        </div>
+        <div role="tabpanel" id="panel-news" aria-labelledby="tab-news" hidden><p class="empty" data-i18n="pj.newsEmpty"></p></div>
+        <div role="tabpanel" id="panel-cheer" aria-labelledby="tab-cheer" hidden class="stack">
+          <form class="cheer" id="cheerForm" novalidate>
+            <label class="sr" for="cheerText" data-i18n="pj.tab.cheer"></label>
+            <textarea id="cheerText" rows="3" maxlength="200" data-i18n-ph="pj.cheerPh"></textarea>
+            <div class="form__actions"><button class="btn btn--navy btn--sm" type="submit" data-i18n="pj.cheerSend"></button><span class="copied" id="cheerMsg" role="status"></span></div>
+          </form>
+          <p class="empty" data-i18n="pj.cheerEmpty"></p>
+        </div>
+        <div role="tabpanel" id="panel-trust" aria-labelledby="tab-trust" hidden class="stack">
+          <p class="note" data-i18n="pj.trustNote"></p>
+          <section class="pj__sec"><h2 data-i18n="pj.h.refund"></h2><ul class="plain"><li data-i18n="pj.refund1"></li><li data-i18n="pj.refund2"></li><li data-i18n="pj.refund3"></li><li data-i18n="pj.refund4"></li></ul></section>
+          <section class="pj__sec"><h2 data-i18n="pj.h.risk"></h2><p data-i18n="pj.risk"></p></section>
+          <section class="pj__sec"><h2 data-i18n="pj.h.reg"></h2><p data-i18n="pj.reg"></p></section>
+          <section class="pj__sec"><h2 data-i18n="pj.h.report"></h2><p data-i18n="pj.report"></p></section>
+        </div>
+      </div>
+      <aside class="pj__side">
+        <div class="crea">
+          <span class="crea__mark"><svg class="logo__mark" viewBox="0 0 221 212" aria-hidden="true"><use href="#oreh-mark"/></svg></span>
+          <div class="stack crea__text"><p class="kicker" data-i18n="pj.creator"></p><p class="crea__name" id="pjCreaName"></p><p class="muted" data-i18n="pj.creatorBody"></p><a class="link" href="#contact" data-topic="funding" data-i18n="pj.ask"></a></div>
+        </div>
+        <h2 class="pj__sideh" data-i18n="rw.title"></h2>
+        <div class="rewards" id="pjRewards"></div>
+        <div class="field"><label for="pjExtra" data-i18n="pj.extra"></label><input id="pjExtra" type="text" inputmode="numeric" maxlength="9" autocomplete="off"></div>
+        <button type="button" class="btn btn--navy" id="pjCta2"></button>
+      </aside>
+    </div>
+  </div></div>
+</section>
+
+<!-- CREATE (start a value project: creator guide + application) -->
+<section class="view" data-view="create" hidden>
+  <div class="pagehead"><div class="wrap pagehead__in">
+    <div class="pagehead__text">
+      <p class="kicker" data-i18n="create.kicker"></p>
+      <h1 data-i18n="create.title"></h1>
+      <p class="lead" data-i18n="create.lead"></p>
+    </div>
+    <img class="pagehead__av" src="assets/img/leo_face.jpg" alt="" width="200" height="200">
+  </div></div>
+  <div class="band"><div class="wrap stack">
+    <h2 class="h2" data-i18n="trk.title"></h2>
+    <div class="tracks">
+      <article class="track track--fund"><h3 data-i18n="trk.fund.t"></h3><p data-i18n="trk.fund.b"></p><p class="track__who"><b data-i18n="trk.who"></b> <span data-i18n="trk.fund.who"></span></p></article>
+      <article class="track track--goods"><h3 data-i18n="trk.goods.t"></h3><p data-i18n="trk.goods.b"></p><p class="track__who"><b data-i18n="trk.who"></b> <span data-i18n="trk.goods.who"></span></p></article>
+    </div>
+    <h2 class="h2" data-i18n="cs.title"></h2>
+    <ol class="proc proc--7">
+      <li><b data-i18n="cs1"></b></li>
+      <li><b data-i18n="cs2"></b><span data-i18n="cs2b"></span></li>
+      <li><b data-i18n="cs3"></b></li>
+      <li><b data-i18n="cs4"></b><span data-i18n="cs4b"></span></li>
+      <li><b data-i18n="cs5"></b><span data-i18n="cs5b"></span></li>
+      <li><b data-i18n="cs6"></b></li>
+      <li><b data-i18n="cs7"></b><span data-i18n="cs7b"></span></li>
+    </ol>
+  </div></div>
+  <div class="band band--cream"><div class="wrap">
+    <h2 class="h2" data-i18n="guide.title"></h2>
+    <div class="guide">
+      <article class="principle"><h3><span class="mono">01</span> <span data-i18n="g1.t"></span></h3><p data-i18n="g1.b"></p></article><article class="principle"><h3><span class="mono">02</span> <span data-i18n="g2.t"></span></h3><p data-i18n="g2.b"></p></article><article class="principle"><h3><span class="mono">03</span> <span data-i18n="g3.t"></span></h3><p data-i18n="g3.b"></p></article><article class="principle"><h3><span class="mono">04</span> <span data-i18n="g4.t"></span></h3><p data-i18n="g4.b"></p></article><article class="principle"><h3><span class="mono">05</span> <span data-i18n="g5.t"></span></h3><p data-i18n="g5.b"></p></article><article class="principle"><h3><span class="mono">06</span> <span data-i18n="g6.t"></span></h3><p data-i18n="g6.b"></p></article><article class="principle"><h3><span class="mono">07</span> <span data-i18n="g7.t"></span></h3><p data-i18n="g7.b"></p></article>
+    </div>
+    <div class="nolist">
+      <h3 data-i18n="no.title"></h3>
+      <ul class="plain"><li data-i18n="no1"></li><li data-i18n="no2"></li><li data-i18n="no3"></li><li data-i18n="no4"></li><li data-i18n="no5"></li></ul>
+    </div>
+  </div></div>
+  <div class="band"><div class="wrap stack">
+    <h2 class="h2" data-i18n="cf.title"></h2>
+    <form class="form" id="form-project" data-form="project" novalidate>
+      <fieldset class="field full trackpick"><legend class="lbl" data-i18n="cf.track"></legend>
+        <label class="check"><input type="radio" name="track" value="funding" checked><span data-i18n="trk.fund.t"></span></label>
+        <label class="check"><input type="radio" name="track" value="goods"><span data-i18n="trk.goods.t"></span></label>
+      </fieldset>
+      <h3 class="form__h full"><span class="mono">1</span> <span data-i18n="cf.h.verify"></span></h3>
+      <div class="field" data-track="funding"><label for="pr-reportRef" data-i18n="cf.reportRef"></label><input id="pr-reportRef" name="reportRef" type="text" maxlength="20" placeholder="R-261023-AB12CD" autocomplete="off" aria-describedby="pr-reportRef-err"><p class="err" id="pr-reportRef-err"></p></div>
+      <div class="field" data-track="funding"><label for="pr-reportEmail" data-i18n="cf.reportEmail"></label><input id="pr-reportEmail" name="reportEmail" type="email" maxlength="254" autocomplete="email" aria-describedby="pr-reportEmail-err"><p class="err" id="pr-reportEmail-err"></p></div>
+      <div class="field full" data-track="goods" hidden><label for="pr-storyId" data-i18n="cf.storyId"></label><input id="pr-storyId" name="storyId" type="text" maxlength="24" placeholder="OREH-KR-2016-0909" autocomplete="off" aria-describedby="pr-storyId-err"><p class="err" id="pr-storyId-err"></p></div>
+      <h3 class="form__h full"><span class="mono">2</span> <span data-i18n="cf.h.basic"></span></h3>
+      <div class="field full"><label for="pr-title" data-i18n="cf.pTitle"></label><input id="pr-title" name="title" type="text" maxlength="60" aria-describedby="pr-title-err"><p class="err" id="pr-title-err"></p></div>
+      <div class="field full"><label for="pr-summary" data-i18n="cf.summary"></label><input id="pr-summary" name="summary" type="text" maxlength="100" aria-describedby="pr-summary-err"><p class="err" id="pr-summary-err"></p></div>
+      <div class="field"><label for="pr-category" data-i18n="cf.category"></label><select id="pr-category" name="category" aria-describedby="pr-category-err"><option value="" data-i18n="f.choose"></option><option value="support" data-i18n="fcat.support"></option><option value="scholar" data-i18n="fcat.scholar"></option><option value="record" data-i18n="fcat.record"></option><option value="goods" data-i18n="fcat.goods"></option></select><p class="err" id="pr-category-err"></p></div>
+      <div class="field"><label for="pr-image" data-i18n="cf.image"></label><input id="pr-image" name="image" type="file" accept="image/jpeg,image/png,image/webp" aria-describedby="pr-image-err"><p class="err" id="pr-image-err"></p></div>
+      <h3 class="form__h full"><span class="mono">3</span> <span data-i18n="cf.h.plan"></span></h3>
+      <div class="field" data-track="funding"><label for="pr-goal" data-i18n="cf.goal"></label><input id="pr-goal" name="goal" type="text" inputmode="numeric" maxlength="11" placeholder="10000000" aria-describedby="pr-goal-err"><p class="err" id="pr-goal-err"></p></div>
+      <div class="field" data-track="goods" hidden><label for="pr-price" data-i18n="cf.price"></label><input id="pr-price" name="price" type="text" inputmode="numeric" maxlength="9" placeholder="15000" aria-describedby="pr-price-err"><p class="err" id="pr-price-err"></p></div>
+      <div class="field" data-track="goods" hidden><label for="pr-qty" data-i18n="cf.qty"></label><input id="pr-qty" name="qty" type="text" inputmode="numeric" maxlength="7" placeholder="500" aria-describedby="pr-qty-err"><p class="err" id="pr-qty-err"></p></div>
+      <div class="field"><label for="pr-start" data-i18n="cf.start"></label><input id="pr-start" name="start" type="date" aria-describedby="pr-start-err"><p class="err" id="pr-start-err"></p></div>
+      <div class="field"><label for="pr-days" data-i18n="cf.days"></label><input id="pr-days" name="days" type="text" inputmode="numeric" maxlength="2" placeholder="30" aria-describedby="pr-days-err"><p class="err" id="pr-days-err"></p></div>
+      <h3 class="form__h full"><span class="mono">4</span> <span data-i18n="cf.h.rewards"></span></h3>
+      <div class="field full"><label for="pr-rewards" data-i18n="cf.rewards"></label><textarea id="pr-rewards" name="rewards" rows="4" maxlength="1000" aria-describedby="pr-rewards-err"></textarea><p class="err" id="pr-rewards-err"></p></div>
+      <h3 class="form__h full"><span class="mono">5</span> <span data-i18n="cf.h.story"></span></h3>
+      <div class="field full"><label for="pr-story" data-i18n="cf.story"></label><textarea id="pr-story" name="story" rows="7" maxlength="3000" aria-describedby="pr-story-err"></textarea><p class="err" id="pr-story-err"></p></div>
+      <div class="field full"><label for="pr-budget" data-i18n="cf.budget"></label><textarea id="pr-budget" name="budget" rows="4" maxlength="1000" aria-describedby="pr-budget-err"></textarea><p class="err" id="pr-budget-err"></p></div>
+      <h3 class="form__h full"><span class="mono">6</span> <span data-i18n="cf.h.creator"></span></h3>
+      <div class="field"><label for="pr-name" data-i18n="cf.name"></label><input id="pr-name" name="name" type="text" maxlength="60" autocomplete="name" aria-describedby="pr-name-err"><p class="err" id="pr-name-err"></p></div>
+      <div class="field"><label for="pr-email" data-i18n="f.email"></label><input id="pr-email" name="email" type="email" maxlength="254" autocomplete="email" aria-describedby="pr-email-err"><p class="err" id="pr-email-err"></p></div>
+      <div class="field full"><label for="pr-bio" data-i18n="cf.bio"></label><textarea id="pr-bio" name="bio" rows="3" maxlength="300" aria-describedby="pr-bio-err"></textarea><p class="err" id="pr-bio-err"></p></div>
+      <h3 class="form__h full"><span class="mono">7</span> <span data-i18n="cf.h.trust"></span></h3>
+      <div class="field full"><label for="pr-risk" data-i18n="cf.risk"></label><textarea id="pr-risk" name="risk" rows="3" maxlength="1000" aria-describedby="pr-risk-err"></textarea><p class="err" id="pr-risk-err"></p></div>
+      <div class="field full">
+        <label class="check"><input id="pr-agree" name="agree" type="checkbox" value="1" aria-describedby="pr-agree-err"><span data-i18n="cf.agree"></span></label><p class="err" id="pr-agree-err"></p>
+        <label class="check"><input id="pr-consentPrivacy" name="consentPrivacy" type="checkbox" value="1" aria-describedby="pr-consentPrivacy-err"><span data-i18n="cf.consent"></span></label><p class="err" id="pr-consentPrivacy-err"></p>
+      </div>
+      <div class="field full pledge" data-track="goods" hidden>
+        <h3 class="form__h"><span class="mono">8</span> <span data-i18n="cf.h.pledge"></span></h3>
+        <div class="pledge__doc" tabindex="0" role="document" aria-labelledby="pledgeTitle">
+          <p class="pledge__title" id="pledgeTitle" data-i18n="pledge.title"></p>
+          <p data-i18n="pledge.intro"></p>
+          <ol><li data-i18n="pledge.1"></li><li data-i18n="pledge.2"></li><li data-i18n="pledge.3"></li><li data-i18n="pledge.4"></li><li data-i18n="pledge.5"></li></ol>
+          <p class="pledge__meta"><span data-i18n="pledge.date"></span>: <span class="mono" id="pledgeDate"></span></p>
+        </div>
+        <p class="note" data-i18n="pledge.draft"></p>
+        <label class="check"><input id="pr-pledge" name="pledge" type="checkbox" value="1" aria-describedby="pr-pledge-err"><span data-i18n="pledge.agree"></span></label><p class="err" id="pr-pledge-err"></p>
+        <label for="pr-signName" data-i18n="pledge.sign"></label><input id="pr-signName" name="signName" type="text" maxlength="60" autocomplete="off" aria-describedby="pr-signName-err"><p class="err" id="pr-signName-err"></p>
+      </div>
+      <div class="hp" aria-hidden="true"><label for="pr-website">Website</label><input id="pr-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+      <div class="form__actions"><button class="btn btn--navy" type="submit" data-i18n="cf.submit"></button></div>
+      <p class="status" role="status" hidden></p>
+    </form>
+  </div></div>
+</section>
+
+<!-- SUBSCRIBE (weekly report by email) -->
+<section class="view" data-view="subscribe" hidden>
+  <div class="pagehead"><div class="wrap pagehead__in">
+    <div class="pagehead__text">
+      <p class="kicker" data-i18n="sub.kicker"></p>
+      <h1 data-i18n="sub.title"></h1>
+      <p class="lead" data-i18n="sub.lead"></p>
+    </div>
+    <img class="pagehead__av" src="assets/img/leo_face.jpg" alt="" width="200" height="200">
+  </div></div>
+  <div class="band"><div class="wrap sub-grid">
+    <div class="stack">
+      <p class="status status--ok" id="subNotice" role="status" hidden></p>
+      <form class="form form--one" id="form-subscribe" data-form="subscribe" novalidate>
+        <div class="field full"><label for="sb-email" data-i18n="f.email"></label><input id="sb-email" name="email" type="email" maxlength="254" autocomplete="email" aria-describedby="sb-email-err"><p class="err" id="sb-email-err"></p></div>
+        <fieldset class="field full countrypick" id="sb-countries" aria-describedby="sb-countries-err"><legend class="lbl" data-i18n="sub.countries"></legend><div class="seg" id="subSeg"></div><p class="err" id="sb-countries-err"></p></fieldset>
+        <div class="field full"><label for="sb-lang" data-i18n="sub.lang"></label><select id="sb-lang" name="reportLang"><option value="ko">한국어</option><option value="en">English</option><option value="zh">中文</option><option value="ja">日本語</option></select></div>
+        <div class="field full"><label class="check"><input id="sb-consentPrivacy" name="consentPrivacy" type="checkbox" value="1" aria-describedby="sb-consentPrivacy-err"><span data-i18n="sub.consent"></span></label><p class="err" id="sb-consentPrivacy-err"></p></div>
+        <div class="hp" aria-hidden="true"><label for="sb-website">Website</label><input id="sb-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+        <div class="form__actions"><button class="btn btn--navy" type="submit" data-i18n="sub.submit"></button><span class="hint" data-i18n="sub.when"></span></div>
+        <p class="status" role="status" hidden></p>
+      </form>
+    </div>
+    <div class="stack">
+      <h2 class="h2" data-i18n="sub.what"></h2>
+      <ul class="plain"><li data-i18n="sub.what1"></li><li data-i18n="sub.what2"></li><li data-i18n="sub.what3"></li></ul>
+      <div class="mail" aria-label="preview">
+        <div class="mail__bar"><span class="pill pill--sample" data-i18n="sample"></span><span data-i18n="sub.preview"></span></div>
+        <p class="mail__subject" data-i18n="sub.subject"></p>
+        <div class="mail__body" id="mailPreview"></div>
+        <p class="mail__foot" data-i18n="sub.footer"></p>
+      </div>
+    </div>
+  </div></div>
+</section>
+
+<!-- HEROES -->
+<section class="view" data-view="heroes" hidden>
+  <div class="pagehead"><div class="wrap pagehead__in">
+    <div class="pagehead__text">
+      <p class="kicker" data-i18n="heroes.kicker"></p>
+      <h1 data-i18n="heroes.title"></h1>
+      <p class="lead" data-i18n="heroes.lead"></p>
+    </div>
+    <img class="pagehead__av" src="assets/img/leo_face.jpg" alt="" width="200" height="200">
+  </div></div>
+  <div class="band"><div class="wrap">
+    <div class="tools" role="search">
+      <div class="tools__row">
+        <label class="search" for="q"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><span class="sr" data-i18n="search.label"></span><input id="q" type="search" maxlength="50" autocomplete="off" data-i18n-ph="search.ph"></label>
+        <label class="lbl" for="cat" data-i18n="filter.cat"></label>
+        <select id="cat"></select>
+      </div>
+      <div class="tools__row"><span class="lbl" id="countryLbl" data-i18n="filter.country"></span><div class="seg" id="countrySeg" role="group" aria-labelledby="countryLbl"></div></div>
+    </div>
+    <p class="count" id="count" aria-live="polite"></p>
+    <div class="recs" id="recs"></div>
+    <p class="note" data-i18n="heroes.note"></p>
+  </div></div>
+</section>
+
+<!-- REPORT -->
+<section class="view" data-view="report" hidden>
+  <div class="pagehead"><div class="wrap pagehead__in">
+    <div class="pagehead__text">
+      <p class="kicker" data-i18n="report.kicker"></p>
+      <h1 data-i18n="report.title"></h1>
+      <p class="lead" data-i18n="report.lead"></p>
+    </div>
+    <img class="pagehead__av" src="assets/img/leo_face.jpg" alt="" width="200" height="200">
+  </div></div>
+  <div class="band"><div class="wrap stack">
+    <ol class="proc">
+      <li><b data-i18n="rp.s1"></b></li>
+      <li><b data-i18n="rp.s2"></b><span data-i18n="rp.s2b"></span></li>
+      <li><b data-i18n="rp.s3"></b><span data-i18n="rp.s3b"></span></li>
+      <li><b data-i18n="rp.s4"></b><span data-i18n="rp.s4b"></span></li>
+      <li><b data-i18n="rp.s5"></b></li>
+    </ol>
+    <form class="form" id="form-report" data-form="report" novalidate>
+      <div class="field"><label for="rp-country" data-i18n="f.country"></label><select id="rp-country" name="country" data-countries aria-describedby="rp-country-err"></select><p class="err" id="rp-country-err"></p></div>
+      <div class="field"><label for="rp-date" data-i18n="f.date"></label><input id="rp-date" name="date" type="date" min="1900-01-01"></div>
+      <div class="field"><label for="rp-place" data-i18n="f.place"></label><input id="rp-place" name="place" type="text" maxlength="120" aria-describedby="rp-place-err"><p class="err" id="rp-place-err"></p></div>
+      <div class="field"><label for="rp-heroName" data-i18n="f.heroName"></label><input id="rp-heroName" name="heroName" type="text" maxlength="120" aria-describedby="rp-heroName-err"><p class="err" id="rp-heroName-err"></p></div>
+      <div class="field full"><label for="rp-story" data-i18n="f.story"></label><textarea id="rp-story" name="story" rows="6" maxlength="2000" aria-describedby="rp-story-hint rp-story-err"></textarea><p class="hint" id="rp-story-hint" data-i18n="f.storyHint"></p><p class="err" id="rp-story-err"></p></div>
+      <div class="field full"><span class="lbl" data-i18n="f.sources"></span>
+        <div class="srcs">
+          <input id="rp-src1" name="src1" type="url" maxlength="500" inputmode="url" placeholder="https://" aria-describedby="rp-src1-err"><p class="err" id="rp-src1-err"></p>
+          <input id="rp-src2" name="src2" type="url" maxlength="500" inputmode="url" placeholder="https://" aria-describedby="rp-src2-err"><p class="err" id="rp-src2-err"></p>
+          <input id="rp-src3" name="src3" type="url" maxlength="500" inputmode="url" placeholder="https://" aria-describedby="rp-src3-err"><p class="err" id="rp-src3-err"></p>
+        </div>
+      </div>
+      <div class="field full"><label for="rp-photo" data-i18n="f.photo"></label><input id="rp-photo" name="photo" type="file" accept="image/jpeg,image/png,image/webp" aria-describedby="rp-photo-hint rp-photo-err"><p class="hint" id="rp-photo-hint" data-i18n="f.photoNote"></p><p class="err" id="rp-photo-err"></p></div>
+      <div class="field"><label for="rp-relation" data-i18n="f.relation"></label><select id="rp-relation" name="relation" aria-describedby="rp-relation-err"><option value="" data-i18n="f.choose"></option><option value="self" data-i18n="rel.self"></option><option value="family" data-i18n="rel.family"></option><option value="known" data-i18n="rel.known"></option><option value="news" data-i18n="rel.news"></option></select><p class="err" id="rp-relation-err"></p></div>
+      <div class="field"><label for="rp-reporter" data-i18n="f.reporter"></label><input id="rp-reporter" name="reporter" type="text" maxlength="60" autocomplete="name"></div>
+      <div class="field full"><label for="rp-email" data-i18n="f.email"></label><input id="rp-email" name="email" type="email" maxlength="254" autocomplete="email" aria-describedby="rp-email-err"><p class="err" id="rp-email-err"></p></div>
+      <div class="field full">
+        <label class="check"><input id="rp-consentPrivacy" name="consentPrivacy" type="checkbox" value="1" aria-describedby="rp-consentPrivacy-err"><span data-i18n="f.consentPrivacy"></span></label><p class="err" id="rp-consentPrivacy-err"></p>
+        <label class="check"><input id="rp-consentFact" name="consentFact" type="checkbox" value="1" aria-describedby="rp-consentFact-err"><span data-i18n="f.consentFact"></span></label><p class="err" id="rp-consentFact-err"></p>
+      </div>
+      <div class="hp" aria-hidden="true"><label for="rp-website">Website</label><input id="rp-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+      <div class="form__actions"><button class="btn btn--navy" type="submit" data-i18n="f.sendReport"></button></div>
+      <p class="status" role="status" hidden></p>
+    </form>
+    <div class="notice notice--soft"><p data-i18n="report.next"></p><a class="link" href="#create" data-i18n="report.nextLink"></a></div>
+  </div></div>
+</section>
+
+<!-- CONTACT -->
+<section class="view" data-view="contact" hidden>
+  <div class="pagehead"><div class="wrap pagehead__in">
+    <div class="pagehead__text">
+      <p class="kicker" data-i18n="contact.kicker"></p>
+      <h1 data-i18n="contact.title"></h1>
+      <p class="lead" data-i18n="contact.lead"></p>
+    </div>
+  </div></div>
+  <div class="band"><div class="wrap contact-grid">
+    <form class="form" id="form-contact" data-form="contact" novalidate>
+      <div class="field"><label for="ct-name" data-i18n="f.name"></label><input id="ct-name" name="name" type="text" maxlength="60" autocomplete="name" aria-describedby="ct-name-err"><p class="err" id="ct-name-err"></p></div>
+      <div class="field"><label for="ct-org" data-i18n="f.org"></label><input id="ct-org" name="org" type="text" maxlength="100" autocomplete="organization"></div>
+      <div class="field"><label for="ct-email" data-i18n="f.email"></label><input id="ct-email" name="email" type="email" maxlength="254" autocomplete="email" aria-describedby="ct-email-err"><p class="err" id="ct-email-err"></p></div>
+      <div class="field"><label for="ct-topic" data-i18n="f.topic"></label><select id="ct-topic" name="topic" aria-describedby="ct-topic-err"><option value="" data-i18n="f.choose"></option><option value="company" data-i18n="topic.company"></option><option value="press" data-i18n="topic.press"></option><option value="funding" data-i18n="topic.funding"></option><option value="other" data-i18n="topic.other"></option></select><p class="err" id="ct-topic-err"></p></div>
+      <div class="field full"><label for="ct-message" data-i18n="f.message"></label><textarea id="ct-message" name="message" rows="6" maxlength="3000" aria-describedby="ct-message-err"></textarea><p class="err" id="ct-message-err"></p></div>
+      <div class="field full"><label class="check"><input id="ct-consentPrivacy" name="consentPrivacy" type="checkbox" value="1" aria-describedby="ct-consentPrivacy-err"><span data-i18n="f.consentContact"></span></label><p class="err" id="ct-consentPrivacy-err"></p></div>
+      <div class="hp" aria-hidden="true"><label for="ct-website">Website</label><input id="ct-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+      <div class="form__actions"><button class="btn btn--navy" type="submit" data-i18n="f.sendContact"></button></div>
+      <p class="status" role="status" hidden></p>
+    </form>
+    <aside class="aside">
+      <img src="assets/img/leon_face.jpg" alt="" width="200" height="200">
+      <p class="kicker" data-i18n="contact.direct"></p>
+      <p class="addr" id="mailAddr">oreh.information@gmail.com</p>
+      <button type="button" class="btn btn--line btn--sm" id="copyMail" data-i18n="contact.copy"></button>
+      <span class="copied" id="mailCopied" role="status"></span>
+      <p data-i18n="about.company"></p>
+    </aside>
+  </div></div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap foot__in">
+    <div class="stack">
+      <span class="logo"><svg class="logo__mark" viewBox="0 0 221 212" aria-hidden="true"><use href="#oreh-mark"/></svg><span class="logo__word">OREH</span></span>
+      <p data-i18n="footer.tag"></p>
+    </div>
+    <div class="stack">
+      <nav><a href="#about" data-i18n="footer.privacy"></a><a href="#about" data-i18n="footer.terms"></a><a href="#contact" data-i18n="nav.contact"></a></nav>
+      <p>© 2026 OREH Inc.</p>
+      <p class="foot__draft" data-i18n="footer.draft" data-draft></p>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/site.js" defer></script>
+
+</body>
+</html>
