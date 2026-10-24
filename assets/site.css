@@ -55,9 +55,14 @@ p{margin:0}
 .top__in{max-width:var(--wrap);margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;align-items:center;gap:20px;min-height:64px}
 .logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex-shrink:0;color:var(--on-navy)}
 .logo__mark{width:42px;height:40px;fill:currentColor;flex-shrink:0}
+.logo > .logo__mark{width:48px;height:46px}
 .logo__word{font-family:var(--f-logo);font-weight:700;font-size:1.35rem;letter-spacing:.12em}
-.logo__ko{font-family:'Jua',sans-serif;font-size:.95rem;color:var(--on-navy-2)}
-html:not([lang="ko"]) .logo__ko{display:none}
+.logo__name{display:flex;align-items:baseline;gap:5px;white-space:nowrap;line-height:1}
+.logo__ko{font-family:'Jua',sans-serif;font-size:1.55rem;color:var(--on-navy);letter-spacing:.02em}
+.logo__en{font-family:var(--f-logo);font-weight:700;font-size:.98rem;letter-spacing:.1em;color:var(--gold)}
+html:not([lang="ko"]) .logo__ko,html:not([lang="ko"]) .logo__p{display:none}
+html:not([lang="ko"]) .logo__en{font-size:1.3rem;letter-spacing:.14em;color:var(--on-navy)}
+@media (max-width:360px){.logo__en{display:none}}
 .nav{display:flex;gap:4px;flex-wrap:wrap;margin-left:auto}
 .nav a{text-decoration:none;padding:8px 10px;border-radius:8px;font-size:var(--t-s);font-weight:500;color:var(--on-navy-2)}
 .nav a:hover{color:var(--on-navy);background:rgba(255,255,255,.06)}
