@@ -1297,6 +1297,17 @@ document.getElementById("taxPay").addEventListener("click", function(){
   var taxName = "[세금계산서] " + taxItem.options[taxItem.selectedIndex].text;
   location.href = "checkout.html?amount=" + encodeURIComponent(amt) + "&name=" + encodeURIComponent(taxName) + "&tax=1&email=" + encodeURIComponent(email) + "&order=" + encodeURIComponent(orderId);
 });
+
+/* ===== 선택한 언어를 무료진단(diagnosis.html)으로 전달 ===== */
+(function(){
+  function upd(l){ document.querySelectorAll('a[href^="diagnosis.html"]').forEach(function(a){ a.setAttribute("href","diagnosis.html?lang="+l); }); }
+  var cur="ko"; try{ cur=localStorage.getItem("aikua_lang")||"ko"; }catch(e){}
+  if(cur!=="en"&&cur!=="zh"&&cur!=="ko") cur="ko";
+  upd(cur);
+  document.querySelectorAll('.langsw button[data-lang]').forEach(function(b){
+    b.addEventListener("click", function(){ upd(b.getAttribute("data-lang")); });
+  });
+})();
 </script>
 </body>
 </html>

@@ -410,6 +410,8 @@
   // ================= 상태 =================
   var LANG = "ko";
   try{ var sv=localStorage.getItem("aikua_lang"); if(sv==="en"||sv==="zh"||sv==="ko") LANG=sv; }catch(e){}
+  // 홈페이지에서 넘어온 ?lang= 가 있으면 그 언어를 우선 적용
+  try{ var qp=new URLSearchParams(location.search).get("lang"); if(qp==="en"||qp==="zh"||qp==="ko") LANG=qp; }catch(e){}
   function T(){ return L[LANG]; }
   function catTxt(koCat){ return LANG==="ko" ? koCat : (QTEXT[LANG].cat[koCat]||koCat); }
   function qTxt(i){ return QTEXT[LANG].q[i]; }
