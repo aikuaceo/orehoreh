@@ -1,682 +1,1302 @@
 <!doctype html>
-<html lang="ko" translate="no">
+<html lang="ko">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; manifest-src 'self'; base-uri 'none'; form-action 'none'; upgrade-insecure-requests">
-<meta name="referrer" content="strict-origin-when-cross-origin">
-<title>OREH 오레</title>
-<meta name="google" content="notranslate">
-<meta name="oreh-mode" content="static">
-<meta name="description" content="오레(OREH)는 세계 곳곳의 의인 이야기를 찾아 알리고, 함께 기억하고 후원하는 가치참여 플랫폼입니다.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AIKUA BOX — 중국 진출, 매출이 날 때까지</title>
+<meta name="description" content="돈 쓰고도 중국에서 매출이 안 난 브랜드를 위한 왕홍 매칭·운영 동행. 9.9만 베이직 솔루션 보고서부터 시작하세요.">
+<!-- Pretendard (본문) + Noto Serif KR (제목 — 에디토리얼 감성) -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans+JP:wght@400;500;700&family=IBM+Plex+Sans+KR:wght@400;500;700&family=IBM+Plex+Sans:wght@400;500;700&family=Jua&family=M+PLUS+Rounded+1c:wght@700;800&family=Noto+Sans+SC:wght@400;500;700;900&display=swap">
-<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;600;700&display=swap">
+<!-- 토스페이먼츠 결제 SDK (v2) -->
+<script src="https://js.tosspayments.com/v2/standard"></script>
+<style>
+  :root{
+    --navy:#0b1733; --navy2:#111f42; --navy3:#16254d; --line:#e2e7f2;
+    --ink:#15213d; --muted:#5a668c; --accent:#e0900f; --accent2:#f5a623; --accent-ink:#ffffff;
+    --surface:#ffffff; --surface2:#f4f7fc; --ok:#2e9e6b;
+    --maxw:1080px; --radius:14px;
+    --font:"Pretendard Variable","Pretendard","Noto Sans KR","Malgun Gothic",system-ui,-apple-system,sans-serif;
+    --serif:"Noto Serif KR","Nanum Myeongjo",serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:var(--font);color:var(--ink);background:var(--surface);line-height:1.65;-webkit-font-smoothing:antialiased;letter-spacing:-.01em}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+  a{color:inherit;text-decoration:none}
+  .num{font-variant-numeric:tabular-nums}
+  h1,h2,h3{text-wrap:balance;margin:0}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:inherit;font-size:16px;font-weight:700;border-radius:12px;padding:14px 26px;cursor:pointer;border:none;transition:transform .08s,opacity .15s}
+  .btn:active{transform:translateY(1px)}
+  .btn-primary{background:var(--accent2);color:var(--navy)}
+  .btn-primary:hover{opacity:.92}
+  .btn-ghost{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.35)}
+  .btn-dark{background:var(--navy);color:#fff}
 
-<link rel="icon" type="image/svg+xml" href="assets/img/logo.svg">
-<link rel="canonical" href="https://orehoreh.com/">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://orehoreh.com/">
-<meta property="og:title" content="OREH 오레 · Good People News">
-<meta property="og:description" content="잊혀진 영웅을 찾아, 기억을 이어가다. 세계 곳곳의 의인 이야기를 함께 기억하고 후원하는 가치참여 플랫폼">
-<meta property="og:image" content="https://orehoreh.com/assets/img/leo3d.jpg">
+  /* nav */
+  header.nav{position:sticky;top:0;z-index:50;background:rgba(11,23,51,.92);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,.08)}
+  .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .logo{color:#fff;font-weight:800;font-size:18px;letter-spacing:.02em}
+  .logo b{color:var(--accent2)}
+  .nav .links{display:flex;align-items:center}
+  .nav a.navlink{color:#c7cfe4;font-size:14px;margin-left:22px}
+  .nav a.navlink:hover{color:#fff}
+  .nav .cta-sm{margin-left:18px}
+  /* language switcher */
+  .langsw{display:inline-flex;gap:2px;margin-left:20px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:3px}
+  .langsw button{background:transparent;border:none;color:#aeb8d4;font-size:12.5px;font-weight:700;font-family:inherit;padding:5px 10px;border-radius:7px;cursor:pointer;transition:.15s;letter-spacing:0}
+  .langsw button.on{background:var(--accent2);color:var(--navy)}
+  .langsw button:hover:not(.on){color:#fff}
+  @media(max-width:680px){ .nav .navlink{display:none} .langsw{margin-left:0} .nav .cta-sm{margin-left:12px} }
+
+  /* hero */
+  .hero{position:relative;overflow:hidden;background:
+     linear-gradient(165deg,#0a1530 0%, #0e1d41 55%, #0b1733 100%);color:#fff;padding:84px 0 88px}
+  .hero::before{content:"";position:absolute;top:0;right:0;width:46%;height:100%;
+     background:radial-gradient(520px 360px at 78% 18%, rgba(245,166,35,.13), transparent 70%);pointer-events:none}
+  .hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:linear-gradient(90deg,transparent,rgba(245,166,35,.4),transparent)}
+  .hero .wrap{position:relative;z-index:1}
+  .hero .kick{color:var(--accent2);font-weight:600;letter-spacing:.06em;font-size:13.5px}
+  .hero h1{font-family:var(--serif);font-size:47px;font-weight:700;line-height:1.28;margin:18px 0 20px;letter-spacing:-.005em;word-break:keep-all}
+  .hero h1 .o{color:var(--accent2)}
+  .hero p.lead{font-size:18px;color:#cdd5ea;max-width:620px;margin:0 0 30px}
+  .hero .actions{display:flex;gap:14px;flex-wrap:wrap}
+  .hero .micro{margin-top:18px;font-size:13px;color:#9aa6c4}
+  @media(max-width:680px){ .hero h1{font-size:33px} .hero{padding:52px 0 58px} }
+
+  /* trust strip */
+  .trust{background:var(--navy2);color:#fff;padding:26px 0}
+  .trust .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;text-align:center}
+  .trust .v{font-size:26px;font-weight:800;color:var(--accent2)}
+  .trust .l{font-size:12.5px;color:#9aa6c4;margin-top:2px}
+  @media(max-width:680px){ .trust .grid{grid-template-columns:repeat(2,1fr);gap:20px} }
+
+  section.sec{padding:66px 0;scroll-margin-top:72px}
+  .eyebrow{color:var(--accent);font-weight:600;letter-spacing:.06em;font-size:12.5px;text-align:center}
+  .sec h2{font-family:var(--serif);font-size:31px;font-weight:700;text-align:center;margin:9px 0 10px;letter-spacing:-.005em;line-height:1.35;word-break:keep-all}
+  .sec .sub{text-align:center;color:var(--muted);max-width:620px;margin:0 auto 40px}
+  @media(max-width:680px){ .sec{padding:48px 0} .sec h2{font-size:24px} }
+
+  /* ===== about (대기업 그룹 소개) ===== */
+  #about{background:linear-gradient(180deg,#ffffff 0%, #f6f8fd 100%);border-bottom:1px solid var(--line)}
+  .ab-head{text-align:center;max-width:820px;margin:0 auto}
+  .ab-kicker{display:inline-flex;align-items:center;gap:8px;color:var(--accent);font-weight:800;letter-spacing:.18em;font-size:11.5px;text-transform:uppercase}
+  .ab-kicker:before,.ab-kicker:after{content:"";width:26px;height:1px;background:var(--accent2);opacity:.6}
+  .ab-head h2{font-size:33px;font-weight:800;color:var(--navy);margin:16px 0 18px;letter-spacing:-.025em;line-height:1.25}
+  .ab-lead{font-size:16.5px;line-height:1.95;color:#44506f;margin:0}
+  .ab-lead b{color:var(--navy);font-weight:700}
+  .ab-lead .hl{color:var(--accent);font-weight:700}
+  /* stats */
+  .ab-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin:46px auto 0;max-width:960px;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#fff}
+  .ab-stats>div{padding:26px 18px;text-align:center;border-right:1px solid var(--line)}
+  .ab-stats>div:last-child{border-right:none}
+  .ab-stats .sv{font-size:30px;font-weight:800;color:var(--navy);letter-spacing:-.02em}
+  .ab-stats .sv .u{font-size:16px;color:var(--accent);font-weight:800;margin-left:1px}
+  .ab-stats .sl{font-size:12.5px;color:var(--muted);margin-top:6px;line-height:1.45}
+  @media(max-width:680px){ .ab-stats{grid-template-columns:1fr 1fr} .ab-stats>div:nth-child(2){border-right:none} .ab-stats>div:nth-child(1),.ab-stats>div:nth-child(2){border-bottom:1px solid var(--line)} .ab-head h2{font-size:26px} }
+  /* mission / vision */
+  .ab-mv{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px auto 0;max-width:960px}
+  .ab-mv .card{background:var(--navy);color:#fff;border-radius:16px;padding:28px 26px;position:relative;overflow:hidden}
+  .ab-mv .card.v{background:linear-gradient(135deg,#16254d,#1d3a74)}
+  .ab-mv .tag{font-size:11.5px;font-weight:800;letter-spacing:.16em;color:var(--accent2);text-transform:uppercase}
+  .ab-mv .txt{font-size:17.5px;font-weight:600;line-height:1.55;margin-top:12px;color:#eef2fb;letter-spacing:-.01em}
+  @media(max-width:680px){ .ab-mv{grid-template-columns:1fr} }
+  /* what we do */
+  .ab-wwd{max-width:960px;margin:44px auto 0}
+  .ab-wwd .wwd-h{text-align:center;font-size:12px;font-weight:800;letter-spacing:.18em;color:var(--muted);text-transform:uppercase;margin-bottom:20px}
+  .wwd-row{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+  .wwd-item{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px 14px;text-align:center;transition:.18s}
+  .wwd-item:hover{border-color:var(--accent2);box-shadow:0 8px 24px rgba(11,23,51,.07);transform:translateY(-2px)}
+  .wwd-item .en{font-size:11px;font-weight:800;letter-spacing:.12em;color:var(--accent);text-transform:uppercase}
+  .wwd-item .ko{font-size:18px;font-weight:800;color:var(--navy);margin:7px 0 6px}
+  .wwd-item .de{font-size:12.5px;color:var(--muted);line-height:1.5}
+  @media(max-width:760px){ .wwd-row{grid-template-columns:repeat(2,1fr)} }
+  @media(max-width:420px){ .wwd-row{grid-template-columns:1fr} }
+  /* facts */
+  .ab-facts{display:flex;flex-wrap:wrap;justify-content:center;gap:0;margin:40px auto 0;max-width:960px;border-top:1px solid var(--line);padding-top:28px}
+  .ab-facts .f{padding:0 26px;text-align:center;border-right:1px solid var(--line)}
+  .ab-facts .f:last-child{border-right:none}
+  .ab-facts .fl{display:block;font-size:11px;letter-spacing:.08em;color:var(--muted);text-transform:uppercase;margin-bottom:5px}
+  .ab-facts .fv{font-size:14px;font-weight:700;color:var(--navy)}
+  @media(max-width:680px){ .ab-facts{gap:18px 0} .ab-facts .f{flex:0 0 50%;border-right:none;margin-bottom:6px} }
+
+  /* problem */
+  .probs{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .prob{background:var(--surface2);border:1px solid var(--line);border-radius:var(--radius);padding:22px}
+  .prob .q{font-weight:800;font-size:16px;margin-bottom:6px;color:var(--navy)}
+  .prob p{margin:0;color:var(--muted);font-size:14px}
+  @media(max-width:760px){ .probs{grid-template-columns:1fr} }
+
+  /* steps */
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .step{position:relative;background:var(--navy);color:#fff;border-radius:var(--radius);padding:22px}
+  .step .n{color:var(--accent2);font-weight:800;font-size:13px;letter-spacing:.06em}
+  .step h3{font-size:17px;margin:8px 0 6px}
+  .step p{margin:0;color:#b7c0da;font-size:13px}
+  @media(max-width:760px){ .steps{grid-template-columns:1fr 1fr} }
+  @media(max-width:460px){ .steps{grid-template-columns:1fr} }
+
+  /* pricing */
+  #pricing{background:var(--surface2)}
+  .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;align-items:stretch}
+  .plan{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:26px;display:flex;flex-direction:column}
+  .plan.feat{border:2px solid var(--accent2);box-shadow:0 10px 40px rgba(11,23,51,.08)}
+  .plan .tag{font-size:12px;font-weight:700;letter-spacing:.06em;color:var(--accent);text-transform:uppercase}
+  .plan .price{font-size:34px;font-weight:800;margin:10px 0 2px;color:var(--navy)}
+  .plan .price small{font-size:15px;color:var(--muted);font-weight:600}
+  .plan .desc{color:var(--muted);font-size:14px;margin:0 0 16px}
+  .plan ul{list-style:none;padding:0;margin:0 0 22px;flex:1}
+  .plan li{font-size:14px;padding:7px 0 7px 26px;position:relative;border-bottom:1px dashed var(--line)}
+  .plan li:before{content:"✓";position:absolute;left:0;color:var(--ok);font-weight:800}
+  .plan li.after{color:var(--accent);font-weight:600}
+  .plan li.after:before{content:"＋";color:var(--accent)}
+  .plan .btn{width:100%}
+  .feat-badge{display:inline-block;background:var(--accent2);color:var(--navy);font-size:11px;font-weight:800;border-radius:20px;padding:3px 12px;margin-bottom:8px}
+  @media(max-width:860px){ .plans{grid-template-columns:1fr} }
+  .paynote{text-align:center;color:var(--muted);font-size:12.5px;margin-top:22px}
+
+  /* 소상공인 패키지 */
+  .sg-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:20px;align-items:stretch}
+  .sg-info,.sg-price{background:var(--navy2);border:1px solid #28385f;border-radius:16px;padding:24px;color:#eef2fb}
+  .sg-price{border:2px solid var(--accent2);display:flex;flex-direction:column;gap:16px}
+  .sg-list{list-style:none;padding:0;margin:0}
+  .sg-list li{font-size:14.5px;padding:9px 0 9px 26px;position:relative;border-bottom:1px dashed #28385f;color:#dbe1f2}
+  .sg-list li:before{content:"✓";position:absolute;left:0;color:var(--accent2);font-weight:800}
+  .sg-must{background:rgba(245,166,35,.1);border:1px solid rgba(245,166,35,.4);border-radius:12px;padding:16px}
+  .sg-must-tag{display:inline-block;background:var(--accent2);color:var(--navy);font-size:11px;font-weight:800;border-radius:20px;padding:3px 12px;margin-bottom:10px}
+  .sg-must-row{display:flex;justify-content:space-between;align-items:baseline;font-size:15px;color:#fff}
+  .sg-must-row b{font-size:24px;font-weight:800;color:var(--accent2)}
+  .sg-must-note{font-size:12px;color:#9aa6c4;margin:6px 0 12px}
+  .sg-run{padding:4px 2px}
+  .sg-run-row{display:flex;justify-content:space-between;align-items:baseline;font-size:14.5px;color:#eef2fb;padding:7px 0;border-bottom:1px dashed #28385f}
+  .sg-run-row b{font-size:17px;font-weight:800;color:#fff}
+  .sg-run-note{font-size:12px;color:#9aa6c4;margin:10px 0 14px}
+  @media(max-width:760px){ .sg-grid{grid-template-columns:1fr} }
+
+  /* 아이콰 리더스 워케이션 */
+  .ld-wrap{display:grid;grid-template-columns:1.3fr .7fr;gap:20px;align-items:stretch}
+  @media(max-width:760px){ .ld-wrap{grid-template-columns:1fr} }
+  .ld-info{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:24px}
+  .ld-badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+  .ld-badge{display:inline-block;font-size:12px;font-weight:700;border-radius:20px;padding:5px 14px}
+  .ld-badge.done{background:var(--surface2);color:var(--muted);text-decoration:line-through}
+  .ld-badge.open{background:var(--accent2);color:var(--navy)}
+  .ld-info h3{font-size:19px;margin:0 0 14px}
+  .ld-list{list-style:none;padding:0;margin:0 0 14px}
+  .ld-list li{font-size:14.5px;padding:8px 0 8px 24px;position:relative;border-bottom:1px dashed var(--line);color:var(--ink)}
+  .ld-list li:before{content:"→";position:absolute;left:0;color:var(--accent);font-weight:800}
+  .ld-note{font-size:13px;color:var(--muted);margin:0}
+  .ld-price{background:var(--navy);color:#fff;border-radius:var(--radius);padding:24px;display:flex;flex-direction:column;justify-content:center}
+  .ld-amt-label{font-size:13px;color:#9aa6c4}
+  .ld-amt{font-size:34px;font-weight:800;color:var(--accent2);margin:4px 0 14px}
+  .ld-inc{list-style:none;padding:0;margin:0 0 18px}
+  .ld-inc li{font-size:13.5px;color:#dbe1f2;padding:5px 0;border-bottom:1px dashed #28385f}
+  .ld-price .ld-amt-label{font-size:12px;font-weight:700;color:#aeb8d4;letter-spacing:.06em;text-transform:none;margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid #28385f}
+  .ld-opt{background:#15254f;border:1px solid #30406a;border-radius:13px;padding:16px 17px;margin-bottom:11px}
+  .ld-opt.hot{border-color:rgba(245,166,35,.55);background:#172855}
+  .ld-opt.hot .ld-opt-tag:after{content:"추천";margin-left:7px;background:var(--accent2);color:var(--navy);font-size:10px;font-weight:800;border-radius:3px;padding:1px 6px;letter-spacing:0;vertical-align:middle}
+  .ld-opt.done{opacity:.55}
+  .ld-opt.done .ld-opt-tag{color:#9aa6c4}
+  .ld-opt.done .ld-opt-amt b{color:#c4ccde}
+  .ld-opt-tag{font-size:11px;font-weight:800;color:var(--accent2);letter-spacing:.03em;margin-bottom:6px}
+  .ld-opt-nm{font-size:15px;font-weight:700;color:#fff;line-height:1.4}
+  .ld-opt-sub{font-size:12px;color:#b4bdd6;margin:5px 0 11px;line-height:1.5}
+  .ld-opt-amt{font-size:13px;color:#e3e8f4;margin-bottom:11px}
+  .ld-opt-amt s{color:#8893b2;margin-right:5px}
+  .ld-opt-amt b{font-size:22px;font-weight:800;color:var(--accent2)}
+  .ld-opt-badge{font-size:12px;font-weight:600;color:#ffd98a;background:rgba(245,166,35,.14);border:1px solid rgba(245,166,35,.28);border-radius:7px;padding:7px 10px;margin-bottom:11px;text-align:center}
+  /* diagnose CTA band */
+  .band{background:linear-gradient(135deg,var(--navy) 0%, #15306b 100%);color:#fff;border-radius:20px;padding:40px;text-align:center}
+  .band h2{font-size:26px;margin:0 0 10px}
+  .band p{color:#cdd5ea;max-width:560px;margin:0 auto 22px}
+
+  footer{background:var(--navy);color:#cdd5ea;padding:40px 0;font-size:13px}
+  footer .grid{display:flex;justify-content:space-between;flex-wrap:wrap;gap:20px}
+  footer .logo{margin-bottom:8px;display:block}
+  footer a{color:#9aa6c4}
+  footer .biz{color:#8390b4;margin-top:18px;font-size:11.5px;line-height:1.8;border-top:1px solid rgba(255,255,255,.08);padding-top:16px}
+  footer .biz b{color:#aeb8d4;font-weight:700}
+  footer .biz .todo{color:#e8a657}
+  footer .copy{color:#6f7aa0;margin-top:14px;font-size:12px}
+
+  /* modal */
+  .modal{position:fixed;inset:0;background:rgba(5,10,25,.6);display:none;align-items:center;justify-content:center;z-index:100;padding:20px}
+  .modal.open{display:flex}
+  .modal .box{background:#fff;border-radius:16px;max-width:420px;width:100%;padding:28px}
+  .modal h3{font-size:20px;margin:0 0 8px;color:var(--navy)}
+  .modal p{color:var(--muted);font-size:14px;margin:0 0 18px}
+  .modal .field{margin-bottom:14px}
+  .modal label{display:block;font-size:13px;font-weight:600;margin-bottom:5px}
+  .modal input,.modal select{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:10px;font-size:15px;font-family:inherit;background:#fff}
+  .modal .box.tax{max-height:88vh;overflow-y:auto}
+  .modal .field.sm{margin-bottom:10px}
+  .modal .row{display:flex;gap:10px;margin-top:6px}
+  .modal .close{background:transparent;border:none;color:var(--muted);font-size:14px;cursor:pointer;text-decoration:underline}
+
+  /* AI 상담봇 */
+  .chatbox{max-width:440px;width:100%;height:min(82vh,640px);display:flex;flex-direction:column;padding:0;overflow:hidden}
+  .chat-h{background:var(--navy);color:#fff;padding:13px 16px;display:flex;align-items:center;gap:10px}
+  .chat-h .av{width:36px;height:36px;border-radius:50%;background:var(--accent2);color:var(--navy);display:grid;place-items:center;font-weight:800;font-size:16px}
+  .chat-h .nm{font-weight:800;font-size:15px;line-height:1.2}
+  .chat-h .st{font-size:11px;color:#9ad1b0;display:flex;align-items:center;gap:5px}
+  .chat-h .st:before{content:"";width:7px;height:7px;border-radius:50%;background:#49d18a;display:inline-block}
+  .chat-h .x{margin-left:auto;background:none;border:none;color:#9aa6c4;font-size:22px;cursor:pointer;line-height:1}
+  .chat-log{flex:1;overflow-y:auto;padding:16px;background:var(--surface2);display:flex;flex-direction:column;gap:10px}
+  .msg{max-width:85%;padding:10px 13px;border-radius:14px;font-size:13.5px;line-height:1.6;white-space:pre-line;word-break:break-word}
+  .msg.bot{background:#fff;border:1px solid var(--line);align-self:flex-start;border-bottom-left-radius:4px;color:var(--ink)}
+  .msg.user{background:var(--navy);color:#fff;align-self:flex-end;border-bottom-right-radius:4px}
+  .quick{display:flex;flex-wrap:wrap;gap:7px;padding:2px 16px 10px;background:var(--surface2)}
+  .quick button{background:#fff;border:1.5px solid var(--accent2);color:var(--navy);font-size:12.5px;font-weight:700;font-family:inherit;border-radius:18px;padding:7px 13px;cursor:pointer}
+  .quick button:hover{background:#fff6e8}
+  .quick button.mail{background:var(--accent2)}
+  .chat-in{display:flex;gap:8px;padding:11px;border-top:1px solid var(--line);background:#fff}
+  .chat-in input{flex:1;padding:10px 13px;border:1px solid var(--line);border-radius:10px;font-size:14px;font-family:inherit}
+  .chat-in button{background:var(--navy);color:#fff;border:none;border-radius:10px;padding:0 16px;font-weight:800;font-family:inherit;cursor:pointer}
+
+  /* 리뷰 */
+  .rv-list{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  @media(max-width:860px){ .rv-list{grid-template-columns:1fr 1fr} }
+  @media(max-width:560px){ .rv-list{grid-template-columns:1fr} }
+  .rv{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:20px}
+  .rv-top{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+  .rv-av{width:38px;height:38px;border-radius:50%;background:var(--surface2);border:1px solid var(--line);display:grid;place-items:center;font-weight:800;color:var(--navy);flex:none}
+  .rv-nm{font-weight:700;font-size:14px;color:var(--navy)}
+  .rv-dt{font-size:11.5px;color:var(--muted)}
+  .rv-stars{color:var(--accent2);font-size:14px;letter-spacing:1px;margin-bottom:6px}
+  .rv-stars .off{color:var(--line)}
+  .rv-tx{font-size:13.5px;color:var(--ink);line-height:1.6;white-space:pre-line}
+  .rv-empty{grid-column:1/-1;text-align:center;color:var(--muted);font-size:14px;padding:30px 0;border:1px dashed var(--line);border-radius:var(--radius);background:#fff}
+  /* 별점 입력 */
+  .star-input{display:inline-flex;gap:4px;font-size:30px;cursor:pointer;color:var(--line)}
+  .star-input span.on{color:var(--accent2)}
+  /* 쿠폰 결과 */
+  .coupon{background:var(--navy);color:#fff;border-radius:12px;padding:18px;text-align:center;margin-top:6px}
+  .coupon .code{font-size:24px;font-weight:800;color:var(--accent2);letter-spacing:2px;margin:6px 0}
+  .coupon .cp-note{font-size:12px;color:#9aa6c4}
+</style>
 </head>
 <body>
-<a class="skip" href="#main" data-i18n="skip">본문 바로가기</a>
-<svg class="sr" aria-hidden="true" focusable="false"><symbol id="oreh-mark" viewBox="0 0 221 212"><path fill-rule="evenodd" d="M112.00 25.76 L109.50 25.88 L108.00 25.65 L105.50 24.73 L103.97 23.75 L102.00 21.75 L101.12 20.25 L100.20 17.25 L100.25 14.18 L101.00 11.66 L102.00 9.94 L103.75 8.10 L105.00 7.18 L108.00 5.92 L112.50 5.99 L115.25 7.11 L117.75 9.23 L118.68 10.50 L119.83 13.00 L120.08 15.75 L119.85 18.50 L118.62 21.25 L116.50 23.62 L115.00 24.67 L113.25 24.90 L112.00 25.76Z M210.75 90.01 L208.25 89.85 L206.86 88.75 L160.41 42.25 L159.25 41.87 L60.50 41.92 L13.68 88.75 L12.25 89.72 L11.50 89.92 L10.00 90.06 L8.25 89.85 L6.00 87.72 L5.67 85.50 L6.00 83.54 L7.00 82.06 L45.51 43.75 L55.00 34.04 L56.50 32.99 L58.75 32.64 L162.00 32.65 L164.00 33.02 L165.47 34.25 L213.50 82.36 L214.79 84.75 L214.86 85.75 L214.59 87.00 L213.64 88.75 L212.12 89.75 L210.75 90.01Z M111.75 205.79 L110.25 205.96 L107.50 205.68 L106.00 204.66 L104.89 202.50 L104.90 138.75 L104.77 137.50 L104.50 137.15 L104.00 137.42 L101.75 140.68 L101.06 141.25 L97.75 145.65 L97.00 146.12 L95.75 147.86 L90.00 153.95 L88.75 155.66 L85.65 158.75 L84.00 159.97 L79.45 164.50 L74.23 169.00 L73.64 169.75 L73.00 170.00 L70.30 172.25 L67.75 174.69 L66.96 175.00 L65.25 176.24 L63.67 177.75 L62.75 178.13 L60.25 180.04 L59.67 180.75 L58.75 181.11 L56.75 182.74 L54.25 184.13 L53.71 184.75 L52.75 185.09 L51.25 186.11 L50.75 186.72 L49.75 187.06 L45.80 189.75 L44.94 190.00 L41.00 192.15 L39.25 193.15 L38.71 193.75 L37.50 194.07 L36.75 194.76 L34.70 195.50 L33.00 195.61 L31.00 194.74 L30.00 193.75 L29.23 192.50 L28.86 191.00 L29.03 189.25 L30.50 187.19 L42.75 180.70 L44.50 179.62 L45.05 179.00 L46.00 178.72 L47.75 177.68 L50.00 176.00 L50.75 175.74 L53.00 174.02 L53.75 173.71 L66.90 163.75 L78.40 153.50 L88.75 142.81 L90.00 141.08 L93.75 136.88 L97.72 131.75 L98.07 131.00 L98.67 130.50 L104.60 121.75 L104.88 120.00 L104.90 61.00 L105.20 59.75 L106.25 58.19 L108.25 57.03 L110.25 56.87 L111.50 57.14 L112.87 58.00 L113.80 59.00 L114.56 61.25 L114.51 119.00 L115.04 121.50 L116.75 124.00 L117.13 125.00 L124.00 135.01 L129.17 141.50 L130.75 143.10 L131.23 144.00 L139.25 152.61 L147.92 160.75 L159.00 169.70 L159.75 170.01 L161.75 171.62 L162.67 172.00 L163.25 172.71 L169.00 176.56 L170.93 177.75 L171.75 178.01 L172.50 178.70 L175.75 180.62 L176.80 181.00 L177.75 181.72 L178.77 182.00 L179.68 182.75 L185.50 185.65 L186.81 186.00 L187.75 186.70 L189.00 187.09 L190.75 188.74 L191.50 191.25 L190.75 193.75 L188.89 195.75 L186.75 196.83 L185.25 196.67 L182.95 195.75 L182.00 195.06 L180.90 194.75 L179.84 194.00 L178.91 193.75 L170.82 189.00 L170.00 188.75 L169.25 188.07 L160.89 182.75 L158.75 181.06 L158.00 180.74 L149.00 173.75 L142.00 167.73 L136.78 162.75 L127.97 153.75 L120.14 144.50 L115.58 138.25 L115.00 138.08 L114.60 138.50 L114.51 139.50 L114.54 202.00 L113.50 204.41 L111.75 205.79Z M90.00 136.79 L87.00 136.81 L85.25 135.59 L79.82 130.00 L76.75 127.10 L76.09 126.75 L71.50 122.22 L65.75 117.08 L65.00 116.69 L62.50 114.21 L58.75 111.07 L58.07 110.75 L57.50 110.04 L56.50 109.48 L56.00 109.77 L53.60 114.50 L48.56 122.50 L43.75 128.73 L40.00 132.60 L37.75 133.13 L35.50 132.75 L34.09 131.75 L33.05 130.00 L32.86 129.00 L32.97 127.75 L33.85 126.00 L37.76 121.75 L41.62 116.75 L44.75 111.97 L47.65 106.75 L50.65 100.25 L51.00 98.91 L52.68 95.00 L54.13 90.00 L54.69 88.75 L55.11 86.50 L55.72 85.00 L55.93 83.00 L56.89 80.00 L57.25 79.33 L58.74 78.00 L60.75 77.53 L63.50 78.11 L64.75 79.11 L65.69 81.50 L65.56 83.00 L64.07 88.00 L63.75 89.97 L63.04 91.75 L62.85 93.50 L62.07 94.75 L60.75 99.07 L60.14 100.25 L60.18 101.50 L62.99 103.75 L63.67 104.00 L64.25 104.72 L69.00 108.65 L69.75 109.03 L75.00 113.73 L75.75 114.08 L76.25 114.75 L82.93 120.75 L84.75 122.09 L92.58 129.75 L93.20 132.25 L92.75 134.46 L91.75 135.76 L90.00 136.79Z M185.00 136.80 L182.00 136.80 L180.25 135.57 L172.80 128.00 L171.11 126.75 L170.55 126.00 L164.38 120.25 L160.75 117.05 L160.00 116.68 L157.50 114.16 L153.75 111.02 L153.10 110.75 L152.50 110.00 L151.50 109.51 L151.00 109.81 L147.61 116.25 L142.72 123.75 L138.75 128.78 L135.75 131.96 L134.75 132.79 L132.50 133.13 L130.50 132.73 L128.92 131.50 L128.25 130.12 L127.91 128.75 L128.17 127.25 L129.00 125.84 L132.75 121.83 L136.65 116.75 L139.64 112.25 L142.71 106.75 L145.61 100.50 L147.72 95.00 L149.74 88.75 L150.11 86.75 L150.75 85.01 L150.93 83.00 L151.93 80.00 L153.75 78.00 L156.00 77.53 L158.50 78.08 L159.86 79.25 L160.54 80.75 L160.88 82.25 L160.00 84.76 L159.79 86.75 L159.11 88.00 L157.77 93.75 L157.12 94.75 L156.77 96.75 L156.15 97.50 L155.24 100.25 L155.25 101.49 L158.00 103.73 L158.75 104.07 L159.25 104.72 L163.00 107.75 L163.65 108.00 L168.87 112.75 L170.67 114.00 L171.25 114.74 L177.75 120.53 L178.75 121.10 L179.19 121.75 L187.50 129.60 L188.26 132.00 L187.84 134.50 L186.75 135.78 L185.00 136.80Z"/></symbol></svg>
 
-<header class="top">
-  <div class="top__in">
-    <a class="logo" href="#home" aria-label="오레(OREH) 홈" translate="no">
-      <svg class="logo__mark" viewBox="0 0 221 212" aria-hidden="true"><use href="#oreh-mark"/></svg>
-      <span class="logo__name" aria-hidden="true"><span class="logo__ko">오레</span><span class="logo__en"><span class="logo__p">(</span>OREH<span class="logo__p">)</span></span></span>
-    </a>
-    <button type="button" class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="nav" data-i18n="nav.menu">메뉴</button>
-    <nav class="nav" id="nav">
-      <a href="#about" data-i18n="nav.about">오레 소개</a>
-      <a href="#characters" data-i18n="nav.characters">캐릭터</a>
-      <a href="#funding" data-i18n="nav.funding">크라우드펀딩</a>
-      <a href="#heroes" data-i18n="nav.heroes">나라별 영웅</a>
-      <a href="#report" data-i18n="nav.report">제보하기</a>
-      <a href="#contact" data-i18n="nav.contact">문의하기</a>
+<header class="nav" id="top">
+  <div class="wrap">
+    <a class="logo" href="#top" style="text-decoration:none">AIKUA <b>BOX</b></a>
+    <nav class="links">
+      <a class="navlink" href="#about" data-i18n="nav_about">회사소개</a>
+      <a class="navlink" href="#problem" data-i18n="nav_problem">문제</a>
+      <a class="navlink" href="#how" data-i18n="nav_how">진행 방식</a>
+      <a class="navlink" href="#pricing" data-i18n="nav_pricing">가격</a>
+      <a class="navlink" href="#sangong" data-i18n="nav_sangong">소상공인</a>
+      <a class="navlink" href="#leaders" data-i18n="nav_leaders">리더스</a>
+      <span class="langsw" role="group" aria-label="language">
+        <button type="button" data-lang="ko">한국어</button>
+        <button type="button" data-lang="en">EN</button>
+        <button type="button" data-lang="zh">中文</button>
+      </span>
+      <a class="btn btn-primary cta-sm" style="padding:9px 18px;font-size:14px" href="diagnosis.html" data-i18n="nav_free">무료 진단</a>
     </nav>
-    <div class="lang" role="group" id="langGroup">
-      <button type="button" data-lang="ko" lang="ko">KO</button>
-      <button type="button" data-lang="en" lang="en">EN</button>
-      <button type="button" data-lang="zh" lang="zh">中文</button>
-      <button type="button" data-lang="ja" lang="ja">日本語</button>
-    </div>
-    <a class="subbtn" href="#subscribe"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v12H4zM4 7l8 6 8-6"/></svg><span data-i18n="nav.subscribe"></span></a>
   </div>
 </header>
 
-<main id="main" tabindex="-1">
+<section class="hero">
+  <div class="wrap">
+    <div class="kick" data-i18n="hero_kick">Unbox Your Global Market</div>
+    <h1 data-i18n="hero_h1">중국 진출,<br><span class="o">매출이 날 때까지</span> 함께합니다</h1>
+    <p class="lead" data-i18n="hero_lead">왕홍에게 돈을 썼는데 매출이 없었다면 — 문제는 왕홍이 아니라 매칭 기준과 운영의 공백입니다.<br>중국 전문팀과 함께 연매출 3,000억 수출을 만들어온 1세대 한국 왕홍이, <b style="color:var(--accent2)">0에서</b> 데이터로 분석하고 맞는 왕홍을 매칭해 <b style="color:var(--accent2)">매출 1까지</b> 연결합니다.</p>
+    <div class="actions">
+      <a class="btn btn-primary" href="#pricing" data-i18n="hero_cta1">9.9만원으로 시작하기</a>
+      <a class="btn btn-ghost" href="#how" data-i18n="hero_cta2">진행 방식 보기</a>
+    </div>
+    <div class="micro" data-i18n="hero_micro">100만 팔로워 · 3,000억 수출 레퍼런스 · 6,000명 왕홍 네트워크 · 콰징 물류 보유</div>
+  </div>
+</section>
 
-<!-- HOME -->
-<section class="view" data-view="home">
-  <div class="hero">
-    <canvas class="embers" id="embers" aria-hidden="true"></canvas>
-    <div class="wrap hero__grid">
-      <div class="hero__text">
-        <p class="eyebrow" data-i18n="hero.eyebrow"></p>
-        <h1 class="hero__title" data-i18n="hero.title"></h1>
-        <p class="hero__lead" data-i18n="hero.lead"></p>
-        <div class="btns">
-          <a class="btn btn--gold" href="#funding" data-i18n="hero.cta1"></a>
-          <a class="btn btn--line" href="#report" data-i18n="hero.cta2"></a>
+<div class="trust">
+  <div class="wrap">
+    <div class="grid">
+      <div><div class="v num" data-i18n="trust_v1">100만</div><div class="l" data-i18n="trust_l1">1세대 한국 왕홍 팔로워</div></div>
+      <div><div class="v num" data-i18n="trust_v2">3,000억</div><div class="l" data-i18n="trust_l2">한국 브랜드 수출 레퍼런스</div></div>
+      <div><div class="v num" data-i18n="trust_v3">6,000명</div><div class="l" data-i18n="trust_l3">현역 협업 왕홍 네트워크</div></div>
+      <div><div class="v" data-i18n="trust_v4">콰징</div><div class="l" data-i18n="trust_l4">물류·수출 프로세스 보유</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 회사소개 (대기업 그룹 소개) ===== -->
+<section class="sec" id="about">
+  <div class="wrap">
+    <div class="ab-head">
+      <span class="ab-kicker" data-i18n="ab_kicker">Group Overview · 아이콰그룹</span>
+      <h2 data-i18n="ab_h2">AI와 현장 경험으로, 브랜드의 국경을 지웁니다</h2>
+      <p class="ab-lead" data-i18n="ab_lead"><b>㈜아이콰그룹</b>은 K-컬처와 AI로 브랜드의 국경을 넘게 하는 <b>크로스보더 브랜딩·커머스 그룹</b>입니다. ‘AIKUA’는 <span class="hl">AI</span>와 ‘넘다(跨, Kua)’의 결합 — 기술과 사람의 현장 경험을 더해 모든 경계를 넘는다는 뜻입니다. 2015년부터 이어 온 중화권 판매 현장을 토대로 2019년 그룹을 세웠고, 한국 브랜드는 세계로·세계의 브랜드는 중화권으로 연결합니다.</p>
+    </div>
+
+    <div class="ab-stats">
+      <div><div class="sv num">11<span class="u" data-i18n="ab_s1u">년+</span></div><div class="sl" data-i18n="ab_s1l">중화권 커머스 현장 경험 (2015~)</div></div>
+      <div><div class="sv num">500<span class="u">+</span></div><div class="sl" data-i18n="ab_s2l">글로벌 협업 왕홍 · 49개국 송출망</div></div>
+      <div><div class="sv num">280<span class="u" data-i18n="ab_s3u">만</span></div><div class="sl" data-i18n="ab_s3l">뉴미디어 누적 도달</div></div>
+      <div><div class="sv num">60<span class="u" data-i18n="ab_s4u">개국어</span></div><div class="sl" data-i18n="ab_s4l">콘텐츠 현지화 역량</div></div>
+    </div>
+
+    <div class="ab-mv">
+      <div class="card m">
+        <div class="tag">Mission</div>
+        <div class="txt" data-i18n="ab_mission">AI와 사람의 현장 경험을 결합해,<br>누구나 국경 너머로 팔 수 있게 합니다.</div>
+      </div>
+      <div class="card v">
+        <div class="tag">Vision</div>
+        <div class="txt" data-i18n="ab_vision">K-브랜딩의 글로벌 게이트웨이가 됩니다.</div>
+      </div>
+    </div>
+
+    <div class="ab-wwd">
+      <div class="wwd-h" data-i18n="ab_wwd_h">What We Do</div>
+      <div class="wwd-row">
+        <div class="wwd-item"><div class="en">Media</div><div class="ko" data-i18n="wwd1k">알리고</div><div class="de" data-i18n="wwd1d">언론·채널로 알립니다</div></div>
+        <div class="wwd-item"><div class="en">Seek</div><div class="ko" data-i18n="wwd2k">찾고</div><div class="de" data-i18n="wwd2d">데이터로 시장·고객을 찾습니다</div></div>
+        <div class="wwd-item"><div class="en">Connect</div><div class="ko" data-i18n="wwd3k">잇고</div><div class="de" data-i18n="wwd3d">맞는 왕홍·파트너를 잇습니다</div></div>
+        <div class="wwd-item"><div class="en">Sell</div><div class="ko" data-i18n="wwd4k">팔고</div><div class="de" data-i18n="wwd4d">라이브·커머스로 팝니다</div></div>
+        <div class="wwd-item"><div class="en">Grow</div><div class="ko" data-i18n="wwd5k">키운다</div><div class="de" data-i18n="wwd5d">재구매·브랜드로 키웁니다</div></div>
+      </div>
+    </div>
+
+    <div class="ab-facts">
+      <div class="f"><span class="fl" data-i18n="ab_f1l">설립</span><span class="fv" data-i18n="ab_f1v">2019년 1월</span></div>
+      <div class="f"><span class="fl" data-i18n="ab_f2l">대표이사</span><span class="fv" data-i18n="ab_f2v">이혜란</span></div>
+      <div class="f"><span class="fl" data-i18n="ab_f3l">본사</span><span class="fv" data-i18n="ab_f3v">서울 강남구 봉은사로 317</span></div>
+      <div class="f"><span class="fl" data-i18n="ab_f4l">거점</span><span class="fv" data-i18n="ab_f4v">서울 · 하이난 · 항저우 · 대만</span></div>
+      <div class="f"><span class="fl" data-i18n="ab_f5l">슬로건</span><span class="fv">So proud of you.</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="problem">
+  <div class="wrap">
+    <div class="eyebrow" data-i18n="pr_eye">The Problem</div>
+    <h2 data-i18n="pr_h2">이런 적, 있으시죠?</h2>
+    <p class="sub" data-i18n="pr_sub">대행사는 섭외·업로드까지만 하고 결과는 브랜드 몫으로 남겼습니다.</p>
+    <div class="probs">
+      <div class="prob"><div class="q" data-i18n="pr_q1">"왕홍한테 돈 줬는데 매출이 없다"</div><p data-i18n="pr_p1">실매출·전환율 검증 없이 팔로워만 보고 섭외해 ROI가 안 났습니다.</p></div>
+      <div class="prob"><div class="q" data-i18n="pr_q2">"계정은 팠는데 팔로워가 안 는다"</div><p data-i18n="pr_p2">현지어 후기·콘텐츠가 없어 유입돼도 구매로 넘어갈 근거가 없었습니다.</p></div>
+      <div class="prob"><div class="q" data-i18n="pr_q3">"업로드 후 나 몰라라 하더라"</div><p data-i18n="pr_p3">단발로 끝나 재구매도 데이터 축적도 없이, 매번 처음부터였습니다.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="how" style="background:var(--surface2)">
+  <div class="wrap">
+    <div class="eyebrow" data-i18n="hw_eye">How It Works</div>
+    <h2 data-i18n="hw_h2">진단에서 매출까지, 한 흐름</h2>
+    <p class="sub" data-i18n="hw_sub">무료 진단으로 시작해, 준비도에 맞는 단계로 올라갑니다.</p>
+    <div class="steps">
+      <div class="step"><div class="n">STEP 1</div><h3 data-i18n="hw_s1h">진단</h3><p data-i18n="hw_s1p">20문항으로 진출 준비도와 1순위 경로를 확인합니다. (무료)</p></div>
+      <div class="step"><div class="n">STEP 2</div><h3 data-i18n="hw_s2h">베이직 솔루션</h3><p data-i18n="hw_s2p">현재 브랜드의 문제점과 해결방안을 담은 보고서를 받습니다. 9.9만.</p></div>
+      <div class="step"><div class="n">STEP 3</div><h3 data-i18n="hw_s3h">매칭·운영</h3><p data-i18n="hw_s3p">실매출 데이터로 왕홍을 매칭하고 채널을 운영합니다.</p></div>
+      <div class="step"><div class="n">STEP 4</div><h3 data-i18n="hw_s4h">매출·물류</h3><p data-i18n="hw_s4p">콰징 풀필먼트로 주문·통관·정산까지 닫습니다.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="pricing">
+  <div class="wrap">
+    <div class="eyebrow" data-i18n="pc_eye">Pricing</div>
+    <h2 data-i18n="pc_h2">9.9만으로 가볍게 시작</h2>
+    <p class="sub" data-i18n="pc_sub">한 번 시작하면 준비도에 맞춰 단계적으로 올라갑니다.</p>
+    <div class="plans">
+      <div class="plan feat">
+        <span class="feat-badge" data-i18n="pc_badge1">여기서 시작</span>
+        <div class="tag" data-i18n="pc_t1">STEP 1 · 베이직 솔루션 보고서</div>
+        <div class="price num" data-i18n="pc_pr1">99,000<small>원</small></div>
+        <p class="desc" data-i18n="pc_d1">지금 브랜드의 문제점과 해결방안 컨설팅</p>
+        <ul>
+          <li data-i18n="pc_1l1">준비도 6개 축 진단</li>
+          <li data-i18n="pc_1l2"><b>현재 브랜드 문제점 분석</b></li>
+          <li data-i18n="pc_1l3"><b>문제별 해결방안 컨설팅</b></li>
+          <li data-i18n="pc_1l4">브랜드 네이밍 제안 (중문 작명)</li>
+          <li data-i18n="pc_1l5">핵심 키워드 + 중국 유사 제품군·시장조사</li>
+          <li class="after" data-i18n="pc_1l6">결제 후 <b>브랜드 심화 질의지</b> 발송</li>
+        </ul>
+        <button class="btn btn-primary" data-pay data-amount="99000" data-name="AIKUA BOX 베이직 솔루션 보고서" data-i18n="pc_btn1">9.9만원 · 바로 결제</button>
+      </div>
+      <div class="plan">
+        <div class="tag" data-i18n="pc_t2">STEP 2 · 정밀 리포트</div>
+        <div class="price num" data-i18n="pc_pr2">660,000<small>원</small></div>
+        <p class="desc" data-i18n="pc_d2">중국 진출 가격 전략까지 확정</p>
+        <ul>
+          <li data-i18n="pc_2l1">베이직 솔루션 보고서 전체 포함</li>
+          <li data-i18n="pc_2l2">한국 온라인 <b>최저가 확인</b></li>
+          <li data-i18n="pc_2l3">중국 내 유사 제품 <b>평균가 분석</b></li>
+          <li data-i18n="pc_2l4"><b>실왕홍 리스트업</b></li>
+          <li data-i18n="pc_2l5">중국 진출 <b>가격구성 솔루션</b></li>
+          <li data-i18n="pc_2l6"><b>왕홍 매칭 카드 1회 제작</b></li>
+          <li data-i18n="pc_2l7"><b>온라인 30분 미팅</b> (솔루션 설명)</li>
+        </ul>
+        <button class="btn btn-dark" data-pay data-amount="660000" data-nda="1" data-name="AIKUA BOX 정밀 진단 리포트" data-i18n="pc_btn2">66만원 · 바로 결제</button>
+      </div>
+      <div class="plan">
+        <span class="feat-badge" style="background:#e5736b;color:#fff" data-i18n="pc_badge3">오픈 기념 50% · 선착순 3곳</span>
+        <div class="tag" data-i18n="pc_t3">STEP 3 · 매칭·운영 동행</div>
+        <div class="price num" data-i18n="pc_pr3">월 1,000<small>만원</small></div>
+        <p class="desc" data-i18n="pc_d3"><s style="color:var(--muted)">월 1,000만원</s> → <b style="color:var(--accent)">오픈가 월 500만원</b> (선착순 3곳) · <b>기본 계약 6개월 이상</b></p>
+        <ul>
+          <li data-i18n="pc_3l1">계정 세팅·운영</li>
+          <li data-i18n="pc_3l2"><b>왕홍 매칭 캠페인 매달 20명</b></li>
+          <li data-i18n="pc_3l3">현지어 콘텐츠 제작</li>
+          <li data-i18n="pc_3l4">콰징 물류·정산 <b>연결 가이드 제공</b></li>
+          <li data-i18n="pc_3l5"><b>콰징몰 입점 서류 사전 수취·대행</b> (카테고리·플랫폼별)</li>
+          <li data-i18n="pc_3l6"><b>항저우 O2O 왕홍 라이브기지 입점 기회 제공</b></li>
+          <li data-i18n="pc_3l7"><b>성과 수수료 5% 고정</b></li>
+          <li data-i18n="pc_3l8">기본 계약 <b>6개월 이상</b></li>
+        </ul>
+        <div style="display:flex;gap:8px">
+          <button class="btn btn-dark" data-consult data-i18n="pc_btn3" style="flex:1;padding:14px 10px">상담 신청</button>
+          <button class="btn btn-primary" data-subscribe data-amount="10000000" data-name="AIKUA BOX 매칭·운영 동행 (월 구독)" data-i18n="pc_btn3b" style="flex:1;padding:14px 10px">월 1,000만 · 구독결제</button>
         </div>
       </div>
-      <div class="hero__cast">
-        <figure class="tile tile--leo"><img src="assets/img/leo3d.jpg" width="439" height="457" data-i18n-alt="leo.name" alt=""><figcaption data-i18n="hero.leo"></figcaption></figure>
-        <figure class="tile tile--leon"><img src="assets/img/leon3d.jpg" width="378" height="457" data-i18n-alt="leon.name" alt=""><figcaption data-i18n="hero.leon"></figcaption></figure>
+    </div>
+    <p class="paynote" data-i18n="pc_note">카드·간편결제는 토스페이먼츠로 안전하게 처리됩니다. 결제 후 1영업일 내 담당자가 연락드립니다.<br>
+      사업자이신가요? <a href="#" id="taxOpen" style="color:var(--accent);font-weight:700;text-decoration:underline">세금계산서 발행이 필요하면 여기</a> (계좌이체)</p>
+  </div>
+</section>
+
+<section class="sec" id="sangong" style="background:var(--navy)">
+  <div class="wrap">
+    <div class="eyebrow" style="color:var(--accent2)" data-i18n="sg_eye">For Local Store</div>
+    <h2 style="color:#fff" data-i18n="sg_h2">소상공인 패키지 · 오프라인 매장 사장님</h2>
+    <p class="sub" style="color:#b7c0da" data-i18n="sg_sub">가게는 있는데 외국인 손님을 못 잡고 계신가요? 샤오홍슈에서 중화권 관광객을 매장으로 끌어옵니다.</p>
+    <div class="sg-grid">
+      <div class="sg-info">
+        <h3 style="margin:0 0 14px;font-size:19px" data-i18n="sg_info_h">무엇을 해드리나요</h3>
+        <ul class="sg-list">
+          <li data-i18n="sg_i1">샤오홍슈 <b>블루라벨(기업 인증) 계정</b> 개설 <span style="color:var(--accent2);font-size:12.5px">— 국내법인만 가능</span></li>
+          <li data-i18n="sg_i2">월 <b>8~10건 콘텐츠 발행</b> (이미지 카드뉴스 위주 + 숏폼 1~2편)</li>
+          <li data-i18n="sg_i3">기본 키워드 태깅 · 검색 노출 최적화</li>
+          <li data-i18n="sg_i4">댓글 모니터링·확인</li>
+          <li data-i18n="sg_i5">외국인 손님 방문 유치 (쿠폰·예약 연동)</li>
+          <li data-i18n="sg_i6"><b>위챗 명함 연동·유지</b> (고객 예약 상담·관리용) <span style="color:var(--accent2);font-size:12px">— 필수</span></li>
+          <li data-i18n="sg_i7">14일마다 <b>무료 유지보수</b> (명함·콘텐츠 점검)</li>
+        </ul>
+        <p style="color:#9aa6c4;font-size:13px;margin:16px 0 0" data-i18n="sg_info_note">명동·홍대·강남 등 관광 상권 매장(음식점·카페·뷰티·약국·편집숍)에 적합합니다.</p>
+      </div>
+      <div class="sg-price">
+        <div class="sg-must">
+          <div class="sg-must-tag" data-i18n="sg_must_tag">가입 필수 · 1회성</div>
+          <div class="sg-must-row"><span data-i18n="sg_must_label">블루라벨 계정 개설비</span><b class="num" data-i18n="sg_must_amt">100만원</b></div>
+          <p class="sg-must-note" data-i18n="sg_must_note">기업 인증 계정 개설·세팅 비용. 운영 시작 전 1회 납부(필수). <b style="color:var(--accent2)">※ 블루라벨 개설은 국내법인(사업자등록)만 가능합니다.</b></p>
+          <button class="btn btn-primary" style="width:100%;margin-top:4px" data-pay data-amount="1000000" data-name="AIKUA BOX 소상공인 블루라벨 계정 개설비" data-i18n="sg_must_btn">개설비 100만원 · 결제하고 시작</button>
+        </div>
+        <div class="sg-run">
+          <div class="sg-run-row"><span data-i18n="sg_run1_l">월 운영 고정비</span><b class="num" data-i18n="sg_run1_v">월 100만원</b></div>
+          <div class="sg-run-row"><span data-i18n="sg_run2_l">위챗 명함 연동 유지비 <b style="color:var(--accent2);font-size:10.5px">필수</b></span><b class="num" data-i18n="sg_run2_v">연 100만원</b></div>
+          <div class="sg-run-row"><span data-i18n="sg_run3_l">외국인 손님 유치 수수료</span><b class="num" data-i18n="sg_run3_v">유치당 10%</b></div>
+          <p class="sg-run-note" data-i18n="sg_run_note">개설 후 월 운영 계약으로 전환됩니다. 고객 예약 상담·관리용 <b>위챗 명함을 지속 유지</b>하기 위해 매월 운영·관리하며, <b>14일마다 무료 유지보수</b>를 진행합니다. 손님을 데려올 때만 수수료가 발생해요.</p>
+          <button class="btn btn-ghost" style="width:100%;border-color:rgba(255,255,255,.35)" data-consult data-i18n="sg_run_btn">운영 상담 신청</button>
+        </div>
       </div>
     </div>
   </div>
-
-  <div class="band"><div class="wrap">
-    <h2 class="h2" data-i18n="two.title"></h2>
-    <div class="duo">
-      <article class="ip ip--leo">
-        <img class="ip__img" src="assets/img/leo2d.jpg" alt="" width="460" height="457">
-        <div class="ip__body">
-          <p class="kicker">Leo</p>
-          <h3>Good People News</h3>
-          <p data-i18n="two.news.body"></p>
-          <a class="link" href="#heroes" data-i18n="two.news.link"></a>
-        </div>
-      </article>
-      <article class="ip ip--leon">
-        <img class="ip__img" src="assets/img/leon2d.jpg" alt="" width="460" height="458">
-        <div class="ip__body">
-          <p class="kicker">Leon</p>
-          <h3>Value Partners</h3>
-          <p data-i18n="two.partner.body"></p>
-          <a class="link" href="#contact" data-topic="company" data-i18n="two.partner.link"></a>
-        </div>
-      </article>
-    </div>
-  </div></div>
-
-  <div class="band band--cream"><div class="wrap">
-    <p class="kicker">Meaning out</p>
-    <h2 class="h2" data-i18n="gen.title"></h2>
-    <div class="gen">
-      <div class="gen__card gen__card--old"><span class="gen__label" data-i18n="gen.old.label"></span><p data-i18n="gen.old.body"></p></div>
-      <div class="gen__arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></svg></div>
-      <div class="gen__card gen__card--new"><span class="gen__label" data-i18n="gen.new.label"></span><p data-i18n="gen.new.body"></p></div>
-    </div>
-    <p class="note" data-i18n="gen.note"></p>
-  </div></div>
-
-  <div class="band"><div class="wrap">
-    <h2 class="h2" data-i18n="steps.title"></h2>
-    <ol class="steps">
-      <li><b data-i18n="step1.t"></b><span data-i18n="step1.b"></span></li>
-      <li><b data-i18n="step2.t"></b><span data-i18n="step2.b"></span></li>
-      <li><b data-i18n="step3.t"></b><span data-i18n="step3.b"></span></li>
-      <li><b data-i18n="step4.t"></b><span data-i18n="step4.b"></span></li>
-    </ol>
-  </div></div>
-
-  <div class="band band--navy"><div class="wrap">
-    <p class="kicker">Good People News</p>
-    <h2 class="h2" data-i18n="latest.title"></h2>
-    <div class="cn-row" id="latest"></div>
-    <div class="stack">
-      <p class="note" data-i18n="latest.note"></p>
-      <div><a class="btn btn--line btn--sm" href="#heroes" data-i18n="latest.all"></a></div>
-    </div>
-  </div></div>
-
-  <div class="band"><div class="wrap cta">
-    <div class="stack">
-      <h2 class="h2" data-i18n="cta.title"></h2>
-      <p class="muted" data-i18n="cta.body"></p>
-    </div>
-    <div class="btns">
-      <a class="btn btn--navy" href="#funding" data-i18n="hero.cta1"></a>
-      <a class="btn btn--ghost" href="#report" data-i18n="hero.cta2"></a>
-    </div>
-  </div></div>
 </section>
 
-<!-- ABOUT -->
-<section class="view" data-view="about" hidden>
-  <div class="pagehead"><div class="wrap pagehead__in">
-    <div class="pagehead__text">
-      <p class="kicker" data-i18n="about.kicker"></p>
-      <h1 data-i18n="about.title"></h1>
-      <p class="lead" data-i18n="about.position"></p>
-    </div>
-  </div></div>
-  <div class="band"><div class="wrap about-grid">
-    <div class="stack">
-      <p class="lead" data-i18n="about.p1"></p>
-      <p data-i18n="about.p2"></p>
-      <p class="muted" data-i18n="about.company"></p>
-    </div>
-    <blockquote class="quote"><p data-i18n="about.quote"></p><footer>OREH</footer></blockquote>
-  </div></div>
-  <div class="band band--navy mission"><div class="wrap mission__in">
-    <p class="kicker" data-i18n="mission.kicker"></p>
-    <p class="mission__text" data-i18n="mission.text"></p>
-    <div class="mission__tags" id="missionTags"></div>
-  </div></div>
-  <div class="band band--cream"><div class="wrap">
-    <h2 class="h2" data-i18n="about.pr.title"></h2>
-    <div class="grid2">
-      <article class="principle"><h3 data-i18n="pr1.t"></h3><p data-i18n="pr1.b"></p></article>
-      <article class="principle"><h3 data-i18n="pr2.t"></h3><p data-i18n="pr2.b"></p></article>
-      <article class="principle"><h3 data-i18n="pr3.t"></h3><p data-i18n="pr3.b"></p></article>
-      <article class="principle"><h3 data-i18n="pr4.t"></h3><p data-i18n="pr4.b"></p></article>
-    </div>
-  </div></div>
-  <div class="band"><div class="wrap">
-    <p class="kicker" data-i18n="hist.kicker"></p>
-    <h2 class="h2" data-i18n="hist.title"></h2>
-    <div class="hist">
-      <article class="hist__gen hist__gen--1">
-        <img class="hist__shot" src="assets/img/app1.png" width="226" height="437" data-i18n-alt="hist.shot" alt="">
-        <div class="stack hist__text">
-          <p class="gen__label" data-i18n="hist.g1.label"></p>
-          <h3 data-i18n="hist.g1.name"></h3>
-          <ul class="plain"><li data-i18n="hist.g1.b1"></li><li data-i18n="hist.g1.b2"></li><li data-i18n="hist.g1.b3"></li></ul>
+<section class="sec" id="leaders" style="background:var(--surface2)">
+  <div class="wrap">
+    <div class="eyebrow" data-i18n="ld_eye">For First China · 아이콰 리더스 프로그램</div>
+    <h2 data-i18n="ld_h2">중국, 한 번도 안 가보셨다면</h2>
+    <p class="sub" data-i18n="ld_sub">중국 시장이 막막한 사장님을 위한 분기별 워케이션. 현장을 직접 보고 감을 잡고 오세요.</p>
+    <div class="ld-wrap">
+      <div class="ld-info">
+        <div class="ld-badges">
+          <span class="ld-badge done" data-i18n="ld_b1">1차 · 10.30~11.1 — 10명 마감 완료</span>
+          <span class="ld-badge open" data-i18n="ld_b2">2차 · 11월 말 예정 — 모집 중</span>
         </div>
-      </article>
-      <div class="gen__arrow hist__arrow" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></svg></div>
-      <article class="hist__gen hist__gen--2">
-        <div class="hist__faces"><img src="assets/img/leo_face.jpg" alt="" width="200" height="200"><img src="assets/img/leon_face.jpg" alt="" width="200" height="200"></div>
-        <div class="stack hist__text">
-          <p class="gen__label" data-i18n="hist.g2.label"></p>
-          <h3 class="hist__oreh"><svg class="logo__mark" viewBox="0 0 221 212" aria-hidden="true"><use href="#oreh-mark"/></svg><span data-i18n="hist.g2.name"></span></h3>
-          <ul class="plain"><li data-i18n="hist.g2.b1"></li><li data-i18n="hist.g2.b2"></li><li data-i18n="hist.g2.b3"></li><li data-i18n="hist.g2.b4"></li></ul>
-        </div>
-      </article>
-    </div>
-  </div></div>
-  <div class="band"><div class="wrap">
-    <h2 class="h2" data-i18n="about.tl.title"></h2>
-    <ol class="timeline">
-      <li><span class="yr">2015</span><span data-i18n="tl.2015"></span></li>
-      <li><span class="yr">2018</span><span data-i18n="tl.2018"></span></li>
-      <li><span class="yr">2025</span><span data-i18n="tl.2025"></span></li>
-      <li><span class="yr">2026</span><span data-i18n="tl.2026"></span></li>
-      <li class="is-next"><span class="yr" data-i18n="tl.nextLabel"></span><span data-i18n="tl.next"></span></li>
-    </ol>
-  </div></div>
-  <div class="band band--cream"><div class="wrap">
-    <p class="kicker">Roadmap</p>
-    <h2 class="h2" data-i18n="rm.title"></h2>
-    <div class="tablewrap">
-      <table class="rm">
-        <thead><tr><th scope="col" data-i18n="rm.item"></th><th scope="col">2025</th><th scope="col">2026</th><th scope="col">2027</th></tr></thead>
-        <tbody><tr><th scope="row" data-i18n="rm.db"></th><td><ul class="plain"><li data-i18n="rm.a1"></li><li data-i18n="rm.a2"></li><li data-i18n="rm.a3"></li></ul></td><td><ul class="plain"><li data-i18n="rm.b1"></li><li data-i18n="rm.b2"></li><li data-i18n="rm.b3"></li></ul></td><td><ul class="plain"><li data-i18n="rm.c1"></li><li data-i18n="rm.c2"></li><li data-i18n="rm.c3"></li><li data-i18n="rm.c4"></li></ul></td></tr></tbody>
-      </table>
-    </div>
-  </div></div>
-  <div class="band"><div class="wrap">
-    <p class="kicker">Leadership</p>
-    <h2 class="h2" data-i18n="exec.title"></h2>
-    <p class="muted" data-i18n="exec.lead"></p>
-    <div class="execs">
-      <article class="exec exec--leo">
-        <div class="exec__head">
-          <img class="exec__av" src="assets/img/leo_face.jpg" alt="" width="200" height="200">
-          <div class="exec__id"><span class="exec__sym" data-i18n="exec.jung.symbol"></span><h3 class="exec__name" data-i18n="exec.jung.name"></h3><p class="exec__title" data-i18n="exec.jung.title"></p></div>
-        </div>
-        <p data-i18n="exec.jung.role"></p>
-        <p class="exec__label" data-i18n="exec.label"></p>
-        <ul class="exec__list">
-        <li data-i18n="exec.jung.b1"></li>
-        <li data-i18n="exec.jung.b2"></li>
-        <li data-i18n="exec.jung.b3"></li>
-        <li data-i18n="exec.jung.b4"></li>
-        <li data-i18n="exec.jung.b5"></li>
-        <li data-i18n="exec.jung.b6"></li>
+        <h3 data-i18n="ld_info_h">항저우에서 직접 보고 배우는 3일</h3>
+        <ul class="ld-list">
+          <li data-i18n="ld_l1">항저우 <b>왕홍 회사</b> 견학 — 라이브커머스 현장</li>
+          <li data-i18n="ld_l2"><b>AI 회사</b> 견학 — 중국 커머스 테크 체험</li>
+          <li data-i18n="ld_l3">중국 <b>문화·시장 경험</b> 워케이션</li>
+          <li data-i18n="ld_l4">진출 준비 중인 대표들과 네트워킹</li>
         </ul>
-      </article>
-      <article class="exec exec--leon">
-        <div class="exec__head">
-          <img class="exec__av" src="assets/img/leon_face.jpg" alt="" width="200" height="200">
-          <div class="exec__id"><span class="exec__sym" data-i18n="exec.lee.symbol"></span><h3 class="exec__name" data-i18n="exec.lee.name"></h3><p class="exec__title" data-i18n="exec.lee.title"></p></div>
+        <p class="ld-note" data-i18n="ld_note">중국 진출이 처음이거나 시장 이해가 필요한 브랜드 대표님께 맞는 프로그램입니다.</p>
+      </div>
+      <div class="ld-price">
+        <div class="ld-amt-label">참가 옵션 (1인)</div>
+        <!-- 옵션 1 : 라이브기지 참관·체험 (당일, 항공·호텔 미포함) -->
+        <div class="ld-opt hot">
+          <div class="ld-opt-tag">옵션 1 · 당일 체험</div>
+          <div class="ld-opt-nm">중국 왕홍 라이브기지 참관 및 왕홍 체험</div>
+          <div class="ld-opt-sub">저녁 공연 및 만찬 포함 · 항공권·호텔 미포함</div>
+          <div class="ld-opt-amt" id="ldOpt1Amt"><s>100만원</s> <b>50만원</b></div>
+          <div class="ld-opt-badge" id="ldOpt1Badge">🔥 얼리버드 · 10/26까지 결제 시 50만원 할인</div>
+          <button class="btn btn-primary" style="width:100%" data-leaders data-amount="500000" id="ldOpt1Btn" data-name="아이콰 리더스 · 왕홍 라이브기지 참관·체험 (항공·호텔 미포함)">50만원 · 결제</button>
         </div>
-        <p data-i18n="exec.lee.role"></p>
-        <p class="exec__label" data-i18n="exec.label"></p>
-        <ul class="exec__list">
-        <li data-i18n="exec.lee.b1"></li>
-        <li data-i18n="exec.lee.b2"></li>
-        <li data-i18n="exec.lee.b4"></li>
-        <li data-i18n="exec.lee.b5"></li>
-        <li data-i18n="exec.lee.b6"></li>
-        </ul>
-      </article>
-    </div>
-  </div></div>
-</section>
-
-<!-- CHARACTERS -->
-<section class="view" data-view="characters" hidden>
-  <div class="pagehead"><div class="wrap pagehead__in">
-    <div class="pagehead__text">
-      <p class="kicker" data-i18n="ch.kicker"></p>
-      <h1 data-i18n="ch.title"></h1>
-      <p class="lead" data-i18n="ch.lead"></p>
-    </div>
-  </div></div>
-  <div class="band"><div class="wrap">
-    <article class="chr chr--leo">
-      <div class="chr__img"><img src="assets/img/leo3d.jpg" width="439" height="457" data-i18n-alt="leo.name" alt=""></div>
-      <div class="chr__body">
-        <div><h2 class="chr__name" data-i18n="leo.name"></h2><p class="chr__latin">LEO</p></div>
-        <p class="chr__tag" data-i18n="leo.tagline"></p>
-        <p data-i18n="leo.desc"></p>
-        <dl class="dl"><dt data-i18n="ch.role"></dt><dd data-i18n="leo.role"></dd></dl>
-        <div class="chips" id="leoKw"></div>
-        <p class="say" data-i18n="leo.say"></p>
-      </div>
-    </article>
-    <article class="chr chr--leon chr--rev">
-      <div class="chr__img"><img src="assets/img/leon3d.jpg" width="378" height="457" data-i18n-alt="leon.name" alt=""></div>
-      <div class="chr__body">
-        <div><h2 class="chr__name" data-i18n="leon.name"></h2><p class="chr__latin">LEON</p></div>
-        <p class="chr__tag" data-i18n="leon.tagline"></p>
-        <p data-i18n="leon.desc"></p>
-        <dl class="dl"><dt data-i18n="ch.role"></dt><dd data-i18n="leon.role"></dd></dl>
-        <div class="chips" id="leonKw"></div>
-        <p class="say" data-i18n="leon.say"></p>
-      </div>
-    </article>
-  </div></div>
-  <div class="band band--cream"><div class="wrap rule">
-    <article class="principle"><h3 data-i18n="ch.voice.t"></h3><p data-i18n="ch.voice.b"></p></article>
-    <article class="principle"><h3 data-i18n="ch.rule.t"></h3><p data-i18n="ch.rule.b"></p></article>
-  </div></div>
-  <div class="band"><div class="wrap">
-    <p class="kicker">Value Partners</p>
-    <h2 class="h2" data-i18n="partners.title"></h2>
-    <p class="muted" data-i18n="partners.lead"></p>
-    <div class="partners">
-      <article class="partner"><div class="partner__logo">LOGO</div><div class="partner__top"><h3 data-i18n="partner.a"></h3><span class="pill pill--sample" data-i18n="sample"></span></div><p class="muted" data-i18n="partner.a.how"></p></article>
-      <article class="partner"><div class="partner__logo">LOGO</div><div class="partner__top"><h3 data-i18n="partner.b"></h3><span class="pill pill--sample" data-i18n="sample"></span></div><p class="muted" data-i18n="partner.b.how"></p></article>
-      <article class="partner"><div class="partner__logo">LOGO</div><div class="partner__top"><h3 data-i18n="partner.c"></h3><span class="pill pill--sample" data-i18n="sample"></span></div><p class="muted" data-i18n="partner.c.how"></p></article>
-    </div>
-    <div class="btns partners-cta"><a class="btn btn--navy" href="#contact" data-topic="company" data-i18n="partners.cta"></a></div>
-  </div></div>
-</section>
-
-<!-- FUNDING -->
-<section class="view" data-view="funding" hidden>
-  <div class="pagehead"><div class="wrap pagehead__in">
-    <div class="pagehead__text">
-      <p class="kicker" data-i18n="fund.kicker"></p>
-      <h1 data-i18n="fund.title"></h1>
-      <p class="lead" data-i18n="fund.lead"></p>
-    </div>
-    <img class="pagehead__av" src="assets/img/leon_face.jpg" alt="" width="200" height="200">
-  </div></div>
-  <div class="band"><div class="wrap stack">
-    <div class="notice"><span class="pill pill--soon" data-i18n="fund.status"></span><p data-i18n="fund.notice"></p></div>
-    <div class="flist__head">
-      <h2 class="h2" data-i18n="fund.camps"></h2>
-      <a class="btn btn--gold" href="#create" data-i18n="fund.createCta"></a>
-    </div>
-    <p class="muted" data-i18n="fund.createLead"></p>
-    <div class="tools__row flist__tools">
-      <div class="seg" id="fundSeg" role="group">
-        <button type="button" data-fs="all" aria-pressed="true" data-i18n="fund.filter.all"></button>
-        <button type="button" data-fs="live" aria-pressed="false" data-i18n="fund.filter.live"></button>
-        <button type="button" data-fs="soon" aria-pressed="false" data-i18n="fund.filter.soon"></button>
-      </div>
-      <label class="lbl flist__sortlbl" for="fundSort" data-i18n="fund.sort.label"></label>
-      <select id="fundSort"><option value="popular" data-i18n="fund.sort.popular"></option><option value="amount" data-i18n="fund.sort.amount"></option><option value="ending" data-i18n="fund.sort.ending"></option></select>
-    </div>
-    <div class="pgrid" id="pgrid"></div>
-  </div></div>
-  <div class="band band--cream"><div class="wrap">
-    <h2 class="h2" data-i18n="fund.ways"></h2>
-    <div class="ways">
-      <article class="way"><h3 data-i18n="way1.t"></h3><p class="muted" data-i18n="way1.b"></p></article>
-      <article class="way"><h3 data-i18n="way2.t"></h3><p class="muted" data-i18n="way2.b"></p></article>
-      <article class="way"><h3 data-i18n="way3.t"></h3><p class="muted" data-i18n="way3.b"></p></article>
-      <article class="way"><h3 data-i18n="way4.t"></h3><p class="muted" data-i18n="way4.b"></p></article>
-    </div>
-  </div></div>
-  <div class="band"><div class="wrap stack">
-    <h2 class="h2" data-i18n="fund.form"></h2>
-    <p class="muted" data-i18n="fund.form.lead"></p>
-    <form class="form" id="form-funding" data-form="funding" novalidate>
-      <div class="field"><label for="fu-email" data-i18n="f.email"></label><input id="fu-email" name="email" type="email" autocomplete="email" maxlength="254" aria-describedby="fu-email-err"><p class="err" id="fu-email-err"></p></div>
-      <div class="field"><label for="fu-country" data-i18n="f.myCountry"></label><select id="fu-country" name="country" data-countries aria-describedby="fu-country-err"></select><p class="err" id="fu-country-err"></p></div>
-      <div class="field full"><label for="fu-interest" data-i18n="fund.interest"></label><select id="fu-interest" name="interest" data-campaigns></select></div>
-      <div class="field full">
-        <label class="check"><input id="fu-consentPrivacy" name="consentPrivacy" type="checkbox" value="1" aria-describedby="fu-consentPrivacy-err"><span data-i18n="f.consentFunding"></span></label><p class="err" id="fu-consentPrivacy-err"></p>
-        <label class="check"><input id="fu-newsOk" name="newsOk" type="checkbox" value="1"><span data-i18n="fund.newsOk"></span></label>
-      </div>
-      <div class="hp" aria-hidden="true"><label for="fu-website">Website</label><input id="fu-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
-      <div class="form__actions"><button class="btn btn--navy" type="submit" data-i18n="fund.submit"></button><span class="hint" data-i18n="fund.global"></span></div>
-      <p class="status" role="status" hidden></p>
-    </form>
-  </div></div>
-</section>
-
-<!-- PROJECT (one value project, Tumblbug-style) -->
-<section class="view" data-view="project" hidden>
-  <div class="band pj-band"><div class="wrap">
-    <a class="link" href="#funding" data-i18n="pj.back"></a>
-    <p class="pj__sample"><span class="pill pill--sample" data-i18n="sample"></span><span data-i18n="pj.sample"></span></p>
-    <div class="pj__head"><p class="pj__cat" id="pjCat"></p><h1 class="pj__title" id="pjTitle"></h1><p class="muted" id="pjCrea"></p></div>
-    <div class="pj__top">
-      <div class="pj__img" id="pjImgBox"><img id="pjImg" alt="" width="460" height="460"></div>
-      <div class="pj__stats">
-        <div class="stat"><p class="stat__label" data-i18n="pj.raised"></p><p class="stat__num" id="pjRaised"></p></div>
-        <div class="stat"><p class="stat__label" data-i18n="pj.left"></p><p class="stat__num" id="pjLeft"></p></div>
-        <div class="stat"><p class="stat__label" data-i18n="pj.backers"></p><p class="stat__num" id="pjBackers"></p></div>
-        <dl class="dl pj__info"><dt data-i18n="pj.goal"></dt><dd id="pjGoal"></dd><dt data-i18n="pj.period"></dt><dd class="mono" id="pjPeriod"></dd><dt data-i18n="pj.pay"></dt><dd id="pjPay"></dd></dl>
-        <div class="pj__cta">
-          <button type="button" class="iconbtn" id="pjLike" aria-pressed="false"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.3s-7.2-4.4-9.3-8.8C1.2 8.3 3.2 4.8 6.7 4.8c2.2 0 3.6 1.3 5.3 3.2 1.7-1.9 3.1-3.2 5.3-3.2 3.5 0 5.5 3.5 4 6.7-2.1 4.4-9.3 8.8-9.3 8.8Z"/></svg><span id="pjLikeN"></span></button>
-          <button type="button" class="iconbtn" id="pjShare"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3M7 8l5-5 5 5M5 13v7h14v-7"/></svg><span data-i18n="pj.share"></span></button>
-          <button type="button" class="btn btn--navy pj__main-cta" id="pjCta"></button>
+        <!-- 옵션 2 : AI 회사 숏폼·드라마·데이터센터 참관 (11/1~2, 마감 완료) -->
+        <div class="ld-opt done">
+          <div class="ld-opt-tag">옵션 2 · 당일 체험 (11/1~11/2)</div>
+          <div class="ld-opt-nm">중국 AI 회사 숏폼 영상·드라마 촬영 &amp; 데이터센터 참관</div>
+          <div class="ld-opt-sub">항공권·호텔 미포함</div>
+          <div class="ld-opt-amt"><b>100만원</b></div>
+          <button class="btn" style="width:100%;background:#2a3355;color:#8b96b5;cursor:default" disabled>마감 완료</button>
         </div>
-        <p class="copied" id="pjMsg" role="status"></p>
+        <!-- 옵션 3 : 2차 워케이션 (2박3일, 항공·호텔 포함) -->
+        <div class="ld-opt">
+          <div class="ld-opt-tag">옵션 3 · 2차 워케이션 (2박3일)</div>
+          <div class="ld-opt-nm">항저우 왕홍·AI 회사 견학 워케이션</div>
+          <div class="ld-opt-sub">왕복 항공권 · 호텔(2인1실) · 통역 동행 포함</div>
+          <div class="ld-opt-amt"><b>300만원</b></div>
+          <button class="btn btn-dark" style="width:100%" data-leaders data-amount="3000000" data-name="아이콰 리더스 프로그램 2차 (항저우 워케이션)">300만원 · 결제</button>
+        </div>
+        <button class="btn" style="width:100%;margin-top:4px;background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.45);font-weight:700" data-consult data-i18n="ld_btn2">먼저 문의하기</button>
+        <p style="font-size:12px;color:#aeb8d4;margin:12px 0 0;text-align:center;line-height:1.6" data-i18n="ld_pnote">1차(10.30~11.1)는 10명 마감. 일정은 확정 후 개별 안내드립니다.</p>
       </div>
     </div>
-    <div class="pj__tabs" role="tablist">
-      <button type="button" role="tab" id="tab-plan" aria-controls="panel-plan" aria-selected="true" data-tab="plan" data-i18n="pj.tab.plan"></button>
-      <button type="button" role="tab" id="tab-news" aria-controls="panel-news" aria-selected="false" data-tab="news" data-i18n="pj.tab.news"></button>
-      <button type="button" role="tab" id="tab-cheer" aria-controls="panel-cheer" aria-selected="false" data-tab="cheer" data-i18n="pj.tab.cheer"></button>
-      <button type="button" role="tab" id="tab-trust" aria-controls="panel-trust" aria-selected="false" data-tab="trust" data-i18n="pj.tab.trust"></button>
-    </div>
-    <div class="pj__body">
-      <div class="pj__main">
-        <div role="tabpanel" id="panel-plan" aria-labelledby="tab-plan" class="stack">
-          <section class="pj__sec"><h2 data-i18n="pj.h.intro"></h2><p id="pjStory"></p></section>
-          <section class="pj__sec"><h2 data-i18n="pj.h.budget"></h2><div class="budget-bar" id="pjBudgetBar" role="img"></div><ul class="budget-list" id="pjBudget"></ul><p class="note" data-i18n="pj.budgetNote"></p></section>
-          <section class="pj__sec"><h2 data-i18n="pj.h.schedule"></h2><ol class="sched" id="pjSched"></ol></section>
-          <section class="pj__sec"><h2 data-i18n="pj.h.team"></h2><ul class="plain"><li data-i18n="team.oreh"></li><li data-i18n="team.partner"></li><li data-i18n="team.goods"></li></ul></section>
-          <section class="pj__sec"><h2 data-i18n="pj.h.rewards"></h2><p data-i18n="pj.rewardsBody"></p></section>
-        </div>
-        <div role="tabpanel" id="panel-news" aria-labelledby="tab-news" hidden><p class="empty" data-i18n="pj.newsEmpty"></p></div>
-        <div role="tabpanel" id="panel-cheer" aria-labelledby="tab-cheer" hidden class="stack">
-          <form class="cheer" id="cheerForm" novalidate>
-            <label class="sr" for="cheerText" data-i18n="pj.tab.cheer"></label>
-            <textarea id="cheerText" rows="3" maxlength="200" data-i18n-ph="pj.cheerPh"></textarea>
-            <div class="form__actions"><button class="btn btn--navy btn--sm" type="submit" data-i18n="pj.cheerSend"></button><span class="copied" id="cheerMsg" role="status"></span></div>
-          </form>
-          <p class="empty" data-i18n="pj.cheerEmpty"></p>
-        </div>
-        <div role="tabpanel" id="panel-trust" aria-labelledby="tab-trust" hidden class="stack">
-          <p class="note" data-i18n="pj.trustNote"></p>
-          <section class="pj__sec"><h2 data-i18n="pj.h.refund"></h2><ul class="plain"><li data-i18n="pj.refund1"></li><li data-i18n="pj.refund2"></li><li data-i18n="pj.refund3"></li><li data-i18n="pj.refund4"></li></ul></section>
-          <section class="pj__sec"><h2 data-i18n="pj.h.risk"></h2><p data-i18n="pj.risk"></p></section>
-          <section class="pj__sec"><h2 data-i18n="pj.h.reg"></h2><p data-i18n="pj.reg"></p></section>
-          <section class="pj__sec"><h2 data-i18n="pj.h.report"></h2><p data-i18n="pj.report"></p></section>
-        </div>
-      </div>
-      <aside class="pj__side">
-        <div class="crea">
-          <span class="crea__mark"><svg class="logo__mark" viewBox="0 0 221 212" aria-hidden="true"><use href="#oreh-mark"/></svg></span>
-          <div class="stack crea__text"><p class="kicker" data-i18n="pj.creator"></p><p class="crea__name" id="pjCreaName"></p><p class="muted" data-i18n="pj.creatorBody"></p><a class="link" href="#contact" data-topic="funding" data-i18n="pj.ask"></a></div>
-        </div>
-        <h2 class="pj__sideh" data-i18n="rw.title"></h2>
-        <div class="rewards" id="pjRewards"></div>
-        <div class="field"><label for="pjExtra" data-i18n="pj.extra"></label><input id="pjExtra" type="text" inputmode="numeric" maxlength="9" autocomplete="off"></div>
-        <button type="button" class="btn btn--navy" id="pjCta2"></button>
-      </aside>
-    </div>
-  </div></div>
+  </div>
 </section>
 
-<!-- CREATE (start a value project: creator guide + application) -->
-<section class="view" data-view="create" hidden>
-  <div class="pagehead"><div class="wrap pagehead__in">
-    <div class="pagehead__text">
-      <p class="kicker" data-i18n="create.kicker"></p>
-      <h1 data-i18n="create.title"></h1>
-      <p class="lead" data-i18n="create.lead"></p>
+<!-- ===== 고객 리뷰 ===== -->
+<section class="sec" id="reviews" style="background:var(--surface2)">
+  <div class="wrap">
+    <div class="eyebrow">Reviews</div>
+    <h2>고객들의 실제 후기</h2>
+    <p class="sub">리뷰를 남겨주시면 <b style="color:var(--accent)">5% 할인 쿠폰</b>을 드려요. (이벤트)</p>
+    <div style="text-align:center;margin-bottom:26px">
+      <button class="btn btn-primary" id="reviewWriteBtn">리뷰 쓰고 5% 쿠폰 받기</button>
     </div>
-    <img class="pagehead__av" src="assets/img/leo_face.jpg" alt="" width="200" height="200">
-  </div></div>
-  <div class="band"><div class="wrap stack">
-    <h2 class="h2" data-i18n="trk.title"></h2>
-    <div class="tracks">
-      <article class="track track--fund"><h3 data-i18n="trk.fund.t"></h3><p data-i18n="trk.fund.b"></p><p class="track__who"><b data-i18n="trk.who"></b> <span data-i18n="trk.fund.who"></span></p></article>
-      <article class="track track--goods"><h3 data-i18n="trk.goods.t"></h3><p data-i18n="trk.goods.b"></p><p class="track__who"><b data-i18n="trk.who"></b> <span data-i18n="trk.goods.who"></span></p></article>
-    </div>
-    <h2 class="h2" data-i18n="cs.title"></h2>
-    <ol class="proc proc--7">
-      <li><b data-i18n="cs1"></b></li>
-      <li><b data-i18n="cs2"></b><span data-i18n="cs2b"></span></li>
-      <li><b data-i18n="cs3"></b></li>
-      <li><b data-i18n="cs4"></b><span data-i18n="cs4b"></span></li>
-      <li><b data-i18n="cs5"></b><span data-i18n="cs5b"></span></li>
-      <li><b data-i18n="cs6"></b></li>
-      <li><b data-i18n="cs7"></b><span data-i18n="cs7b"></span></li>
-    </ol>
-  </div></div>
-  <div class="band band--cream"><div class="wrap">
-    <h2 class="h2" data-i18n="guide.title"></h2>
-    <div class="guide">
-      <article class="principle"><h3><span class="mono">01</span> <span data-i18n="g1.t"></span></h3><p data-i18n="g1.b"></p></article><article class="principle"><h3><span class="mono">02</span> <span data-i18n="g2.t"></span></h3><p data-i18n="g2.b"></p></article><article class="principle"><h3><span class="mono">03</span> <span data-i18n="g3.t"></span></h3><p data-i18n="g3.b"></p></article><article class="principle"><h3><span class="mono">04</span> <span data-i18n="g4.t"></span></h3><p data-i18n="g4.b"></p></article><article class="principle"><h3><span class="mono">05</span> <span data-i18n="g5.t"></span></h3><p data-i18n="g5.b"></p></article><article class="principle"><h3><span class="mono">06</span> <span data-i18n="g6.t"></span></h3><p data-i18n="g6.b"></p></article><article class="principle"><h3><span class="mono">07</span> <span data-i18n="g7.t"></span></h3><p data-i18n="g7.b"></p></article>
-    </div>
-    <div class="nolist">
-      <h3 data-i18n="no.title"></h3>
-      <ul class="plain"><li data-i18n="no1"></li><li data-i18n="no2"></li><li data-i18n="no3"></li><li data-i18n="no4"></li><li data-i18n="no5"></li></ul>
-    </div>
-  </div></div>
-  <div class="band"><div class="wrap stack">
-    <h2 class="h2" data-i18n="cf.title"></h2>
-    <form class="form" id="form-project" data-form="project" novalidate>
-      <fieldset class="field full trackpick"><legend class="lbl" data-i18n="cf.track"></legend>
-        <label class="check"><input type="radio" name="track" value="funding" checked><span data-i18n="trk.fund.t"></span></label>
-        <label class="check"><input type="radio" name="track" value="goods"><span data-i18n="trk.goods.t"></span></label>
-      </fieldset>
-      <h3 class="form__h full"><span class="mono">1</span> <span data-i18n="cf.h.verify"></span></h3>
-      <div class="field" data-track="funding"><label for="pr-reportRef" data-i18n="cf.reportRef"></label><input id="pr-reportRef" name="reportRef" type="text" maxlength="20" placeholder="R-261023-AB12CD" autocomplete="off" aria-describedby="pr-reportRef-err"><p class="err" id="pr-reportRef-err"></p></div>
-      <div class="field" data-track="funding"><label for="pr-reportEmail" data-i18n="cf.reportEmail"></label><input id="pr-reportEmail" name="reportEmail" type="email" maxlength="254" autocomplete="email" aria-describedby="pr-reportEmail-err"><p class="err" id="pr-reportEmail-err"></p></div>
-      <div class="field full" data-track="goods" hidden><label for="pr-storyId" data-i18n="cf.storyId"></label><input id="pr-storyId" name="storyId" type="text" maxlength="24" placeholder="OREH-KR-2016-0909" autocomplete="off" aria-describedby="pr-storyId-err"><p class="err" id="pr-storyId-err"></p></div>
-      <h3 class="form__h full"><span class="mono">2</span> <span data-i18n="cf.h.basic"></span></h3>
-      <div class="field full"><label for="pr-title" data-i18n="cf.pTitle"></label><input id="pr-title" name="title" type="text" maxlength="60" aria-describedby="pr-title-err"><p class="err" id="pr-title-err"></p></div>
-      <div class="field full"><label for="pr-summary" data-i18n="cf.summary"></label><input id="pr-summary" name="summary" type="text" maxlength="100" aria-describedby="pr-summary-err"><p class="err" id="pr-summary-err"></p></div>
-      <div class="field"><label for="pr-category" data-i18n="cf.category"></label><select id="pr-category" name="category" aria-describedby="pr-category-err"><option value="" data-i18n="f.choose"></option><option value="support" data-i18n="fcat.support"></option><option value="scholar" data-i18n="fcat.scholar"></option><option value="record" data-i18n="fcat.record"></option><option value="goods" data-i18n="fcat.goods"></option></select><p class="err" id="pr-category-err"></p></div>
-      <div class="field"><label for="pr-image" data-i18n="cf.image"></label><input id="pr-image" name="image" type="file" accept="image/jpeg,image/png,image/webp" aria-describedby="pr-image-err"><p class="err" id="pr-image-err"></p></div>
-      <h3 class="form__h full"><span class="mono">3</span> <span data-i18n="cf.h.plan"></span></h3>
-      <div class="field" data-track="funding"><label for="pr-goal" data-i18n="cf.goal"></label><input id="pr-goal" name="goal" type="text" inputmode="numeric" maxlength="11" placeholder="10000000" aria-describedby="pr-goal-err"><p class="err" id="pr-goal-err"></p></div>
-      <div class="field" data-track="goods" hidden><label for="pr-price" data-i18n="cf.price"></label><input id="pr-price" name="price" type="text" inputmode="numeric" maxlength="9" placeholder="15000" aria-describedby="pr-price-err"><p class="err" id="pr-price-err"></p></div>
-      <div class="field" data-track="goods" hidden><label for="pr-qty" data-i18n="cf.qty"></label><input id="pr-qty" name="qty" type="text" inputmode="numeric" maxlength="7" placeholder="500" aria-describedby="pr-qty-err"><p class="err" id="pr-qty-err"></p></div>
-      <div class="field"><label for="pr-start" data-i18n="cf.start"></label><input id="pr-start" name="start" type="date" aria-describedby="pr-start-err"><p class="err" id="pr-start-err"></p></div>
-      <div class="field"><label for="pr-days" data-i18n="cf.days"></label><input id="pr-days" name="days" type="text" inputmode="numeric" maxlength="2" placeholder="30" aria-describedby="pr-days-err"><p class="err" id="pr-days-err"></p></div>
-      <h3 class="form__h full"><span class="mono">4</span> <span data-i18n="cf.h.rewards"></span></h3>
-      <div class="field full"><label for="pr-rewards" data-i18n="cf.rewards"></label><textarea id="pr-rewards" name="rewards" rows="4" maxlength="1000" aria-describedby="pr-rewards-err"></textarea><p class="err" id="pr-rewards-err"></p></div>
-      <h3 class="form__h full"><span class="mono">5</span> <span data-i18n="cf.h.story"></span></h3>
-      <div class="field full"><label for="pr-story" data-i18n="cf.story"></label><textarea id="pr-story" name="story" rows="7" maxlength="3000" aria-describedby="pr-story-err"></textarea><p class="err" id="pr-story-err"></p></div>
-      <div class="field full"><label for="pr-budget" data-i18n="cf.budget"></label><textarea id="pr-budget" name="budget" rows="4" maxlength="1000" aria-describedby="pr-budget-err"></textarea><p class="err" id="pr-budget-err"></p></div>
-      <h3 class="form__h full"><span class="mono">6</span> <span data-i18n="cf.h.creator"></span></h3>
-      <div class="field"><label for="pr-name" data-i18n="cf.name"></label><input id="pr-name" name="name" type="text" maxlength="60" autocomplete="name" aria-describedby="pr-name-err"><p class="err" id="pr-name-err"></p></div>
-      <div class="field"><label for="pr-email" data-i18n="f.email"></label><input id="pr-email" name="email" type="email" maxlength="254" autocomplete="email" aria-describedby="pr-email-err"><p class="err" id="pr-email-err"></p></div>
-      <div class="field full"><label for="pr-bio" data-i18n="cf.bio"></label><textarea id="pr-bio" name="bio" rows="3" maxlength="300" aria-describedby="pr-bio-err"></textarea><p class="err" id="pr-bio-err"></p></div>
-      <h3 class="form__h full"><span class="mono">7</span> <span data-i18n="cf.h.trust"></span></h3>
-      <div class="field full"><label for="pr-risk" data-i18n="cf.risk"></label><textarea id="pr-risk" name="risk" rows="3" maxlength="1000" aria-describedby="pr-risk-err"></textarea><p class="err" id="pr-risk-err"></p></div>
-      <div class="field full">
-        <label class="check"><input id="pr-agree" name="agree" type="checkbox" value="1" aria-describedby="pr-agree-err"><span data-i18n="cf.agree"></span></label><p class="err" id="pr-agree-err"></p>
-        <label class="check"><input id="pr-consentPrivacy" name="consentPrivacy" type="checkbox" value="1" aria-describedby="pr-consentPrivacy-err"><span data-i18n="cf.consent"></span></label><p class="err" id="pr-consentPrivacy-err"></p>
-      </div>
-      <div class="field full pledge" data-track="goods" hidden>
-        <h3 class="form__h"><span class="mono">8</span> <span data-i18n="cf.h.pledge"></span></h3>
-        <div class="pledge__doc" tabindex="0" role="document" aria-labelledby="pledgeTitle">
-          <p class="pledge__title" id="pledgeTitle" data-i18n="pledge.title"></p>
-          <p data-i18n="pledge.intro"></p>
-          <ol><li data-i18n="pledge.1"></li><li data-i18n="pledge.2"></li><li data-i18n="pledge.3"></li><li data-i18n="pledge.4"></li><li data-i18n="pledge.5"></li></ol>
-          <p class="pledge__meta"><span data-i18n="pledge.date"></span>: <span class="mono" id="pledgeDate"></span></p>
-        </div>
-        <p class="note" data-i18n="pledge.draft"></p>
-        <label class="check"><input id="pr-pledge" name="pledge" type="checkbox" value="1" aria-describedby="pr-pledge-err"><span data-i18n="pledge.agree"></span></label><p class="err" id="pr-pledge-err"></p>
-        <label for="pr-signName" data-i18n="pledge.sign"></label><input id="pr-signName" name="signName" type="text" maxlength="60" autocomplete="off" aria-describedby="pr-signName-err"><p class="err" id="pr-signName-err"></p>
-      </div>
-      <div class="hp" aria-hidden="true"><label for="pr-website">Website</label><input id="pr-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
-      <div class="form__actions"><button class="btn btn--navy" type="submit" data-i18n="cf.submit"></button></div>
-      <p class="status" role="status" hidden></p>
-    </form>
-  </div></div>
+    <div id="reviewList" class="rv-list"></div>
+  </div>
 </section>
 
-<!-- SUBSCRIBE (weekly report by email) -->
-<section class="view" data-view="subscribe" hidden>
-  <div class="pagehead"><div class="wrap pagehead__in">
-    <div class="pagehead__text">
-      <p class="kicker" data-i18n="sub.kicker"></p>
-      <h1 data-i18n="sub.title"></h1>
-      <p class="lead" data-i18n="sub.lead"></p>
+<section class="sec">
+  <div class="wrap">
+    <div class="band">
+      <h2 data-i18n="bd_h2">먼저 무료 진단부터 해보세요</h2>
+      <p data-i18n="bd_p">20문항 3분이면 내 브랜드의 진출 준비도와 가야 할 길이 나옵니다.</p>
+      <a class="btn btn-primary" href="diagnosis.html" data-i18n="bd_btn">무료 진단 시작</a>
     </div>
-    <img class="pagehead__av" src="assets/img/leo_face.jpg" alt="" width="200" height="200">
-  </div></div>
-  <div class="band"><div class="wrap sub-grid">
-    <div class="stack">
-      <p class="status status--ok" id="subNotice" role="status" hidden></p>
-      <form class="form form--one" id="form-subscribe" data-form="subscribe" novalidate>
-        <div class="field full"><label for="sb-email" data-i18n="f.email"></label><input id="sb-email" name="email" type="email" maxlength="254" autocomplete="email" aria-describedby="sb-email-err"><p class="err" id="sb-email-err"></p></div>
-        <fieldset class="field full countrypick" id="sb-countries" aria-describedby="sb-countries-err"><legend class="lbl" data-i18n="sub.countries"></legend><div class="seg" id="subSeg"></div><p class="err" id="sb-countries-err"></p></fieldset>
-        <div class="field full"><label for="sb-lang" data-i18n="sub.lang"></label><select id="sb-lang" name="reportLang"><option value="ko">한국어</option><option value="en">English</option><option value="zh">中文</option><option value="ja">日本語</option></select></div>
-        <div class="field full"><label class="check"><input id="sb-consentPrivacy" name="consentPrivacy" type="checkbox" value="1" aria-describedby="sb-consentPrivacy-err"><span data-i18n="sub.consent"></span></label><p class="err" id="sb-consentPrivacy-err"></p></div>
-        <div class="hp" aria-hidden="true"><label for="sb-website">Website</label><input id="sb-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
-        <div class="form__actions"><button class="btn btn--navy" type="submit" data-i18n="sub.submit"></button><span class="hint" data-i18n="sub.when"></span></div>
-        <p class="status" role="status" hidden></p>
-      </form>
-    </div>
-    <div class="stack">
-      <h2 class="h2" data-i18n="sub.what"></h2>
-      <ul class="plain"><li data-i18n="sub.what1"></li><li data-i18n="sub.what2"></li><li data-i18n="sub.what3"></li></ul>
-      <div class="mail" aria-label="preview">
-        <div class="mail__bar"><span class="pill pill--sample" data-i18n="sample"></span><span data-i18n="sub.preview"></span></div>
-        <p class="mail__subject" data-i18n="sub.subject"></p>
-        <div class="mail__body" id="mailPreview"></div>
-        <p class="mail__foot" data-i18n="sub.footer"></p>
-      </div>
-    </div>
-  </div></div>
+  </div>
 </section>
 
-<!-- HEROES -->
-<section class="view" data-view="heroes" hidden>
-  <div class="pagehead"><div class="wrap pagehead__in">
-    <div class="pagehead__text">
-      <p class="kicker" data-i18n="heroes.kicker"></p>
-      <h1 data-i18n="heroes.title"></h1>
-      <p class="lead" data-i18n="heroes.lead"></p>
-    </div>
-    <img class="pagehead__av" src="assets/img/leo_face.jpg" alt="" width="200" height="200">
-  </div></div>
-  <div class="band"><div class="wrap">
-    <div class="tools" role="search">
-      <div class="tools__row">
-        <label class="search" for="q"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><span class="sr" data-i18n="search.label"></span><input id="q" type="search" maxlength="50" autocomplete="off" data-i18n-ph="search.ph"></label>
-        <label class="lbl" for="cat" data-i18n="filter.cat"></label>
-        <select id="cat"></select>
+<footer>
+  <div class="wrap">
+    <div class="grid">
+      <div>
+        <span class="logo">AIKUA <b>BOX</b></span>
+        <span data-i18n="ft_tag">Unbox Your Global Market</span>
       </div>
-      <div class="tools__row"><span class="lbl" id="countryLbl" data-i18n="filter.country"></span><div class="seg" id="countrySeg" role="group" aria-labelledby="countryLbl"></div></div>
-    </div>
-    <p class="count" id="count" aria-live="polite"></p>
-    <div class="recs" id="recs"></div>
-    <p class="note" data-i18n="heroes.note"></p>
-  </div></div>
-</section>
-
-<!-- REPORT -->
-<section class="view" data-view="report" hidden>
-  <div class="pagehead"><div class="wrap pagehead__in">
-    <div class="pagehead__text">
-      <p class="kicker" data-i18n="report.kicker"></p>
-      <h1 data-i18n="report.title"></h1>
-      <p class="lead" data-i18n="report.lead"></p>
-    </div>
-    <img class="pagehead__av" src="assets/img/leo_face.jpg" alt="" width="200" height="200">
-  </div></div>
-  <div class="band"><div class="wrap stack">
-    <ol class="proc">
-      <li><b data-i18n="rp.s1"></b></li>
-      <li><b data-i18n="rp.s2"></b><span data-i18n="rp.s2b"></span></li>
-      <li><b data-i18n="rp.s3"></b><span data-i18n="rp.s3b"></span></li>
-      <li><b data-i18n="rp.s4"></b><span data-i18n="rp.s4b"></span></li>
-      <li><b data-i18n="rp.s5"></b></li>
-    </ol>
-    <form class="form" id="form-report" data-form="report" novalidate>
-      <div class="field"><label for="rp-country" data-i18n="f.country"></label><select id="rp-country" name="country" data-countries aria-describedby="rp-country-err"></select><p class="err" id="rp-country-err"></p></div>
-      <div class="field"><label for="rp-date" data-i18n="f.date"></label><input id="rp-date" name="date" type="date" min="1900-01-01"></div>
-      <div class="field"><label for="rp-place" data-i18n="f.place"></label><input id="rp-place" name="place" type="text" maxlength="120" aria-describedby="rp-place-err"><p class="err" id="rp-place-err"></p></div>
-      <div class="field"><label for="rp-heroName" data-i18n="f.heroName"></label><input id="rp-heroName" name="heroName" type="text" maxlength="120" aria-describedby="rp-heroName-err"><p class="err" id="rp-heroName-err"></p></div>
-      <div class="field full"><label for="rp-story" data-i18n="f.story"></label><textarea id="rp-story" name="story" rows="6" maxlength="2000" aria-describedby="rp-story-hint rp-story-err"></textarea><p class="hint" id="rp-story-hint" data-i18n="f.storyHint"></p><p class="err" id="rp-story-err"></p></div>
-      <div class="field full"><span class="lbl" data-i18n="f.sources"></span>
-        <div class="srcs">
-          <input id="rp-src1" name="src1" type="url" maxlength="500" inputmode="url" placeholder="https://" aria-describedby="rp-src1-err"><p class="err" id="rp-src1-err"></p>
-          <input id="rp-src2" name="src2" type="url" maxlength="500" inputmode="url" placeholder="https://" aria-describedby="rp-src2-err"><p class="err" id="rp-src2-err"></p>
-          <input id="rp-src3" name="src3" type="url" maxlength="500" inputmode="url" placeholder="https://" aria-describedby="rp-src3-err"><p class="err" id="rp-src3-err"></p>
-        </div>
+      <div>
+        <span data-i18n="ft_op">운영 ㈜아이콰그룹</span><br>
+        <span data-i18n="ft_ask">문의</span> <a href="mailto:info@aikuagroup.com">info@aikuagroup.com</a><br>
+        www.aikuagroup.com
       </div>
-      <div class="field full"><label for="rp-photo" data-i18n="f.photo"></label><input id="rp-photo" name="photo" type="file" accept="image/jpeg,image/png,image/webp" aria-describedby="rp-photo-hint rp-photo-err"><p class="hint" id="rp-photo-hint" data-i18n="f.photoNote"></p><p class="err" id="rp-photo-err"></p></div>
-      <div class="field"><label for="rp-relation" data-i18n="f.relation"></label><select id="rp-relation" name="relation" aria-describedby="rp-relation-err"><option value="" data-i18n="f.choose"></option><option value="self" data-i18n="rel.self"></option><option value="family" data-i18n="rel.family"></option><option value="known" data-i18n="rel.known"></option><option value="news" data-i18n="rel.news"></option></select><p class="err" id="rp-relation-err"></p></div>
-      <div class="field"><label for="rp-reporter" data-i18n="f.reporter"></label><input id="rp-reporter" name="reporter" type="text" maxlength="60" autocomplete="name"></div>
-      <div class="field full"><label for="rp-email" data-i18n="f.email"></label><input id="rp-email" name="email" type="email" maxlength="254" autocomplete="email" aria-describedby="rp-email-err"><p class="err" id="rp-email-err"></p></div>
-      <div class="field full">
-        <label class="check"><input id="rp-consentPrivacy" name="consentPrivacy" type="checkbox" value="1" aria-describedby="rp-consentPrivacy-err"><span data-i18n="f.consentPrivacy"></span></label><p class="err" id="rp-consentPrivacy-err"></p>
-        <label class="check"><input id="rp-consentFact" name="consentFact" type="checkbox" value="1" aria-describedby="rp-consentFact-err"><span data-i18n="f.consentFact"></span></label><p class="err" id="rp-consentFact-err"></p>
-      </div>
-      <div class="hp" aria-hidden="true"><label for="rp-website">Website</label><input id="rp-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
-      <div class="form__actions"><button class="btn btn--navy" type="submit" data-i18n="f.sendReport"></button></div>
-      <p class="status" role="status" hidden></p>
-    </form>
-    <div class="notice notice--soft"><p data-i18n="report.next"></p><a class="link" href="#create" data-i18n="report.nextLink"></a></div>
-  </div></div>
-</section>
-
-<!-- CONTACT -->
-<section class="view" data-view="contact" hidden>
-  <div class="pagehead"><div class="wrap pagehead__in">
-    <div class="pagehead__text">
-      <p class="kicker" data-i18n="contact.kicker"></p>
-      <h1 data-i18n="contact.title"></h1>
-      <p class="lead" data-i18n="contact.lead"></p>
     </div>
-  </div></div>
-  <div class="band"><div class="wrap contact-grid">
-    <form class="form" id="form-contact" data-form="contact" novalidate>
-      <div class="field"><label for="ct-name" data-i18n="f.name"></label><input id="ct-name" name="name" type="text" maxlength="60" autocomplete="name" aria-describedby="ct-name-err"><p class="err" id="ct-name-err"></p></div>
-      <div class="field"><label for="ct-org" data-i18n="f.org"></label><input id="ct-org" name="org" type="text" maxlength="100" autocomplete="organization"></div>
-      <div class="field"><label for="ct-email" data-i18n="f.email"></label><input id="ct-email" name="email" type="email" maxlength="254" autocomplete="email" aria-describedby="ct-email-err"><p class="err" id="ct-email-err"></p></div>
-      <div class="field"><label for="ct-topic" data-i18n="f.topic"></label><select id="ct-topic" name="topic" aria-describedby="ct-topic-err"><option value="" data-i18n="f.choose"></option><option value="company" data-i18n="topic.company"></option><option value="press" data-i18n="topic.press"></option><option value="funding" data-i18n="topic.funding"></option><option value="other" data-i18n="topic.other"></option></select><p class="err" id="ct-topic-err"></p></div>
-      <div class="field full"><label for="ct-message" data-i18n="f.message"></label><textarea id="ct-message" name="message" rows="6" maxlength="3000" aria-describedby="ct-message-err"></textarea><p class="err" id="ct-message-err"></p></div>
-      <div class="field full"><label class="check"><input id="ct-consentPrivacy" name="consentPrivacy" type="checkbox" value="1" aria-describedby="ct-consentPrivacy-err"><span data-i18n="f.consentContact"></span></label><p class="err" id="ct-consentPrivacy-err"></p></div>
-      <div class="hp" aria-hidden="true"><label for="ct-website">Website</label><input id="ct-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
-      <div class="form__actions"><button class="btn btn--navy" type="submit" data-i18n="f.sendContact"></button></div>
-      <p class="status" role="status" hidden></p>
-    </form>
-    <aside class="aside">
-      <img src="assets/img/leon_face.jpg" alt="" width="200" height="200">
-      <p class="kicker" data-i18n="contact.direct"></p>
-      <p class="addr" id="mailAddr">oreh.information@gmail.com</p>
-      <button type="button" class="btn btn--line btn--sm" id="copyMail" data-i18n="contact.copy"></button>
-      <span class="copied" id="mailCopied" role="status"></span>
-      <p data-i18n="about.company"></p>
-    </aside>
-  </div></div>
-</section>
-
-</main>
-
-<footer class="foot">
-  <div class="wrap foot__in">
-    <div class="stack">
-      <span class="logo" role="img" aria-label="OREH 오레"><svg class="logo__mark" viewBox="0 0 221 212" aria-hidden="true"><use href="#oreh-mark"/></svg></span>
-      <p data-i18n="footer.tag"></p>
+    <div class="biz">
+      <b>㈜아이콰그룹</b> · 대표이사 이혜란 · 서울특별시 강남구 봉은사로 317, 2층 2452호(논현동, 아모제논현빌딩)<br>
+      사업자등록번호 310-87-01149 · 통신판매업신고 제2026-서울강남-03597호<br>
+      고객센터 <a href="mailto:info@aikuagroup.com">info@aikuagroup.com</a> · 대표전화 010-7207-0642 · 개인정보관리책임자 이혜란<br>
+      <a href="#" id="refundOpen" style="color:#9aa6c4;text-decoration:underline">환불·취소 정책</a>
     </div>
-    <div class="stack">
-      <nav><a href="#about" data-i18n="footer.privacy"></a><a href="#about" data-i18n="footer.terms"></a><a href="#contact" data-i18n="nav.contact"></a></nav>
-      <p>© 2026 OREH Inc.</p>
-      <p class="foot__draft" data-i18n="footer.draft" data-draft></p>
-    </div>
+    <div class="copy" data-i18n="ft_copy">© 2026 AIKUA Group. 리포트 내 추정치는 수익을 보장하지 않습니다.</div>
   </div>
 </footer>
 
-<script src="assets/site.js" defer></script>
+<!-- 아이콰 리더스 소개 경로 모달 -->
+<div class="modal" id="refModal">
+  <div class="box">
+    <h3>아이콰 리더스 · 항저우 워케이션 신청</h3>
+    <p>결제 전, <b>어디 소개로 오셨는지</b> 알려주세요.</p>
+    <div class="field"><label for="refSel">소개 경로</label>
+      <select id="refSel">
+        <option value="">선택해주세요</option>
+        <option value="더컬쳐앤">더컬쳐앤</option>
+        <option value="구국">구국</option>
+        <option value="__etc">기타 (직접 입력)</option>
+      </select>
+    </div>
+    <div class="field" id="refEtcWrap" hidden><label for="refEtc">소개처 직접 입력</label><input id="refEtc" type="text" placeholder="소개해주신 분 / 채널"></div>
+    <div class="field"><label for="refQty">참가 인원 (1~10명)</label>
+      <select id="refQty">
+        <option value="1">1명</option><option value="2">2명</option><option value="3">3명</option>
+        <option value="4">4명</option><option value="5">5명</option><option value="6">6명</option>
+        <option value="7">7명</option><option value="8">8명</option><option value="9">9명</option>
+        <option value="10">10명</option>
+      </select>
+    </div>
+    <div id="refTotal" style="font-size:13px;color:var(--muted);margin:2px 0 12px"></div>
+    <div class="row"><button class="btn btn-primary" id="refGo" style="flex:1">결제 진행</button></div>
+    <div class="row" style="justify-content:center;margin-top:12px"><button class="close" id="refClose">닫기</button></div>
+  </div>
+</div>
 
+<!-- 리뷰 작성 모달 -->
+<div class="modal" id="reviewModal">
+  <div class="box">
+    <h3>리뷰 작성</h3>
+    <p>솔직한 후기를 남겨주세요. 등록하시면 <b style="color:var(--accent)">5% 할인 쿠폰</b>을 드립니다.</p>
+    <div id="rvForm">
+      <div class="field"><label for="rvName">이름 / 브랜드</label><input id="rvName" type="text" placeholder="글로우리프"></div>
+      <div class="field"><label>별점</label>
+        <div class="star-input" id="rvStars" role="radiogroup" aria-label="별점">
+          <span data-v="1">★</span><span data-v="2">★</span><span data-v="3">★</span><span data-v="4">★</span><span data-v="5">★</span>
+        </div>
+      </div>
+      <div class="field"><label for="rvText">후기</label><textarea id="rvText" rows="4" style="width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:10px;font-size:15px;font-family:inherit;resize:vertical" placeholder="서비스를 이용하신 경험을 남겨주세요."></textarea></div>
+      <div class="row"><button class="btn btn-primary" id="rvSubmit" style="flex:1">등록하고 5% 쿠폰 받기</button></div>
+    </div>
+    <div class="row" style="justify-content:center;margin-top:12px"><button class="close" id="rvClose">닫기</button></div>
+  </div>
+</div>
+
+<!-- 환불·취소 정책 모달 -->
+<div class="modal" id="refundModal">
+  <div class="box tax">
+    <h3>환불·취소 정책</h3>
+    <p>전자상거래법상 청약철회(결제 후 7일)를 원칙으로 하되, 디지털 콘텐츠·용역이 개시된 경우 관련 법령에 따라 제한될 수 있습니다.</p>
+    <div style="font-size:13.5px;color:#2a3550;line-height:1.7">
+      <b>· 디지털 리포트(베이직·프리미엄)</b><br>
+      결제 후 ‘브랜드 심화 질의지’ 발송 또는 리포트 작업 착수 전까지 <b>100% 환불</b>. 작업 착수(질의지 발송) 후에는 콘텐츠 제공 성격상 환불이 제한됩니다.<br><br>
+      <b>· 소상공인 블루라벨 개설비 / 월 운영비</b><br>
+      계정 개설 착수 전 100% 환불, 개설 완료 후 불가. 월 운영비는 당월 서비스 개시 전 100%, 개시 후 잔여일 일할 환불.<br><br>
+      <b>· 아이콰 리더스(워케이션)</b><br>
+      출발 30일 전 100% · 14일 전 50% · 7일 이내 환불 불가(항공·호텔 예약 특성).<br><br>
+      <b>· 매칭·운영 동행</b><br>
+      월 계약 착수 전 100% 환불, 착수 후 당월 환불 불가(익월부터 해지 가능).<br><br>
+      <b>· 수강(아카데미)</b><br>
+      수강 시작(콘텐츠 열람) 전 100% 환불. 수강 시작 후에는 「학원법·평생교육법」 기준에 준해 잔여 수강기간을 일할 환불.<br><br>
+      환불 문의: <b>info@aikuagroup.com</b> · 대표전화 010-7207-0642
+    </div>
+    <div class="row" style="justify-content:center;margin-top:16px"><button class="close" id="refundClose">닫기</button></div>
+  </div>
+</div>
+
+<!-- 세금계산서 발행 결제 모달 -->
+<div class="modal" id="taxModal">
+  <div class="box tax">
+    <h3 data-i18n="tx_h">세금계산서 발행 결제</h3>
+    <p data-i18n="tx_p">사업자 정보를 남기고 <b>계좌이체</b>로 결제하시면, 입금 확인 후 <b>전자세금계산서</b>를 발행해 드립니다. (카드 결제분은 매출전표로 갈음되어 세금계산서가 중복 발행되지 않습니다.)</p>
+    <div class="field sm"><label for="taxItem" data-i18n="tx_item_l">결제 품목</label>
+      <select id="taxItem">
+        <option value="r1" data-amount="99000" data-i18n="tx_opt1">베이직 솔루션 보고서 (9.9만원)</option>
+        <option value="r2" data-amount="660000" data-i18n="tx_opt2">정밀 진단 리포트 (66만원)</option>
+        <option value="sg" data-amount="1000000" data-i18n="tx_opt3">소상공인 블루라벨 개설비 (100만원)</option>
+        <option value="run" data-amount="1000000" data-i18n="tx_opt4">소상공인 월 운영비 (100만원)</option>
+        <option value="etc" data-amount="" data-i18n="tx_opt5">기타 (금액 직접 입력)</option>
+      </select>
+    </div>
+    <div class="field sm"><label for="taxAmount" data-i18n="tx_amt_l">결제 금액 (원)</label><input id="taxAmount" type="number" min="1000" step="1000"></div>
+    <div class="field sm"><label for="taxBizno" data-i18n="tx_biz_l">사업자등록번호</label><input id="taxBizno" type="text" placeholder="000-00-00000"></div>
+    <div class="field sm"><label for="taxCompany" data-i18n="tx_comp_l">상호 (법인명)</label><input id="taxCompany" type="text" data-i18n-ph="tx_comp_ph" placeholder="㈜글로우리프"></div>
+    <div class="field sm"><label for="taxCeo" data-i18n="tx_ceo_l">대표자명</label><input id="taxCeo" type="text"></div>
+    <div class="field sm"><label for="taxEmail" data-i18n="tx_email_l">세금계산서 받을 이메일</label><input id="taxEmail" type="email" placeholder="tax@company.com"></div>
+    <div class="row"><button class="btn btn-primary" id="taxPay" style="flex:1" data-i18n="tx_pay_btn">계좌이체로 결제 · 세금계산서 신청</button></div>
+    <div class="row" style="justify-content:center;margin-top:12px"><button class="close" id="taxClose" data-i18n="tx_close">닫기</button></div>
+  </div>
+</div>
+
+<!-- AI 상담봇 모달 -->
+<div class="modal" id="consultModal">
+  <div class="box chatbox">
+    <div class="chat-h">
+      <div class="av">A</div>
+      <div><div class="nm">AIKUA 상담봇</div><div class="st" id="botStatus">온라인</div></div>
+      <button class="x" id="consultClose" aria-label="close">×</button>
+    </div>
+    <div class="chat-log" id="chatLog"></div>
+    <div class="quick" id="chatQuick"></div>
+    <div class="chat-in">
+      <input id="chatInput" type="text" autocomplete="off">
+      <button id="chatSend" type="button">▲</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* =========================================================================
+   다국어(i18n) — 한국어 / English / 中文. nav의 한국어·EN·中文 버튼으로 전환.
+   기본 노출 텍스트는 HTML(=한국어)이고, en/zh 선택 시에만 치환합니다.
+   ========================================================================= */
+var I18N = {
+  en: {
+    nav_about:"About", nav_problem:"Problem", nav_how:"Process", nav_pricing:"Pricing",
+    nav_sangong:"Local Store", nav_leaders:"Leaders", nav_free:"Free Check",
+    hero_kick:"Unbox Your Global Market",
+    hero_h1:"Your China launch,<br><span class='o'>all the way to real sales</span>",
+    hero_lead:"Spent on influencers but saw no sales? The problem isn't the influencer — it's the matching criteria and the operational gap.<br>A first-generation Korean wanghong who built KRW 300B in exports with a China team analyzes you <b style='color:var(--accent2)'>from zero</b> with data, matches the right influencers, and connects you <b style='color:var(--accent2)'>to your first real sale.</b>",
+    hero_cta1:"Start from ₩99,000", hero_cta2:"See the process",
+    hero_micro:"1M followers · KRW 300B export track record · 6,000 influencer network · own cross-border logistics",
+    trust_v1:"1M", trust_l1:"1st-gen Korean wanghong followers",
+    trust_v2:"₩300B", trust_l2:"Korean brand export track record",
+    trust_v3:"6,000", trust_l3:"active collaborating influencer network",
+    trust_v4:"Cross-border", trust_l4:"own logistics & export process",
+    ab_kicker:"Group Overview · AIKUA Group",
+    ab_h2:"Erasing brand borders with AI and on-the-ground experience",
+    ab_lead:"<b>AIKUA Group</b> is a <b>cross-border branding & commerce group</b> that helps brands cross borders with K-culture and AI. ‘AIKUA’ joins <span class='hl'>AI</span> with ‘Kua (跨, to cross over)’ — technology plus human field experience to cross every border. Built on China-market sales experience since 2015, the group was founded in 2019. We take Korean brands to the world and bring global brands into Greater China.",
+    ab_s1u:"yrs+", ab_s1l:"China commerce field experience (since 2015)",
+    ab_s2l:"global collaborating influencers · network across 49 countries",
+    ab_s3u:"M", ab_s3l:"cumulative new-media reach",
+    ab_s4u:" languages", ab_s4l:"content localization capability",
+    ab_mission:"Combining AI with human field experience,<br>so anyone can sell across borders.",
+    ab_vision:"Becoming the global gateway for K-branding.",
+    ab_wwd_h:"What We Do",
+    wwd1k:"Inform", wwd1d:"Reach through press & channels",
+    wwd2k:"Seek", wwd2d:"Find markets & customers with data",
+    wwd3k:"Connect", wwd3d:"Match the right influencers & partners",
+    wwd4k:"Sell", wwd4d:"Sell through live & commerce",
+    wwd5k:"Grow", wwd5d:"Grow via repeat purchase & brand",
+    ab_f1l:"Founded", ab_f1v:"January 2019",
+    ab_f2l:"CEO", ab_f2v:"Hyeran Lee",
+    ab_f3l:"HQ", ab_f3v:"317 Bongeunsa-ro, Gangnam-gu, Seoul",
+    ab_f4l:"Bases", ab_f4v:"Seoul · Hainan · Hangzhou · Taiwan",
+    ab_f5l:"Slogan",
+    pr_eye:"The Problem", pr_h2:"Sound familiar?",
+    pr_sub:"Agencies only did the casting and the upload — the results were left to the brand.",
+    pr_q1:"\"Paid the influencer, got no sales\"", pr_p1:"Casting on follower count without checking real sales or conversion meant no ROI.",
+    pr_q2:"\"Opened the account, followers won't grow\"", pr_p2:"Without local-language reviews and content, traffic had no reason to convert into purchase.",
+    pr_q3:"\"After uploading, they went silent\"", pr_p3:"One-off campaigns left no repeat purchase and no data — every time started from scratch.",
+    hw_eye:"How It Works", hw_h2:"From diagnosis to sales, one flow",
+    hw_sub:"Start with the free check, then step up to the stage that matches your readiness.",
+    hw_s1h:"Diagnose", hw_s1p:"20 questions reveal your readiness and your #1 route. (Free)",
+    hw_s2h:"Basic Solution", hw_s2p:"A report on your brand's issues and how to fix them. ₩99K.",
+    hw_s3h:"Match & Operate", hw_s3p:"Match influencers with real-sales data and run your channels.",
+    hw_s4h:"Sales & Logistics", hw_s4p:"Close the loop with cross-border fulfillment: orders, customs, settlement.",
+    pc_eye:"Pricing", pc_h2:"Start light, from ₩99K",
+    pc_sub:"Once you start, you step up in stages that match your readiness.",
+    pc_badge1:"Start here", pc_t1:"STEP 1 · Basic Solution Report",
+    pc_pr1:"99,000<small>KRW</small>", pc_d1:"Consulting on your brand's current issues and fixes",
+    pc_1l1:"6-axis readiness diagnosis", pc_1l2:"<b>Current brand issue analysis</b>",
+    pc_1l3:"<b>Issue-by-issue solution consulting</b>", pc_1l4:"Brand naming proposal (Chinese naming)",
+    pc_1l5:"Core keywords + China similar-product & market research",
+    pc_1l6:"<b>Brand deep-dive questionnaire</b> sent after payment",
+    pc_btn1:"₩99,000 · Pay now",
+    pc_t2:"STEP 2 · Premium Report", pc_pr2:"660,000<small>KRW</small>", pc_d2:"Lock in your China pricing strategy too",
+    pc_2l1:"Everything in the Basic Solution Report", pc_2l2:"Korea online <b>lowest-price check</b>",
+    pc_2l3:"China similar-product <b>average-price analysis</b>", pc_2l4:"<b>Real influencer list-up</b>",
+    pc_2l5:"China <b>price-structure solution</b>", pc_2l6:"<b>Influencer matching card (1x)</b>",
+    pc_2l7:"<b>30-min online meeting</b> (solution walk-through)",
+    pc_btn2:"₩660,000 · Pay now",
+    pc_badge3:"Launch 50% off · first 3 only", pc_t3:"STEP 3 · Match & Operate",
+    pc_pr3:"₩10M<small>/mo</small>",
+    pc_d3:"<s style='color:var(--muted)'>₩10M/mo</s> → <b style='color:var(--accent)'>launch price ₩5M/mo</b> (first 3 only) · <b>min. 6-month contract</b>",
+    pc_3l1:"Account setup & operation", pc_3l2:"<b>20 influencer matching campaigns / month</b>",
+    pc_3l3:"Local-language content production", pc_3l4:"Cross-border logistics & settlement <b>connection guide</b>",
+    pc_3l5:"<b>Cross-border mall entry docs pre-collected & handled</b> (by category & platform)",
+    pc_3l6:"<b>Entry opportunity to the Hangzhou O2O live-commerce base</b>",
+    pc_3l7:"<b>Fixed 5% performance commission</b>", pc_3l8:"Minimum <b>6-month</b> contract",
+    pc_btn3:"Request consultation", pc_btn3b:"₩10M/mo · Subscribe",
+    pc_note:"Card & easy-pay are processed securely via Toss Payments. A manager contacts you within 1 business day.<br>A registered business? <a href='#' id='taxOpen' style='color:var(--accent);font-weight:700;text-decoration:underline'>Need a tax invoice? Click here</a> (bank transfer)",
+    sg_eye:"For Local Store", sg_h2:"Local-Store Package · for offline shop owners",
+    sg_sub:"Have a shop but can't capture foreign customers? We bring Greater-China tourists to your store via Xiaohongshu.",
+    sg_info_h:"What we do for you",
+    sg_i1:"Open a Xiaohongshu <b>Blue-Label (verified business) account</b> <span style='color:var(--accent2);font-size:12.5px'>— domestic corporations only</span>",
+    sg_i2:"<b>8–10 content posts / month</b> (image card-news + 1–2 short videos)",
+    sg_i3:"Basic keyword tagging · search exposure optimization",
+    sg_i4:"Comment monitoring & response",
+    sg_i5:"Drive foreign-customer visits (coupon & reservation linkage)",
+    sg_i6:"<b>WeChat business-card linkage & upkeep</b> (for booking/consultation) <span style='color:var(--accent2);font-size:12px'>— required</span>",
+    sg_i7:"<b>Free maintenance every 14 days</b> (card & content check)",
+    sg_info_note:"Ideal for tourist-district shops (restaurants, cafés, beauty, pharmacy, select shops) in Myeongdong, Hongdae, Gangnam, etc.",
+    sg_must_tag:"Required to join · one-time", sg_must_label:"Blue-Label account setup fee", sg_must_amt:"₩1M",
+    sg_must_note:"Cost to open & set up the verified business account. Paid once before operations begin (required). <b style='color:var(--accent2)'>※ Blue-Label can only be opened by a domestic corporation (business registration).</b>",
+    sg_must_btn:"Setup fee ₩1M · Pay & start",
+    sg_run1_l:"Monthly operation fee", sg_run1_v:"₩1M/mo",
+    sg_run2_l:"WeChat card upkeep <b style='color:var(--accent2);font-size:10.5px'>required</b>", sg_run2_v:"₩1M/yr",
+    sg_run3_l:"Foreign-customer acquisition fee", sg_run3_v:"10% per visit",
+    sg_run_note:"After setup it converts to a monthly operation contract. We keep your <b>WeChat business card running</b> each month for booking/consultation, with <b>free maintenance every 14 days</b>. A fee applies only when we bring you a customer.",
+    sg_run_btn:"Request operation consult",
+    ld_eye:"For First China · AIKUA Leaders Program", ld_h2:"If you've never been to China",
+    ld_sub:"A quarterly workation for owners facing a daunting China market. See the field in person and get a feel for it.",
+    ld_b1:"Batch 1 · Oct 30–Nov 1 — 10 seats closed",
+    ld_b2:"Batch 2 · late November — now recruiting",
+    ld_info_h:"3 days of seeing and learning in Hangzhou",
+    ld_l1:"Visit a Hangzhou <b>influencer company</b> — the live-commerce floor",
+    ld_l2:"Visit an <b>AI company</b> — experience China commerce tech",
+    ld_l3:"China <b>culture & market</b> workation",
+    ld_l4:"Networking with other owners preparing to enter",
+    ld_note:"A fit for brand owners who are new to China or need to understand the market.",
+    ld_amt_l:"Fee (per person) · Batch 2", ld_amt:"₩3M",
+    ld_inc1:"✓ Round-trip airfare", ld_inc2:"✓ Hotel stay (twin room)",
+    ld_inc3:"✓ Influencer & AI company visits", ld_inc4:"✓ Local itinerary & interpreter",
+    ld_btn1:"Apply for Batch 2 · Pay ₩3M", ld_btn2:"Ask first",
+    ld_pnote:"Batch 1 (Oct 30–Nov 1) is closed at 10. Batch 2 dates will be shared individually once confirmed.",
+    bd_h2:"Start with a free check", bd_p:"20 questions, 3 minutes — see your brand's readiness and the path to take.",
+    bd_btn:"Start free check",
+    ft_tag:"Unbox Your Global Market", ft_op:"Operated by AIKUA Group Inc.", ft_ask:"Inquiries",
+    ft_copy:"© 2026 AIKUA Group. Estimates in reports do not guarantee returns.",
+    tx_h:"Tax-invoice payment",
+    tx_p:"Leave your business details and pay by <b>bank transfer</b>; after we confirm the deposit we issue an <b>electronic tax invoice</b>. (Card payments are covered by the sales slip, so no duplicate tax invoice is issued.)",
+    tx_item_l:"Payment item",
+    tx_opt1:"Basic Solution Report (₩99K)", tx_opt2:"Premium Report (₩660K)",
+    tx_opt3:"Local-store Blue-Label setup fee (₩1M)", tx_opt4:"Local-store monthly fee (₩1M)",
+    tx_opt5:"Other (enter amount)",
+    tx_amt_l:"Amount (KRW)", tx_biz_l:"Business registration no.", tx_comp_l:"Company name", tx_comp_ph:"Glowleaf Inc.",
+    tx_ceo_l:"Representative name", tx_email_l:"Email to receive the tax invoice",
+    tx_pay_btn:"Pay by transfer · request tax invoice", tx_close:"Close",
+    cs_h:"Request consultation", cs_p:"Leave your contact and a manager will reach out within 1 business day.",
+    cs_name_l:"Name / Brand", cs_name_ph:"John Doe / Glowleaf", cs_phone_l:"Phone",
+    cs_send:"Submit", cs_close:"Close"
+  },
+  zh: {
+    nav_about:"关于我们", nav_problem:"痛点", nav_how:"流程", nav_pricing:"价格",
+    nav_sangong:"实体门店", nav_leaders:"领航营", nav_free:"免费诊断",
+    hero_kick:"Unbox Your Global Market",
+    hero_h1:"进军中国，<br><span class='o'>陪您做到出单为止</span>",
+    hero_lead:"投了网红却没有销量？问题不在网红，而在匹配标准与运营的空缺。<br>携中国专业团队创造3,000亿韩元出口业绩的第一代韩国网红，用数据<b style='color:var(--accent2)'>从0开始</b>分析，匹配合适的网红，一路连接到<b style='color:var(--accent2)'>第一笔真实销量。</b>",
+    hero_cta1:"9.9万韩元起步", hero_cta2:"查看服务流程",
+    hero_micro:"100万粉丝 · 3,000亿出口业绩 · 6,000名网红网络 · 自有跨境物流",
+    trust_v1:"100万", trust_l1:"第一代韩国网红粉丝",
+    trust_v2:"3,000亿", trust_l2:"韩国品牌出口业绩",
+    trust_v3:"6,000名", trust_l3:"在线协作网红网络",
+    trust_v4:"跨境", trust_l4:"自有物流与出口流程",
+    ab_kicker:"集团概览 · 艾库亚集团",
+    ab_h2:"以AI与现场经验，抹去品牌的国界",
+    ab_lead:"<b>艾库亚集团（AIKUA Group）</b>是一家以K-文化与AI助力品牌跨越国界的<b>跨境品牌·电商集团</b>。‘AIKUA’取自<span class='hl'>AI</span>与‘跨（Kua）’的结合——以技术加上人的现场经验，跨越一切边界。基于自2015年起的中华圈销售现场经验，集团于2019年成立。我们把韩国品牌带向世界，把全球品牌引入中华圈。",
+    ab_s1u:"年+", ab_s1l:"中华圈电商现场经验（2015年起）",
+    ab_s2l:"全球协作网红 · 覆盖49国的分发网络",
+    ab_s3u:"万", ab_s3l:"新媒体累计触达",
+    ab_s4u:"种语言", ab_s4l:"内容本地化能力",
+    ab_mission:"结合AI与人的现场经验，<br>让任何人都能把货卖到国界之外。",
+    ab_vision:"成为K-品牌出海的全球门户。",
+    ab_wwd_h:"我们做什么",
+    wwd1k:"传播", wwd1d:"借媒体与渠道传播",
+    wwd2k:"寻找", wwd2d:"用数据寻找市场与客户",
+    wwd3k:"连接", wwd3d:"连接合适的网红与伙伴",
+    wwd4k:"销售", wwd4d:"通过直播与电商销售",
+    wwd5k:"培育", wwd5d:"以复购与品牌培育成长",
+    ab_f1l:"成立", ab_f1v:"2019年1月",
+    ab_f2l:"首席执行官", ab_f2v:"李慧兰",
+    ab_f3l:"总部", ab_f3v:"首尔江南区奉恩寺路317",
+    ab_f4l:"据点", ab_f4v:"首尔 · 海南 · 杭州 · 台湾",
+    ab_f5l:"口号",
+    pr_eye:"痛点", pr_h2:"是不是很熟悉？",
+    pr_sub:"代理只做到邀约与上传，结果却留给品牌自己扛。",
+    pr_q1:"\"给了网红钱，却没有销量\"", pr_p1:"不核实真实销量与转化、只看粉丝数就邀约，ROI自然出不来。",
+    pr_q2:"\"账号开了，粉丝却涨不起来\"", pr_p2:"没有本地语言的口碑与内容，就算来了流量也没有转化为购买的理由。",
+    pr_q3:"\"上传完就不管了\"", pr_p3:"一次性投放，没有复购也没有数据沉淀，每次都从头再来。",
+    hw_eye:"服务流程", hw_h2:"从诊断到销量，一条龙",
+    hw_sub:"从免费诊断开始，再按准备度逐级进阶。",
+    hw_s1h:"诊断", hw_s1p:"20道题看清出海准备度与首选路径。（免费）",
+    hw_s2h:"基础方案", hw_s2p:"一份涵盖品牌现状问题与解决方案的报告。9.9万韩元。",
+    hw_s3h:"匹配·运营", hw_s3p:"用真实销量数据匹配网红并运营渠道。",
+    hw_s4h:"销量·物流", hw_s4p:"以跨境履约闭环，覆盖下单·通关·结算。",
+    pc_eye:"价格", pc_h2:"9.9万韩元，轻松起步",
+    pc_sub:"一旦开始，便按准备度分阶段进阶。",
+    pc_badge1:"从这里开始", pc_t1:"STEP 1 · 基础方案报告",
+    pc_pr1:"99,000<small>韩元</small>", pc_d1:"针对品牌当前问题与解决方案的咨询",
+    pc_1l1:"6个维度的准备度诊断", pc_1l2:"<b>品牌现状问题分析</b>",
+    pc_1l3:"<b>逐项问题解决方案咨询</b>", pc_1l4:"品牌命名提案（中文起名）",
+    pc_1l5:"核心关键词 + 中国同类产品·市场调研",
+    pc_1l6:"付款后发送<b>品牌深度问卷</b>",
+    pc_btn1:"9.9万韩元 · 立即支付",
+    pc_t2:"STEP 2 · 精准报告", pc_pr2:"660,000<small>韩元</small>", pc_d2:"连中国市场定价策略一并敲定",
+    pc_2l1:"包含基础方案报告全部内容", pc_2l2:"韩国线上<b>最低价核查</b>",
+    pc_2l3:"中国同类产品<b>均价分析</b>", pc_2l4:"<b>真实网红清单</b>",
+    pc_2l5:"中国市场<b>价格结构方案</b>", pc_2l6:"<b>网红匹配卡制作1次</b>",
+    pc_2l7:"<b>线上30分钟会议</b>（方案讲解）",
+    pc_btn2:"66万韩元 · 立即支付",
+    pc_badge3:"开业庆5折 · 限前3家", pc_t3:"STEP 3 · 匹配·运营陪跑",
+    pc_pr3:"月 1,000<small>万韩元</small>",
+    pc_d3:"<s style='color:var(--muted)'>月1,000万韩元</s> → <b style='color:var(--accent)'>开业价 月500万韩元</b>（限前3家）· <b>基础合约6个月以上</b>",
+    pc_3l1:"账号搭建·运营", pc_3l2:"<b>每月20名网红匹配投放</b>",
+    pc_3l3:"本地语言内容制作", pc_3l4:"跨境物流·结算<b>对接指引</b>",
+    pc_3l5:"<b>跨境商城入驻材料预先收集·代办</b>（按品类·平台）",
+    pc_3l6:"<b>提供入驻杭州O2O网红直播基地的机会</b>",
+    pc_3l7:"<b>业绩佣金固定5%</b>", pc_3l8:"基础合约<b>6个月以上</b>",
+    pc_btn3:"申请咨询", pc_btn3b:"月1,000万 · 订阅",
+    pc_note:"卡支付·便捷支付由Toss Payments安全处理。付款后1个工作日内专员与您联系。<br>您是企业客户吗？<a href='#' id='taxOpen' style='color:var(--accent);font-weight:700;text-decoration:underline'>需要增值税发票请点这里</a>（银行转账）",
+    sg_eye:"实体门店", sg_h2:"实体门店套餐 · 线下店主专属",
+    sg_sub:"有店却抓不住外国客人？我们从小红书把中华圈游客带进您的门店。",
+    sg_info_h:"我们为您做什么",
+    sg_i1:"开通小红书<b>蓝标（企业认证）账号</b> <span style='color:var(--accent2);font-size:12.5px'>— 仅限本国法人</span>",
+    sg_i2:"<b>每月发布8~10条内容</b>（以图文卡片为主 + 1~2条短视频）",
+    sg_i3:"基础关键词标签 · 搜索曝光优化",
+    sg_i4:"评论监测·回复",
+    sg_i5:"引导外国客人到店（优惠券·预约联动）",
+    sg_i6:"<b>微信名片对接·维护</b>（用于客户预约咨询·管理）<span style='color:var(--accent2);font-size:12px'>— 必需</span>",
+    sg_i7:"<b>每14天免费维护</b>（名片·内容检查）",
+    sg_info_note:"适合明洞·弘大·江南等旅游商圈门店（餐饮·咖啡·美妆·药妆·买手店）。",
+    sg_must_tag:"入会必需 · 一次性", sg_must_label:"蓝标账号开通费", sg_must_amt:"100万韩元",
+    sg_must_note:"企业认证账号的开通·搭建费用。运营开始前一次性缴纳（必需）。<b style='color:var(--accent2)'>※ 蓝标仅限本国法人（工商注册）开通。</b>",
+    sg_must_btn:"开通费100万韩元 · 支付并开始",
+    sg_run1_l:"月运营固定费", sg_run1_v:"月100万韩元",
+    sg_run2_l:"微信名片对接维护费 <b style='color:var(--accent2);font-size:10.5px'>必需</b>", sg_run2_v:"年100万韩元",
+    sg_run3_l:"外国客人引流佣金", sg_run3_v:"每位10%",
+    sg_run_note:"开通后转为月运营合约。为持续维护用于客户预约咨询·管理的<b>微信名片</b>，我们每月运营·管理，并<b>每14天免费维护</b>。仅在为您带来客人时才产生佣金。",
+    sg_run_btn:"申请运营咨询",
+    ld_eye:"For First China · 艾库亚领航营", ld_h2:"如果您从未去过中国",
+    ld_sub:"为面对陌生中国市场的店主准备的季度workation。亲临现场，找到感觉再回来。",
+    ld_b1:"第1期 · 10.30~11.1 — 10席已满",
+    ld_b2:"第2期 · 11月底预定 — 招募中",
+    ld_info_h:"在杭州亲眼看、亲身学的3天",
+    ld_l1:"参观杭州<b>网红公司</b> — 直播电商现场",
+    ld_l2:"参观<b>AI公司</b> — 体验中国电商科技",
+    ld_l3:"中国<b>文化·市场体验</b>workation",
+    ld_l4:"与备战出海的众多店主交流",
+    ld_note:"适合初次进入中国、或需要了解市场的品牌负责人。",
+    ld_amt_l:"参加费（每人）· 第2期", ld_amt:"300万韩元",
+    ld_inc1:"✓ 往返机票", ld_inc2:"✓ 酒店住宿（双人间）",
+    ld_inc3:"✓ 网红·AI公司参观", ld_inc4:"✓ 当地行程·翻译陪同",
+    ld_btn1:"报名第2期 · 支付300万韩元", ld_btn2:"先咨询",
+    ld_pnote:"第1期（10.30~11.1）已满10人。第2期日期确定后将单独通知。",
+    bd_h2:"先做个免费诊断吧", bd_p:"20道题3分钟，看清您品牌的出海准备度与应走的路。",
+    bd_btn:"开始免费诊断",
+    ft_tag:"Unbox Your Global Market", ft_op:"运营方 艾库亚集团", ft_ask:"咨询",
+    ft_copy:"© 2026 AIKUA Group. 报告中的推算不保证收益。",
+    tx_h:"增值税发票支付",
+    tx_p:"留下企业信息并以<b>银行转账</b>支付，确认到款后为您开具<b>电子增值税发票</b>。（卡支付以销售凭证为准，不重复开具发票。）",
+    tx_item_l:"支付项目",
+    tx_opt1:"基础方案报告（9.9万韩元）", tx_opt2:"精准报告（66万韩元）",
+    tx_opt3:"实体店蓝标开通费（100万韩元）", tx_opt4:"实体店月运营费（100万韩元）",
+    tx_opt5:"其他（手动输入金额）",
+    tx_amt_l:"支付金额（韩元）", tx_biz_l:"工商注册号", tx_comp_l:"企业名称", tx_comp_ph:"Glowleaf 公司",
+    tx_ceo_l:"法人代表姓名", tx_email_l:"接收发票的邮箱",
+    tx_pay_btn:"转账支付 · 申请发票", tx_close:"关闭",
+    cs_h:"申请咨询", cs_p:"留下联系方式，专员将在1个工作日内与您联系。",
+    cs_name_l:"姓名 / 品牌", cs_name_ph:"张三 / Glowleaf", cs_phone_l:"联系方式",
+    cs_send:"提交", cs_close:"关闭"
+  }
+};
+
+(function(){
+  var KO_SNAPSHOT = {}, PH_KO = {};
+  // 최초 1회: HTML에 적힌 한국어 원문을 스냅샷으로 저장
+  document.querySelectorAll("[data-i18n]").forEach(function(el){
+    KO_SNAPSHOT[el.getAttribute("data-i18n")] = el.innerHTML;
+  });
+  document.querySelectorAll("[data-i18n-ph]").forEach(function(el){
+    PH_KO[el.getAttribute("data-i18n-ph")] = el.getAttribute("placeholder") || "";
+  });
+
+  function apply(lang){
+    var dict = (lang === "ko") ? null : I18N[lang];
+    document.querySelectorAll("[data-i18n]").forEach(function(el){
+      var k = el.getAttribute("data-i18n");
+      var v = dict ? dict[k] : KO_SNAPSHOT[k];
+      if (v == null) v = KO_SNAPSHOT[k];   // 번역 누락 시 한국어로 폴백
+      if (v != null) el.innerHTML = v;
+    });
+    document.querySelectorAll("[data-i18n-ph]").forEach(function(el){
+      var k = el.getAttribute("data-i18n-ph");
+      var v = dict ? dict[k] : PH_KO[k];
+      if (v == null) v = PH_KO[k];
+      if (v != null) el.setAttribute("placeholder", v);
+    });
+    document.documentElement.setAttribute("lang", lang === "zh" ? "zh-CN" : lang);
+    document.querySelectorAll(".langsw button").forEach(function(b){
+      b.classList.toggle("on", b.getAttribute("data-lang") === lang);
+    });
+    rebindTaxOpen(); // paynote가 교체되며 #taxOpen 링크가 새로 생기므로 재연결
+    try { localStorage.setItem("aikua_lang", lang); } catch(e){}
+  }
+
+  document.querySelectorAll(".langsw button").forEach(function(b){
+    b.addEventListener("click", function(){ apply(b.getAttribute("data-lang")); });
+  });
+
+  // paynote 안의 #taxOpen 은 언어 전환 때마다 새 노드가 됨 → 이벤트 재바인딩 함수
+  // (apply() 내부에서 호출되므로 apply(saved) 보다 먼저 정의해야 함)
+  window.rebindTaxOpen = function(){
+    var t = document.getElementById("taxOpen");
+    if (t && !t._bound){
+      t._bound = true;
+      t.addEventListener("click", function(e){ e.preventDefault(); document.getElementById("taxModal").classList.add("open"); });
+    }
+  };
+
+  var saved = "ko";
+  try { saved = localStorage.getItem("aikua_lang") || "ko"; } catch(e){}
+  if (!I18N[saved] && saved !== "ko") saved = "ko";
+  // 기본(ko)은 HTML 그대로 두되 버튼 활성표시를 맞추고, en/zh면 즉시 치환
+  apply(saved);
+})();
+
+/* =========================================================================
+   결제 — 각 결제 버튼은 결제위젯 페이지(checkout.html)로 이동해 결제합니다.
+   토스 클라이언트 키는 checkout.html 안에서 설정합니다(결제위젯 방식).
+   ========================================================================= */
+function uid(p){ return p + "_" + Date.now() + "_" + Math.random().toString(36).slice(2,8); }
+
+document.querySelectorAll("[data-pay]").forEach(function(btn){
+  btn.addEventListener("click", function(){
+    var amount = btn.getAttribute("data-amount");
+    var name = btn.getAttribute("data-name");
+    var nda = btn.getAttribute("data-nda") === "1" ? "&nda=1" : "";
+    location.href = "checkout.html?amount=" + encodeURIComponent(amount) + "&name=" + encodeURIComponent(name) + nda;
+  });
+});
+// 월 정기결제(구독·빌링) 버튼 → subscribe.html (자동결제 결제창)
+document.querySelectorAll("[data-subscribe]").forEach(function(btn){
+  btn.addEventListener("click", function(){
+    var amount = btn.getAttribute("data-amount");
+    var name = btn.getAttribute("data-name");
+    location.href = "subscribe.html?amount=" + encodeURIComponent(amount) + "&name=" + encodeURIComponent(name);
+  });
+});
+// 아이콰 리더스 → 소개 경로 입력 후 결제
+(function(){
+  var refModal = document.getElementById("refModal");
+  if(!refModal) return;
+  var cur = { amount:0, name:"" };
+  function qty(){ var q=parseInt((document.getElementById("refQty")||{}).value,10)||1; return Math.min(10,Math.max(1,q)); }
+  function refresh(){
+    var unit = cur.amount||0, n = qty(), total = unit*n;
+    var go = document.getElementById("refGo");
+    if(go) go.textContent = (total ? (total/10000).toLocaleString()+"만원 " : "") + "결제 진행";
+    var t = document.getElementById("refTotal");
+    if(t) t.innerHTML = unit ? ("1인 "+(unit/10000).toLocaleString()+"만원 × "+n+"명 = <b style='color:var(--ink)'>"+(total/10000).toLocaleString()+"만원</b>") : "";
+  }
+  document.querySelectorAll("[data-leaders]").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      cur.amount = parseInt(btn.getAttribute("data-amount"),10)||0;
+      cur.name = btn.getAttribute("data-name");
+      var sel = document.getElementById("refSel"); if(sel) sel.value = "";
+      document.getElementById("refEtcWrap").hidden = true;
+      var qs = document.getElementById("refQty"); if(qs) qs.value = "1";
+      refresh();
+      refModal.classList.add("open");
+    });
+  });
+  document.getElementById("refSel").addEventListener("change", function(){
+    document.getElementById("refEtcWrap").hidden = (this.value !== "__etc");
+  });
+  document.getElementById("refQty").addEventListener("change", refresh);
+  document.getElementById("refClose").addEventListener("click", function(){ refModal.classList.remove("open"); });
+  refModal.addEventListener("click", function(e){ if(e.target===refModal) refModal.classList.remove("open"); });
+  document.getElementById("refGo").addEventListener("click", function(){
+    var sel = document.getElementById("refSel").value;
+    var ref = (sel === "__etc") ? document.getElementById("refEtc").value.trim() : sel;
+    if(!ref){ alert("소개 경로를 선택하거나 입력해주세요."); return; }
+    var n = qty(), total = (cur.amount||0)*n;
+    var name = cur.name + " · " + n + "명 · 소개: " + ref;
+    location.href = "checkout.html?amount=" + encodeURIComponent(total) + "&name=" + encodeURIComponent(name) + "&ref=" + encodeURIComponent(ref);
+  });
+})();
+
+/* ===== 리더스 옵션1: 얼리버드(10/26까지 50만원) → 이후 100만원 자동 전환 ===== */
+(function(){
+  var btn = document.getElementById("ldOpt1Btn");
+  if(!btn) return;
+  var deadline = new Date("2026-10-27T00:00:00+09:00"); // 10/26 24:00(KST) 마감
+  if(new Date() >= deadline){
+    btn.setAttribute("data-amount","1000000");
+    btn.textContent = "100만원 · 결제";
+    var amtEl = document.getElementById("ldOpt1Amt"); if(amtEl) amtEl.innerHTML = "<b>100만원</b>";
+    var badge = document.getElementById("ldOpt1Badge"); if(badge) badge.style.display = "none";
+  }
+})();
+
+/* ===== AI 상담봇 ===== 아이콰그룹 지식 기반 안내봇(한/영/중). 서버·API 키 불필요. */
+var modal = document.getElementById("consultModal");
+var MAILTO = "mailto:info@aikuagroup.com";
+
+var BOT = {
+  ko: {
+    hi: "안녕하세요! AIKUA BOX 상담봇입니다. 😊\n㈜아이콰그룹은 1세대 한국 왕홍과 중국 전문팀이 브랜드의 중국 진출을 매출까지 책임지는 크로스보더 그룹이에요.\n무엇이 궁금하세요? 아래에서 고르시거나 직접 입력해 주세요.",
+    starts: ["svc","match","logi","proof","sangong","leaders","contact"],
+    labels: { svc:"서비스·가격", match:"왕홍 매칭", logi:"콰징·물류", proof:"실적·신뢰", sangong:"매장(소상공인)", leaders:"리더스 워케이션", contact:"상담 연결 💬" },
+    ans: {
+      svc:"AIKUA BOX는 단계별로 도와드려요.\n• 베이직 솔루션 보고서 — 9.9만원\n• 정밀 리포트 — 66만원\n• 매칭·운영 동행 — 월 1,000만원 (오픈가 월 500만·선착순 3곳)\n• 소상공인 블루라벨 패키지\n• 아이콰 리더스 항저우 워케이션 — 300만원\n무료 진단부터 시작하실 수 있어요.",
+      match:"6,000명 현역 왕홍 네트워크에서 브랜드·카테고리에 맞는 왕홍을 데이터로 매칭합니다. 매칭·운영 동행은 매달 20명 캠페인 + 성과 수수료 5% 고정이에요.",
+      logi:"콰징(크로스보더) 물류·통관·정산 프로세스를 보유하고 있어요. 콰징몰 입점 서류도 카테고리·플랫폼별로 사전에 준비해 드리고, 항저우 O2O 왕홍 라이브기지 입점 기회도 있어요.",
+      proof:"㈜아이콰그룹은 1세대 한국 왕홍(팔로워 100만), 한국 브랜드 중국 수출 3,000억 레퍼런스, 6,000명 왕홍 네트워크를 보유하고 있어요. 하이난·항저우·대만에 거점이 있습니다.",
+      sangong:"매장이 있으시면 샤오홍슈 블루라벨(기업인증) 계정으로 중화권 관광객을 매장으로 모십니다.\n개설비 100만원(1회) + 월 운영 100만원, 외국인 유치 수수료 10%예요.\n※ 블루라벨은 국내법인(사업자등록)만 개설 가능합니다.",
+      leaders:"아이콰 리더스는 중국이 처음인 대표님을 위한 항저우 워케이션이에요. 왕홍·AI 회사 견학 + 문화 경험 2박3일, 참가비 300만원(항공·호텔·통역 포함). 1차는 마감, 2차는 11월 말 예정이에요."
+    },
+    askBrand:"상담 연결해 드릴게요! 어떤 브랜드·제품을 하고 계신가요? 한 줄로 적어주세요. (예: 더마 스킨케어 '글로우리프')",
+    close:"감사합니다! 마지막으로, 아이콰그룹 info@aikuagroup.com 으로 명함을 보내주시면 담당자가 확인 후 연락드리겠습니다. 🙌",
+    mail:"📧 명함 메일 보내기",
+    more:"더 궁금한 점이 있으세요?",
+    fallback:"바로 답변이 어려운 질문이네요. 담당자가 정확히 안내해 드릴게요.",
+    subject:"[AIKUA BOX 상담 신청]", bodyHi:"아래에 명함을 첨부하거나 연락처를 남겨주세요.\n\n- 브랜드/제품: \n- 연락처: \n- 문의 내용: "
+  },
+  en: {
+    hi: "Hi! I'm the AIKUA BOX assistant. 😊\nAIKUA Group is a cross-border group where a 1st-gen Korean wanghong and a China team take your brand all the way to real sales.\nWhat would you like to know? Pick below or just type.",
+    starts: ["svc","match","logi","proof","sangong","leaders","contact"],
+    labels: { svc:"Services·Pricing", match:"Influencer matching", logi:"Cross-border·Logistics", proof:"Track record", sangong:"Local store", leaders:"Leaders workation", contact:"Talk to us 💬" },
+    ans: {
+      svc:"AIKUA BOX helps you step by step.\n• Basic Solution Report — ₩99,000\n• Premium Report — ₩660,000\n• Match & Operate — ₩10M/mo (launch ₩5M/mo, first 3 only)\n• Local-store Blue-Label package\n• AIKUA Leaders Hangzhou workation — ₩3M\nYou can start with a free check.",
+      match:"From a 6,000-strong active influencer network, we match the right ones to your brand/category with data. Match & Operate runs 20 campaigns/month with a fixed 5% performance fee.",
+      logi:"We own cross-border logistics·customs·settlement processes, pre-prepare mall-entry documents by category/platform, and offer entry to the Hangzhou O2O live-commerce base.",
+      proof:"AIKUA Group has a 1st-gen Korean wanghong (1M followers), a KRW 300B Korean-brand export track record, and a 6,000 influencer network, with bases in Hainan·Hangzhou·Taiwan.",
+      sangong:"If you have a store, we bring Greater-China tourists in via a Xiaohongshu Blue-Label (verified) account.\nSetup ₩1M (once) + ₩1M/mo operation, 10% acquisition fee per visit.\n※ Blue-Label requires a domestic (Korean) corporation.",
+      leaders:"AIKUA Leaders is a Hangzhou workation for owners new to China — influencer·AI company visits + culture, 3 days, ₩3M (flights·hotel·interpreter included). Batch 1 is closed; Batch 2 is set for late November."
+    },
+    askBrand:"Happy to connect you! What brand/product do you run? One line is fine. (e.g., derma skincare 'Glowleaf')",
+    close:"Thank you! Finally, please email your business card to info@aikuagroup.com and our team will review and get back to you. 🙌",
+    mail:"📧 Email your business card",
+    more:"Anything else you'd like to know?",
+    fallback:"That's a bit beyond a quick answer — our team will guide you precisely.",
+    subject:"[AIKUA BOX Consultation]", bodyHi:"Please attach your business card or leave your contact below.\n\n- Brand/Product: \n- Contact: \n- Inquiry: "
+  },
+  zh: {
+    hi: "您好！我是 AIKUA BOX 咨询助手。😊\n艾库亚集团由第一代韩国网红与中国专业团队组成，陪品牌进军中国直到真正出单。\n您想了解什么？可在下方选择或直接输入。",
+    starts: ["svc","match","logi","proof","sangong","leaders","contact"],
+    labels: { svc:"服务·价格", match:"网红匹配", logi:"跨境·物流", proof:"业绩·信任", sangong:"实体门店", leaders:"领航营", contact:"联系我们 💬" },
+    ans: {
+      svc:"AIKUA BOX 分阶段为您服务。\n• 基础方案报告 — 99,000韩元\n• 精准报告 — 660,000韩元\n• 匹配·运营陪跑 — 月1,000万韩元（开业价月500万·限前3家）\n• 实体店蓝标套餐\n• 艾库亚领航营 杭州workation — 300万韩元\n可从免费诊断开始。",
+      match:"从6,000名在线网红网络中，用数据为您的品牌·品类匹配合适网红。匹配·运营陪跑为每月20名投放 + 业绩佣金固定5%。",
+      logi:"我们拥有跨境物流·通关·结算流程，按品类·平台预先准备入驻材料，并提供入驻杭州O2O网红直播基地的机会。",
+      proof:"艾库亚集团拥有第一代韩国网红（100万粉丝）、韩国品牌对华出口3,000亿业绩、6,000名网红网络，并在海南·杭州·台湾设有据点。",
+      sangong:"如果您有门店，我们通过小红书蓝标（企业认证）账号把中华圈游客带到店里。\n开通费100万韩元（一次）+ 月运营100万韩元，引流佣金每位10%。\n※ 蓝标仅限韩国本国法人开通。",
+      leaders:"领航营是为初次进入中国的负责人准备的杭州workation——参观网红·AI公司+文化体验，2晚3天，300万韩元（含机票·酒店·翻译）。第1期已满，第2期预定11月底。"
+    },
+    askBrand:"很高兴为您对接！您做的是什么品牌·产品？一句话即可。（例：药妆护肤'Glowleaf'）",
+    close:"谢谢！最后，请把名片发送至 info@aikuagroup.com，我们的专员确认后会与您联系。🙌",
+    mail:"📧 发送名片邮件",
+    more:"还有其他想了解的吗？",
+    fallback:"这个问题需要专员为您详细解答。",
+    subject:"[AIKUA BOX 咨询]", bodyHi:"请在下方附上名片或留下联系方式。\n\n- 品牌/产品: \n- 联系方式: \n- 咨询内容: "
+  }
+};
+function botLang(){ var l=document.documentElement.getAttribute("lang")||"ko"; return l.indexOf("zh")===0?"zh":(l.indexOf("en")===0?"en":"ko"); }
+
+var chatLog=document.getElementById("chatLog"), chatQuick=document.getElementById("chatQuick"), chatInput=document.getElementById("chatInput");
+var botState="idle";
+function addMsg(text, who){
+  var d=document.createElement("div"); d.className="msg "+(who||"bot"); d.textContent=text;
+  chatLog.appendChild(d); chatLog.scrollTop=chatLog.scrollHeight;
+}
+function setQuick(ids){
+  var B=BOT[botLang()]; chatQuick.innerHTML="";
+  (ids||[]).forEach(function(id){
+    var b=document.createElement("button"); b.textContent=B.labels[id]; b.onclick=function(){ handle(id); };
+    chatQuick.appendChild(b);
+  });
+}
+function mailButton(){
+  var B=BOT[botLang()]; chatQuick.innerHTML="";
+  var a=document.createElement("button"); a.className="mail"; a.textContent=B.mail;
+  a.onclick=function(){
+    window.location.href = MAILTO + "?subject=" + encodeURIComponent(B.subject) + "&body=" + encodeURIComponent(B.bodyHi);
+  };
+  chatQuick.appendChild(a);
+}
+function botReplyTopic(id){
+  var B=BOT[botLang()];
+  if(id==="contact"){ botState="askBrand"; addMsg(B.askBrand,"bot"); chatQuick.innerHTML=""; chatInput.focus(); return; }
+  if(B.ans[id]){ addMsg(B.ans[id],"bot"); addMsg(B.more,"bot"); setQuick(B.starts); }
+}
+function handle(id){ var B=BOT[botLang()]; addMsg(B.labels[id],"user"); botReplyTopic(id); }
+function freeText(txt){
+  var B=BOT[botLang()]; addMsg(txt,"user");
+  if(botState==="askBrand"){ botState="done"; addMsg(B.close,"bot"); mailButton(); return; }
+  // 간단 키워드 매칭
+  var t=txt.toLowerCase();
+  var map=[["svc",["가격","비용","서비스","얼마","price","cost","service","价格","费用","多少"]],
+           ["match",["왕홍","매칭","인플","influ／","influencer","match","网红","匹配"]],
+           ["logi",["콰징","물류","통관","배송","logi","customs","ship","物流","通关","跨境"]],
+           ["proof",["실적","레퍼런스","믿","신뢰","proof","track","trust","业绩","信任"]],
+           ["sangong",["매장","소상공인","가게","오프라인","store","shop","门店","实体"]],
+           ["leaders",["리더스","워케이션","항저우","leaders","workation","hangzhou","领航","杭州"]]];
+  for(var i=0;i<map.length;i++){ for(var j=0;j<map[i][1].length;j++){ if(t.indexOf(map[i][1][j])>=0){ botReplyTopic(map[i][0]); return; } } }
+  addMsg(B.fallback,"bot"); botState="askBrand"; addMsg(B.askBrand,"bot");
+}
+function startChat(){
+  var B=BOT[botLang()]; botState="idle"; chatLog.innerHTML=""; chatInput.value="";
+  addMsg(B.hi,"bot"); setQuick(B.starts);
+}
+document.querySelectorAll("[data-consult]").forEach(function(b){
+  b.addEventListener("click", function(){ modal.classList.add("open"); startChat(); });
+});
+document.getElementById("consultClose").addEventListener("click", function(){ modal.classList.remove("open"); });
+modal.addEventListener("click", function(e){ if(e.target===modal) modal.classList.remove("open"); });
+document.getElementById("chatSend").addEventListener("click", function(){
+  var v=chatInput.value.trim(); if(!v) return; chatInput.value=""; freeText(v);
+});
+chatInput.addEventListener("keydown", function(e){ if(e.key==="Enter"){ e.preventDefault(); document.getElementById("chatSend").click(); } });
+
+/* 세금계산서 발행 결제 (계좌이체) */
+/* 환불·취소 정책 모달 */
+var refundModal = document.getElementById("refundModal");
+var refundOpen = document.getElementById("refundOpen");
+if (refundOpen) refundOpen.addEventListener("click", function(e){ e.preventDefault(); refundModal.classList.add("open"); });
+document.getElementById("refundClose").addEventListener("click", function(){ refundModal.classList.remove("open"); });
+refundModal.addEventListener("click", function(e){ if(e.target===refundModal) refundModal.classList.remove("open"); });
+
+/* ===== 고객 리뷰 + 5% 쿠폰 이벤트 ===== */
+(function(){
+  var listEl = document.getElementById("reviewList");
+  var rvModal = document.getElementById("reviewModal");
+  if(!listEl || !rvModal) return;
+  var rating = 0;
+  var COUPON = "REVIEW5";
+  function stars(n){ var s=""; for(var i=1;i<=5;i++){ s += (i<=n) ? '★' : '<span class="off">★</span>'; } return s; }
+  function esc(t){ var d=document.createElement("div"); d.textContent=(t==null?"":String(t)); return d.innerHTML; }
+  function fmtDate(iso){ try{ var d=new Date(iso); return d.getFullYear()+"."+("0"+(d.getMonth()+1)).slice(-2)+"."+("0"+d.getDate()).slice(-2); }catch(e){ return ""; } }
+  function localReviews(){ try{ return JSON.parse(localStorage.getItem("aikua_reviews")||"[]"); }catch(e){ return []; } }
+  function saveLocal(r){ try{ var a=localReviews(); a.unshift(r); localStorage.setItem("aikua_reviews", JSON.stringify(a.slice(0,50))); }catch(e){} }
+  function render(items){
+    if(!items || !items.length){
+      listEl.innerHTML = '<div class="rv-empty">아직 등록된 후기가 없어요.<br>첫 리뷰를 남기고 <b>5% 쿠폰</b>을 받아보세요!</div>';
+      return;
+    }
+    listEl.innerHTML = items.map(function(r){
+      return '<div class="rv"><div class="rv-top"><div class="rv-av">'+esc((r.name||"익").slice(0,1))+'</div>'
+        +'<div><div class="rv-nm">'+esc(r.name||"익명")+'</div><div class="rv-dt">'+fmtDate(r.created_at||r.date)+'</div></div></div>'
+        +'<div class="rv-stars">'+stars(r.rating||5)+'</div>'
+        +'<div class="rv-tx">'+esc(r.text||"")+'</div></div>';
+    }).join("");
+  }
+  function load(){
+    render(localReviews());
+    fetch("/api/reviews").then(function(r){ return r.ok ? r.json() : null; }).then(function(d){
+      if(d && d.reviews && d.reviews.length) render(d.reviews);
+    }).catch(function(){});
+  }
+  document.querySelectorAll("#rvStars span").forEach(function(el){
+    el.addEventListener("click", function(){
+      rating = parseInt(el.getAttribute("data-v"),10);
+      document.querySelectorAll("#rvStars span").forEach(function(e2,i){ e2.classList.toggle("on", i < rating); });
+    });
+  });
+  document.getElementById("reviewWriteBtn").addEventListener("click", function(){ rvModal.classList.add("open"); });
+  document.getElementById("rvClose").addEventListener("click", function(){ rvModal.classList.remove("open"); });
+  rvModal.addEventListener("click", function(e){ if(e.target===rvModal) rvModal.classList.remove("open"); });
+  document.getElementById("rvSubmit").addEventListener("click", function(){
+    var name = document.getElementById("rvName").value.trim();
+    var text = document.getElementById("rvText").value.trim();
+    if(!name || !text){ alert("이름과 후기를 입력해주세요."); return; }
+    if(!rating) rating = 5;
+    var review = { name:name, rating:rating, text:text, created_at:new Date().toISOString() };
+    saveLocal(review);
+    fetch("/api/reviews", {method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify(review)}).catch(function(){});
+    rvModal.querySelector(".box").innerHTML =
+      '<h3>등록되었습니다 🎉</h3><p>소중한 후기 감사합니다! 아래 <b>5% 할인 쿠폰</b>을 결제 화면의 쿠폰 코드란에 입력하세요.</p>'
+      + '<div class="coupon"><div class="cp-note">5% 할인 쿠폰</div><div class="code">'+COUPON+'</div><div class="cp-note">결제 시 1회 사용 가능</div></div>'
+      + '<div class="row" style="justify-content:center;margin-top:14px"><button class="btn btn-primary" style="width:100%" onclick="document.getElementById(\'reviewModal\').classList.remove(\'open\')">확인</button></div>';
+    render([review].concat(localReviews().filter(function(x){ return x.created_at !== review.created_at; })));
+  });
+  load();
+})();
+
+var taxModal = document.getElementById("taxModal");
+rebindTaxOpen();
+document.getElementById("taxClose").addEventListener("click", function(){ taxModal.classList.remove("open"); });
+taxModal.addEventListener("click", function(e){ if(e.target===taxModal) taxModal.classList.remove("open"); });
+
+var taxItem = document.getElementById("taxItem"), taxAmount = document.getElementById("taxAmount");
+function syncTaxAmount(){
+  var opt = taxItem.options[taxItem.selectedIndex];
+  var a = opt.getAttribute("data-amount");
+  if (a) { taxAmount.value = a; taxAmount.readOnly = true; }
+  else { taxAmount.value = ""; taxAmount.readOnly = false; taxAmount.focus(); }
+}
+taxItem.addEventListener("change", syncTaxAmount);
+syncTaxAmount();
+
+document.getElementById("taxPay").addEventListener("click", function(){
+  var biz = document.getElementById("taxBizno").value.trim();
+  var comp = document.getElementById("taxCompany").value.trim();
+  var ceo = document.getElementById("taxCeo").value.trim();
+  var email = document.getElementById("taxEmail").value.trim();
+  var amt = parseInt(taxAmount.value, 10);
+  if (!/^\d{3}-?\d{2}-?\d{5}$/.test(biz)) { alert("사업자등록번호를 정확히 입력해주세요. (예: 000-00-00000)"); return; }
+  if (!comp || !ceo || !email) { alert("상호·대표자·이메일을 모두 입력해주세요."); return; }
+  if (!amt || amt < 1000) { alert("결제 금액을 확인해주세요."); return; }
+  var orderId = uid("taxorder");
+  /* 사업자 정보를 주문번호에 매칭해 저장(상용: 서버 DB). 입금 확인 후 세금계산서 발행. */
+  try { localStorage.setItem("tax_"+orderId, JSON.stringify({ biz:biz, comp:comp, ceo:ceo, email:email, amount:amt })); } catch(e){}
+  try { fetch("/api/tax-order", {method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify({orderId:orderId, biz:biz, comp:comp, ceo:ceo, email:email, amount:amt})}).catch(function(){}); } catch(e){}
+  var taxName = "[세금계산서] " + taxItem.options[taxItem.selectedIndex].text;
+  location.href = "checkout.html?amount=" + encodeURIComponent(amt) + "&name=" + encodeURIComponent(taxName) + "&tax=1&email=" + encodeURIComponent(email) + "&order=" + encodeURIComponent(orderId);
+});
+</script>
 </body>
 </html>
