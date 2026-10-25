@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; manifest-src 'self'; base-uri 'none'; form-action 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; connect-src 'self'; manifest-src 'self'; base-uri 'none'; form-action 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>OREH 오레</title>
 <meta name="google" content="notranslate">
@@ -57,6 +57,17 @@
 <section class="view" data-view="home">
   <div class="hero">
     <canvas class="embers" id="embers" aria-hidden="true"></canvas>
+    <div class="wrap hero__film">
+      <div class="film">
+        <video class="film__video" id="heroFilm" muted loop playsinline preload="auto" poster="assets/video/oreh-film.jpg" width="992" height="432" data-i18n-aria="hero.film" aria-label="">
+          <source src="assets/video/oreh-film.mp4" type="video/mp4">
+        </video>
+        <div class="film__ctrl">
+          <button class="film__btn" id="filmPlay" type="button" data-i18n="hero.film.pause"></button>
+          <button class="film__btn" id="filmSound" type="button" aria-pressed="false" data-i18n="hero.sound.on"></button>
+        </div>
+      </div>
+    </div>
     <div class="wrap hero__grid">
       <div class="hero__text">
         <p class="eyebrow" data-i18n="hero.eyebrow"></p>
