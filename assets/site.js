@@ -541,13 +541,12 @@ var embers = (function(){
   return {start:start, stop:stop};
 })();
 
-/* ---------- hero film (muted autoplay loop; pause and sound buttons) ---------- */
+/* ---------- hero film (autoplays muted and loops on every visit; pause and sound buttons) ---------- */
 var film = (function(){
   var v = document.getElementById('heroFilm');
   if (!v) return {start:function(){}, stop:function(){}};
   var playBtn = document.getElementById('filmPlay'), soundBtn = document.getElementById('filmSound');
-  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var held = reduce, on = false;
+  var held = false, on = false;
   v.muted = true; v.defaultMuted = true;
   function setKey(b, k){ b.setAttribute('data-i18n', k); b.textContent = t(k); }
   function label(){
@@ -558,7 +557,7 @@ var film = (function(){
   function play(){ var p = v.play(); if (p && p.catch) p.catch(function(){ label(); }); }
   function start(){ on = true; if (!held) play(); label(); }
   function stop(){ on = false; v.pause(); label(); }
-  if (reduce) v.addEventListener('loadedmetadata', function(){ if (v.paused && v.currentTime < 1) v.currentTime = 13; });
+  v.addEventListener('canplay', function(){ if (on && !held && v.paused) play(); });
   playBtn.addEventListener('click', function(){ if (v.paused) { held = false; play(); } else { held = true; v.pause(); } label(); });
   soundBtn.addEventListener('click', function(){ v.muted = !v.muted; if (!v.muted && v.paused) { held = false; play(); } label(); });
   v.addEventListener('play', label); v.addEventListener('pause', label); v.addEventListener('volumechange', label);
