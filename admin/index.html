@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="ko" translate="no">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://*.supabase.co; connect-src https://*.supabase.co; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="robots" content="noindex,nofollow">
+<meta name="google" content="notranslate">
+<meta name="oreh-api" content="https://mrejcsrkqsoexzyhgtpa.supabase.co">
+<meta name="oreh-anon-key" content="sb_publishable_jPI0oxAPbYov3vOgO3cjbQ_e8VgUcj5">
+<title>오레 관리자</title>
+<link rel="icon" type="image/svg+xml" href="../assets/img/logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;700&family=IBM+Plex+Mono:wght@500&family=Jua&display=swap">
+<link rel="stylesheet" href="admin.css?v=20261027a">
+</head>
+<body>
+<header class="top">
+  <div class="wrap top__in">
+    <a class="brand" href="/" title="홈페이지로">오레 <span>관리자</span></a>
+    <div class="who" id="who" hidden>
+      <span id="whoEmail"></span>
+      <button class="btn btn--ghost btn--s" id="logout" type="button">로그아웃</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap" id="main">
+  <!-- 로그인 -->
+  <section class="card login" id="login" hidden>
+    <h1>관리자 로그인</h1>
+    <p class="muted">관리자로 등록된 이메일을 넣으면 로그인 링크를 보내 드립니다. 메일함에서 링크를 누르면 바로 들어옵니다.</p>
+    <form id="loginForm" novalidate>
+      <label class="field"><span>이메일</span><input id="loginEmail" type="email" autocomplete="email" required placeholder="name@example.com"></label>
+      <button class="btn" id="loginBtn" type="submit">로그인 링크 받기</button>
+    </form>
+    <p class="note" id="loginMsg" role="status" hidden></p>
+  </section>
+
+  <!-- 관리 화면 -->
+  <section id="app" hidden>
+    <nav class="tabs" role="tablist" aria-label="관리 메뉴">
+      <button class="tab" role="tab" data-tab="home" aria-selected="true">현황</button>
+      <button class="tab" role="tab" data-tab="sponsors" aria-selected="false">가치참여 검수 <b class="pill" id="pendingCount" hidden></b></button>
+      <button class="tab" role="tab" data-tab="orders" aria-selected="false">주문·환불</button>
+      <button class="btn btn--ghost btn--s refresh" id="refresh" type="button">새로고침</button>
+    </nav>
+    <p class="note note--err" id="appErr" role="alert" hidden></p>
+
+    <div class="panel" id="tab-home">
+      <div class="kpis" id="kpis"></div>
+      <h2>프로젝트</h2>
+      <div class="camps" id="camps"></div>
+    </div>
+
+    <div class="panel" id="tab-sponsors" hidden>
+      <p class="muted">승인하면 그날부터 30일 동안 레온이 스토리 영상 앞에서 소개합니다. 게시할 수 없는 내용이면 반려하세요. 반려하면 결제가 전액 환불됩니다.</p>
+      <div class="filters" id="spFilters">
+        <button class="chip" data-f="pending" aria-pressed="true">검수 대기</button>
+        <button class="chip" data-f="approved" aria-pressed="false">공개 중·공개 끝</button>
+        <button class="chip" data-f="rejected" aria-pressed="false">반려</button>
+      </div>
+      <div class="list" id="spList"></div>
+    </div>
+
+    <div class="panel" id="tab-orders" hidden>
+      <div class="filters" id="odFilters">
+        <button class="chip" data-f="paid" aria-pressed="true">결제 완료</button>
+        <button class="chip" data-f="canceled" aria-pressed="false">환불됨</button>
+        <button class="chip" data-f="all" aria-pressed="false">전체</button>
+      </div>
+      <div class="list" id="odList"></div>
+    </div>
+  </section>
+
+  <p class="loading" id="loading">불러오는 중…</p>
+</main>
+<script src="admin.js?v=20261027a"></script>
+</body>
+</html>
