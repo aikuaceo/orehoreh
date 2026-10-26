@@ -2,10 +2,11 @@
 // Called by the success page after Toss redirects back. Approves the payment only when the
 // amount matches the stored order, then records the result. Safe to call twice.
 import { clean, handle, HttpError, int, json, readJson } from '../_shared/http.ts';
-import { db } from '../_shared/db.ts';
+import { db, requireClientKey } from '../_shared/db.ts';
 import { confirmPayment } from '../_shared/toss.ts';
 
 Deno.serve(handle(async (req) => {
+  requireClientKey(req);
   const b = await readJson(req);
   const paymentKey = clean(b.paymentKey, 200), orderId = clean(b.orderId, 64), amount = int(b.amount);
   if (!paymentKey || !orderId || amount === null) throw new HttpError(400, 'bad_request');

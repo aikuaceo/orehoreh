@@ -607,10 +607,15 @@ var deviceId = (function(){
   return id;
 })();
 
+function apiHeaders(){
+  var h = {'apikey': CFG.anon, 'Content-Type': 'application/json'};
+  if (/^eyJ/.test(CFG.anon)) h['Authorization'] = 'Bearer ' + CFG.anon;   // legacy anon key (a JWT)
+  return h;
+}
 function apiCall(path, body){
   return fetch(CFG.api + path, {
     method: body ? 'POST' : 'GET',
-    headers: {'apikey': CFG.anon, 'Authorization': 'Bearer ' + CFG.anon, 'Content-Type': 'application/json'},
+    headers: apiHeaders(),
     body: body ? JSON.stringify(body) : undefined
   }).then(function(r){
     return r.json().catch(function(){ return {}; }).then(function(j){
@@ -905,7 +910,7 @@ function checkoutSubmit(e){
     sponsor: d.kind === 'sponsor' ? {displayName: d.sponsor.name, message: d.sponsor.message, logoType: (vp.logoFile && vp.type === 'company') ? vp.logoFile.type : ''} : undefined,
     buyer: draft.buyer, agreements: ag
   }).then(function(o){
-    var up = (o.logoUpload && vp.logoFile) ? fetch(o.logoUpload.signedUrl, {method:'PUT', headers:{'Content-Type': vp.logoFile.type, 'x-upsert':'false'}, body: vp.logoFile}) : Promise.resolve();
+    var up = (o.logoUpload && vp.logoFile) ? fetch(o.logoUpload.signedUrl, {method:'PUT', headers:{'apikey': CFG.anon, 'Content-Type': vp.logoFile.type, 'x-upsert':'false'}, body: vp.logoFile}) : Promise.resolve();
     return up.then(function(){
       draft.orderId = o.orderId; saveDraft();
       return tossUi.pay({orderId:o.orderId, orderName:o.orderName, amount:o.amount, customerEmail:o.customerEmail, customerName:o.customerName,

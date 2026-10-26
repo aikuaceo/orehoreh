@@ -2,7 +2,7 @@
 // Creates an order in 'ready' state and returns what the Toss payment widget needs.
 // The amount is computed here from the catalogue; the browser only says what it wants to buy.
 import { clean, handle, HttpError, int, json, readJson } from '../_shared/http.ts';
-import { db, todayKST } from '../_shared/db.ts';
+import { db, todayKST, requireClientKey } from '../_shared/db.ts';
 
 const AGREEMENT_VERSION = '2026-10-26';
 const EMAIL = /^[^@\s]{1,64}@[^@\s]+\.[^@\s]{2,}$/;
@@ -21,6 +21,7 @@ function orderId(): string {
 }
 
 Deno.serve(handle(async (req) => {
+  requireClientKey(req);
   const b = await readJson(req);
   const lang = ['ko', 'en', 'zh'].includes(b.lang as string) ? (b.lang as string) : 'ko';
   const kind = b.kind as string;

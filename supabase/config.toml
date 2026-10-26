@@ -1,11 +1,13 @@
 # Only the function settings OREH needs; `supabase init` adds the rest when you link the project.
 project_id = "orehoreh"
 
+# The platform JWT check only understands the legacy anon key, so the browser-facing functions
+# check the public `apikey` header themselves (requireClientKey).
 [functions.create-order]
-verify_jwt = true
+verify_jwt = false
 
 [functions.confirm-payment]
-verify_jwt = true
+verify_jwt = false
 
 # Toss calls the webhook without a Supabase JWT; the function re-checks every payment with the secret key.
 [functions.toss-webhook]
