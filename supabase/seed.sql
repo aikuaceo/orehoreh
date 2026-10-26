@@ -8,6 +8,11 @@ insert into public.campaigns (id, status, track, goal_krw, starts_on, ends_on, v
   ('c4', 'soon', 'reward', 10000000, '2027-04-20', '2027-05-19', null)
 on conflict (id) do nothing;
 
+-- c5: 독립운동 한의사 의인 숏폼 50편. A real project (not a sample); value participation counts toward its goal.
+insert into public.campaigns (id, status, track, goal_krw, starts_on, ends_on, sponsor_counts) values
+  ('c5', 'live', 'reward', 10000000, '2026-10-27', '2026-12-31', true)
+on conflict (id) do nothing;
+
 -- the site's reward tiers, for reward projects only (rw0 = digital postcards, emailed)
 insert into public.rewards (id, campaign_id, amount_krw, ships, stock, sort)
 select c.id || '-' || r.key, c.id, r.amount, r.ships, r.stock, r.sort
