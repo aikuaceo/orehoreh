@@ -75,7 +75,8 @@ Deno.serve(handle(async (req) => {
     const display = clean(s.displayName, 40);
     if (!display) throw new HttpError(400, 'bad_display_name');
     Object.assign(row, { package_id: p.id, base_krw: p.amount_krw, extra_krw: 0, amount_krw: p.amount_krw });
-    sponsor = { campaign_id: c.id, sponsor_type: p.sponsor_type, display_name: display, message: clean(s.message, 80) || null, lang };
+    // Leon says the same line for every sponsor ("가치참여에 함께 했습니다."), so no custom message is stored
+    sponsor = { campaign_id: c.id, sponsor_type: p.sponsor_type, display_name: display, message: null, lang };
     const logoType = clean(s.logoType, 20);
     if (logoType) {
       if (!LOGO_TYPES[logoType]) throw new HttpError(400, 'bad_logo_type');

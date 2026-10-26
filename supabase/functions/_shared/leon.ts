@@ -11,19 +11,19 @@ const LINES: Record<Lang, (s: Sponsor) => string[]> = {
   ko: (s) => [
     '안녕하세요, 저는 레온이에요!',
     `오늘 이 이야기에 가치참여를 하신 분은 바로 ${who(s)}!`,
-    s.message || '가치참여에 함께 했습니다.',
+    '가치참여에 함께 했습니다.',
     `고마워요, ${who(s)}! 이제 영웅의 이야기를 들려드릴게요.`,
   ],
   en: (s) => [
     "Hi, I'm Leon!",
     `Today's value participant in this story is ${who(s)}!`,
-    s.message || 'They joined in value participation.',
+    'They joined in value participation.',
     `Thank you, ${who(s)}! Now, here's our hero's story.`,
   ],
   zh: (s) => [
     '大家好，我是萊昂！',
     `今天為這個故事價值參與的是──${who(s)}！`,
-    s.message || '一起加入了價值參與。',
+    '一起加入了價值參與。',
     `謝謝${who(s)}！現在，讓我們一起聆聽英雄的故事。`,
   ],
 };
