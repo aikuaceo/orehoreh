@@ -1,0 +1,16 @@
+# Only the function settings OREH needs; `supabase init` adds the rest when you link the project.
+project_id = "orehoreh"
+
+[functions.create-order]
+verify_jwt = true
+
+[functions.confirm-payment]
+verify_jwt = true
+
+# Toss calls the webhook without a Supabase JWT; the function re-checks every payment with the secret key.
+[functions.toss-webhook]
+verify_jwt = false
+
+# Operator calls carry x-admin-token instead of a JWT.
+[functions.admin-order]
+verify_jwt = false

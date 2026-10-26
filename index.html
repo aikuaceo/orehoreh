@@ -3,16 +3,19 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; connect-src 'self'; manifest-src 'self'; base-uri 'none'; form-action 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' https://js.tosspayments.com https://*.tosspayments.com https://*.toss.im; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://*.supabase.co https://*.tosspayments.com https://*.toss.im; media-src 'self' https://*.supabase.co; connect-src 'self' https://*.supabase.co https://*.tosspayments.com https://*.toss.im; frame-src https://*.tosspayments.com https://*.toss.im; manifest-src 'self'; base-uri 'none'; form-action 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>OREH 오레</title>
 <meta name="google" content="notranslate">
 <meta name="oreh-mode" content="static">
+<meta name="oreh-api" content="">
+<meta name="oreh-anon-key" content="">
+<meta name="oreh-toss-client-key" content="">
 <meta name="description" content="오레(OREH)는 세계 곳곳의 의인 이야기를 찾아 알리고, 함께 기억하고 후원하는 가치참여 플랫폼입니다.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans+JP:wght@400;500;700&family=IBM+Plex+Sans+KR:wght@400;500;700&family=IBM+Plex+Sans:wght@400;500;700&family=Jua&family=M+PLUS+Rounded+1c:wght@700;800&family=Noto+Sans+SC:wght@400;500;700;900&display=swap">
-<link rel="stylesheet" href="assets/site.css?v=20261026">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans+KR:wght@400;500;700&family=IBM+Plex+Sans:wght@400;500;700&family=Jua&family=M+PLUS+Rounded+1c:wght@700;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap">
+<link rel="stylesheet" href="assets/site.css?v=20261026f">
 
 <link rel="icon" type="image/svg+xml" href="assets/img/logo.svg">
 <link rel="canonical" href="https://orehoreh.com/">
@@ -44,8 +47,7 @@
     <div class="lang" role="group" id="langGroup">
       <button type="button" data-lang="ko" lang="ko">KO</button>
       <button type="button" data-lang="en" lang="en">EN</button>
-      <button type="button" data-lang="zh" lang="zh">中文</button>
-      <button type="button" data-lang="ja" lang="ja">日本語</button>
+      <button type="button" data-lang="zh" lang="zh-Hant-TW">繁中</button>
     </div>
     <a class="subbtn" href="#subscribe"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v12H4zM4 7l8 6 8-6"/></svg><span data-i18n="nav.subscribe"></span></a>
   </div>
@@ -378,7 +380,14 @@
     <p class="pj__sample"><span class="pill pill--sample" data-i18n="sample"></span><span data-i18n="pj.sample"></span></p>
     <div class="pj__head"><p class="pj__cat" id="pjCat"></p><h1 class="pj__title" id="pjTitle"></h1><p class="muted" id="pjCrea"></p></div>
     <div class="pj__top">
-      <div class="pj__img" id="pjImgBox"><img id="pjImg" alt="" width="460" height="460"></div>
+      <div class="pj__img pj__img--media" id="pjImgBox">
+        <img id="pjImg" alt="" width="460" height="460">
+        <video class="pj__video" id="pjVideo" playsinline muted preload="metadata" hidden></video>
+        <div class="pj__mctrl">
+          <button class="film__btn" id="pjReplay" type="button" data-i18n="leon.replay" hidden></button>
+          <button class="film__btn" id="pjSound" type="button" aria-pressed="false" data-i18n="hero.sound.on"></button>
+        </div>
+      </div>
       <div class="pj__stats">
         <div class="stat"><p class="stat__label" data-i18n="pj.raised"></p><p class="stat__num" id="pjRaised"></p></div>
         <div class="stat"><p class="stat__label" data-i18n="pj.left"></p><p class="stat__num" id="pjLeft"></p></div>
@@ -429,12 +438,88 @@
           <span class="crea__mark"><svg class="logo__mark" viewBox="0 0 221 212" aria-hidden="true"><use href="#oreh-mark"/></svg></span>
           <div class="stack crea__text"><p class="kicker" data-i18n="pj.creator"></p><p class="crea__name" id="pjCreaName"></p><p class="muted" data-i18n="pj.creatorBody"></p><a class="link" href="#contact" data-topic="funding" data-i18n="pj.ask"></a></div>
         </div>
-        <h2 class="pj__sideh" data-i18n="rw.title"></h2>
+        <h2 class="pj__sideh" id="pjRwTitle" data-i18n="rw.title"></h2>
+        <p class="notice notice--soft" id="pjDonation" hidden><span data-i18n="pj.donationClosed"></span></p>
         <div class="rewards" id="pjRewards"></div>
-        <div class="field"><label for="pjExtra" data-i18n="pj.extra"></label><input id="pjExtra" type="text" inputmode="numeric" maxlength="9" autocomplete="off"></div>
+        <div class="field" id="pjExtraField" hidden><label for="pjExtra" data-i18n="pj.extra"></label><input id="pjExtra" type="text" inputmode="numeric" maxlength="9" autocomplete="off"></div>
         <button type="button" class="btn btn--navy" id="pjCta2"></button>
+        <section class="vp" id="vpBox" aria-labelledby="vpTitle">
+          <h2 class="pj__sideh" id="vpTitle" data-i18n="vp.title"></h2>
+          <p class="muted" data-i18n="vp.lead"></p>
+          <div class="seg" id="vpType" role="group" data-i18n-aria="vp.type">
+            <button type="button" data-vt="person" aria-pressed="true" data-i18n="vp.person"></button>
+            <button type="button" data-vt="company" aria-pressed="false" data-i18n="vp.company"></button>
+          </div>
+          <p class="vp__price" id="vpPrice"></p>
+          <div class="field"><label for="vpName" data-i18n="vp.name"></label><input id="vpName" type="text" maxlength="40" autocomplete="off"></div>
+          <div class="field"><label for="vpMsg" data-i18n="vp.msg"></label><textarea id="vpMsg" rows="2" maxlength="80"></textarea><span class="hint" data-i18n="vp.msgHint"></span></div>
+          <div class="field" id="vpLogoField" hidden><label for="vpLogo" data-i18n="vp.logo"></label><div class="vp__logo"><img id="vpLogoImg" alt="" width="44" height="44" hidden><input id="vpLogo" type="file" accept="image/png,image/jpeg,image/webp"></div><span class="hint" data-i18n="vp.logoHint"></span></div>
+          <p class="note" data-i18n="vp.note"></p>
+          <div class="btns"><button type="button" class="btn btn--ghost btn--sm" id="vpPreview" data-i18n="vp.preview"></button><button type="button" class="btn btn--navy btn--sm" id="vpGo" data-i18n="vp.go"></button></div>
+          <p class="err" id="vpErr" role="alert"></p>
+        </section>
       </aside>
     </div>
+  </div></div>
+</section>
+
+<!-- CHECKOUT (reward pledge, donation or value participation) -->
+<section class="view" data-view="checkout" hidden>
+  <div class="band"><div class="wrap stack">
+    <a class="link" href="#funding" id="coBack" data-i18n="co.back"></a>
+    <h1 class="pj__title" data-i18n="co.title"></h1>
+    <div class="co">
+      <form class="co__card" id="coForm" novalidate>
+        <h2 data-i18n="co.buyer"></h2>
+        <div class="field"><label for="co-name" data-i18n="co.name"></label><input id="co-name" name="name" type="text" maxlength="60" autocomplete="name" aria-describedby="co-name-err"><p class="err" id="co-name-err"></p></div>
+        <div class="field"><label for="co-email" data-i18n="f.email"></label><input id="co-email" name="email" type="email" maxlength="254" autocomplete="email" aria-describedby="co-email-err"><span class="hint" data-i18n="co.emailHint"></span><p class="err" id="co-email-err"></p></div>
+        <div class="field"><label for="co-country" data-i18n="f.myCountry"></label><select id="co-country" name="country" data-countries aria-describedby="co-country-err"></select><p class="err" id="co-country-err"></p></div>
+        <h2 data-i18n="co.pay"></h2>
+        <p class="co__mode" id="coMode" hidden></p>
+        <div class="co__pay" id="payMethods"></div>
+        <div class="co__pay" id="payAgreement"></div>
+        <div class="co__agree" id="coAgree"></div>
+        <p class="err" id="co-agree-err" role="alert"></p>
+        <button class="btn btn--navy" type="submit" id="coPay"></button>
+        <p class="status" role="status" hidden></p>
+      </form>
+      <aside class="co__card">
+        <h2 data-i18n="co.order"></h2>
+        <dl class="co__sum" id="coSum"></dl>
+        <div class="co__total"><span data-i18n="co.total"></span><b id="coTotal"></b></div>
+        <p class="co__seller" id="coSeller"></p>
+        <div class="paid__media" id="coLeon" hidden></div>
+      </aside>
+    </div>
+  </div></div>
+</section>
+
+<!-- PAID (payment result after Toss returns) -->
+<section class="view" data-view="paid" hidden>
+  <div class="band"><div class="wrap">
+    <div class="paid" id="paidBox">
+      <span class="paid__icon" id="paidIcon" aria-hidden="true">✓</span>
+      <h1 class="pj__title" id="paidTitle"></h1>
+      <p class="muted" id="paidLead"></p>
+      <dl class="co__sum" id="paidSum"></dl>
+      <div class="paid__media" id="paidLeon" hidden></div>
+      <div class="btns"><a class="btn btn--navy" id="paidBack" href="#funding" data-i18n="paid.back"></a><a class="btn btn--ghost" href="#policy" data-i18n="paid.policy"></a></div>
+    </div>
+  </div></div>
+</section>
+
+<!-- POLICY (terms, privacy, refunds, advertising, business information) -->
+<section class="view" data-view="policy" hidden>
+  <div class="pagehead"><div class="wrap pagehead__in"><div class="pagehead__text">
+    <p class="kicker" data-i18n="pol.kicker"></p><h1 data-i18n="pol.title"></h1><p class="lead" data-i18n="pol.lead"></p>
+  </div></div></div>
+  <div class="band"><div class="wrap policy">
+    <section id="pol-terms"><h2 data-i18n="pol.terms.h"></h2><ol><li data-i18n="pol.terms.1"></li><li data-i18n="pol.terms.2"></li><li data-i18n="pol.terms.3"></li><li data-i18n="pol.terms.4"></li><li data-i18n="pol.terms.5"></li></ol></section>
+    <section id="pol-refund"><h2 data-i18n="pol.refund.h"></h2><ol><li data-i18n="pol.refund.1"></li><li data-i18n="pol.refund.2"></li><li data-i18n="pol.refund.3"></li><li data-i18n="pol.refund.4"></li></ol></section>
+    <section id="pol-ad"><h2 data-i18n="pol.ad.h"></h2><ol><li data-i18n="pol.ad.1"></li><li data-i18n="pol.ad.2"></li><li data-i18n="pol.ad.3"></li><li data-i18n="pol.ad.4"></li></ol></section>
+    <section id="pol-privacy"><h2 data-i18n="pol.privacy.h"></h2><ol><li data-i18n="pol.privacy.1"></li><li data-i18n="pol.privacy.2"></li><li data-i18n="pol.privacy.3"></li><li data-i18n="pol.privacy.4"></li><li data-i18n="pol.privacy.5"></li></ol></section>
+    <section id="pol-biz"><h2 data-i18n="pol.biz.h"></h2><dl class="dl" id="bizInfo"></dl></section>
+    <p class="note" data-i18n="pol.draft"></p>
   </div></div>
 </section>
 
@@ -680,14 +765,15 @@
       <p data-i18n="footer.tag"></p>
     </div>
     <div class="stack">
-      <nav><a href="#about" data-i18n="footer.privacy"></a><a href="#about" data-i18n="footer.terms"></a><a href="#contact" data-i18n="nav.contact"></a></nav>
+      <nav><a href="#policy" data-pol="pol-privacy" data-i18n="footer.privacy"></a><a href="#policy" data-pol="pol-terms" data-i18n="footer.terms"></a><a href="#policy" data-pol="pol-refund" data-i18n="footer.refund"></a><a href="#contact" data-i18n="nav.contact"></a></nav>
+      <p class="biz" id="bizLine"></p>
       <p>© 2026 OREH Inc.</p>
       <p class="foot__draft" data-i18n="footer.draft" data-draft></p>
     </div>
   </div>
 </footer>
 
-<script src="assets/site.js?v=20261026" defer></script>
+<script src="assets/site.js?v=20261026f" defer></script>
 
 </body>
 </html>
