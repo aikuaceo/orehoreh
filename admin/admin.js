@@ -319,8 +319,8 @@ $('#loginForm').addEventListener('submit', function(ev){
   if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { showLogin('이메일 주소를 확인해 주세요.', 'err'); return; }
   btn.disabled = true;
   authFetch('/otp?redirect_to=' + encodeURIComponent(location.origin + location.pathname), { email: email, create_user: true })
-    .then(function(){ showLogin(email + ' 로 로그인 링크를 보냈습니다. 메일함(스팸함도)에서 링크를 눌러 주세요. 링크는 1시간 동안 쓸 수 있습니다.', 'ok'); },
-      function(e){ showLogin(e.status === 429 ? '링크를 너무 자주 요청했습니다. 1분쯤 뒤에 다시 시도해 주세요.' : '링크를 보내지 못했습니다: ' + e.message, 'err'); })
+    .then(function(){ showLogin(email + ' 로 로그인 메일을 보냈습니다. 메일은 영어로 옵니다(보낸 곳 Supabase, 제목 "Your Magic Link" 또는 처음에는 "Confirm Your Signup"). 메일 안의 링크를 누르면 이 화면으로 돌아와 로그인됩니다. 스팸함도 확인해 주세요.', 'ok'); },
+      function(e){ showLogin(e.status === 429 ? '로그인 메일을 너무 자주 요청했습니다. 지금은 한 시간에 두 번까지 보낼 수 있으니 잠시 뒤에 다시 시도해 주세요.' : '로그인 메일을 보내지 못했습니다. 관리자로 등록된 이메일인지 확인해 주세요. (' + e.message + ')', 'err'); })
     .then(function(){ btn.disabled = false; });
 });
 
