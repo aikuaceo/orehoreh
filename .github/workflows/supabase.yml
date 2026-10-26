@@ -1,10 +1,10 @@
 # Deploys the OREH payment server (supabase/) whenever it changes on main, or on demand.
 # One-time setup in GitHub → Settings → Secrets and variables → Actions:
 #   Secrets:   SUPABASE_ACCESS_TOKEN  (supabase.com → Account → Access Tokens)
-#              SUPABASE_DB_PASSWORD   (the database password chosen when the project was created)
-#   Variables: SUPABASE_PROJECT_REF   (the id in https://<ref>.supabase.co)
+#              SUPABASE_DB_PASSWORD   (optional; without it the CLI signs in with a temporary role)
+#   Variables: SUPABASE_PROJECT_REF   (optional; defaults to OREH's project mrejcsrkqsoexzyhgtpa)
 # Optional secrets: TOSS_SECRET_KEY, ADMIN_TOKEN, GOOGLE_TTS_API_KEY
-# Until the three required values exist, the job skips itself and the site stays in preview mode.
+# Until the token and project ref exist, the job skips itself and the site stays in preview mode.
 name: Deploy payment server
 
 on:
@@ -26,12 +26,12 @@ jobs:
     env:
       SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
       SUPABASE_DB_PASSWORD: ${{ secrets.SUPABASE_DB_PASSWORD }}
-      PROJECT_REF: ${{ vars.SUPABASE_PROJECT_REF }}
+      PROJECT_REF: ${{ vars.SUPABASE_PROJECT_REF || 'mrejcsrkqsoexzyhgtpa' }}
     steps:
       - name: Check setup
         run: |
-          if [ -z "$SUPABASE_ACCESS_TOKEN" ] || [ -z "$SUPABASE_DB_PASSWORD" ] || [ -z "$PROJECT_REF" ]; then
-            echo "::notice::Supabase is not connected yet. Add SUPABASE_ACCESS_TOKEN, SUPABASE_DB_PASSWORD and SUPABASE_PROJECT_REF, then run this workflow again."
+          if [ -z "$SUPABASE_ACCESS_TOKEN" ] || [ -z "$PROJECT_REF" ]; then
+            echo "::notice::Supabase is not connected yet. Add SUPABASE_ACCESS_TOKEN and SUPABASE_PROJECT_REF, then run this workflow again."
             echo "SKIP=1" >> "$GITHUB_ENV"
           fi
 
@@ -45,11 +45,11 @@ jobs:
 
       - name: Link project
         if: env.SKIP != '1'
-        run: supabase link --project-ref "$PROJECT_REF" --password "$SUPABASE_DB_PASSWORD"
+        run: supabase link --project-ref "$PROJECT_REF" ${SUPABASE_DB_PASSWORD:+--password "$SUPABASE_DB_PASSWORD"}
 
       - name: Database (migrations and seed)
         if: env.SKIP != '1'
-        run: supabase db push --include-seed --password "$SUPABASE_DB_PASSWORD"
+        run: supabase db push --include-seed ${SUPABASE_DB_PASSWORD:+--password "$SUPABASE_DB_PASSWORD"}
 
       - name: Function secrets
         if: env.SKIP != '1'

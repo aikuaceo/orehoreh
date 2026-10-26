@@ -15,7 +15,7 @@
 | 종류 | 이름 | 값 |
 | --- | --- | --- |
 | Secret | `SUPABASE_ACCESS_TOKEN` | supabase.com → Account → Access Tokens에서 만든 토큰 |
-| Secret | `SUPABASE_DB_PASSWORD` | 프로젝트를 만들 때 정한 DB 비밀번호 |
+| Secret (선택) | `SUPABASE_DB_PASSWORD` | DB 비밀번호. 없으면 CLI가 임시 역할로 접속 |
 | Variable | `SUPABASE_PROJECT_REF` | 프로젝트 주소 `https://<ref>.supabase.co`의 `<ref>` |
 | Secret (선택) | `TOSS_SECRET_KEY` | 토스 시크릿 키. 없으면 토스 문서의 공개 테스트 키로 동작(실제 결제 없음) |
 | Secret (선택) | `ADMIN_TOKEN` | 관리 기능용 24자 이상 무작위 문자열 |

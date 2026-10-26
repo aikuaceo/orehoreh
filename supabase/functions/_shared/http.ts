@@ -1,5 +1,5 @@
 // CORS and JSON helpers shared by the OREH Edge Functions.
-const ALLOWED = (Deno.env.get('ALLOWED_ORIGINS') ?? 'https://orehoreh.com')
+const ALLOWED = (Deno.env.get('ALLOWED_ORIGINS') ?? 'https://orehoreh.com,https://www.orehoreh.com')
   .split(',').map((s) => s.trim()).filter(Boolean);
 
 export function cors(req: Request): Record<string, string> {
@@ -57,7 +57,7 @@ export function handle(fn: (req: Request) => Promise<Response>) {
 // text the visitor typed: trimmed, control characters removed, length-capped
 export function clean(v: unknown, max: number): string {
   if (typeof v !== 'string') return '';
-  return v.replace(/[\u0000-\u001f\u007f​-‏ -‮]/g, '').trim().slice(0, max);
+  return v.replace(/[\u0000-\u001f\u007f\u200b-\u200f\u2028-\u202e\u2060-\u2064\ufeff]/g, '').trim().slice(0, max);
 }
 
 export function int(v: unknown): number | null {

@@ -1,9 +1,12 @@
 // Toss Payments core API (https://docs.tosspayments.com/reference). The secret key never leaves the server.
 const API = 'https://api.tosspayments.com/v1';
 
+// Until OREH has its own Toss keys, Toss's public documentation test key is used (no real charges).
+// It pairs with the documentation client key test_gck_docs_... on the site. Set TOSS_SECRET_KEY to replace it.
+const DOCS_TEST_SECRET = 'test_gsk_docs_OaPz8L5KdmQXkzRz3y47BMw6';
+
 function auth(): string {
-  const key = Deno.env.get('TOSS_SECRET_KEY');
-  if (!key) throw new Error('TOSS_SECRET_KEY is not set');
+  const key = Deno.env.get('TOSS_SECRET_KEY') || DOCS_TEST_SECRET;
   return 'Basic ' + btoa(key + ':');
 }
 
