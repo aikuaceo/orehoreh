@@ -103,3 +103,13 @@ form{display:grid;gap:12px}
   .item__body{grid-template-columns:1fr}
   .refresh{margin-left:0}
 }
+
+select{font:inherit;width:100%;border:1.5px solid var(--line);border-radius:10px;padding:10px 12px;background:#fff}
+.licform{display:grid;gap:14px;margin:14px 0}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px 16px}
+.check{display:flex;gap:10px;align-items:flex-start;font-weight:500}
+.check input{width:20px;height:20px;margin-top:3px;accent-color:var(--navy)}
+.film{width:100%;max-width:420px;border-radius:12px;background:var(--night);display:block}
+.progress{font-size:.9rem;color:var(--blue-ink)}
+.panel > p.muted{margin-bottom:12px}
+.panel > .actions{margin-bottom:12px}

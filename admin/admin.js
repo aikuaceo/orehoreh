@@ -24,8 +24,12 @@ var ERR = {
   unauthorized: '관리자 권한이 없는 계정입니다. 등록된 관리자 이메일로 로그인해 주세요.',
   not_paid: '아직 결제가 끝나지 않은 신청입니다.',
   campaign_still_running: '아직 진행 중인 프로젝트는 전체 환불할 수 없습니다.',
-  order_not_found: '주문을 찾지 못했습니다.', sponsor_not_found: '신청을 찾지 못했습니다.'
+  order_not_found: '주문을 찾지 못했습니다.', sponsor_not_found: '신청을 찾지 못했습니다.',
+  bad_display_name: '기업 이름을 넣어 주세요.', bad_amount: '계약 금액을 숫자로 넣어 주세요 (1,000원 이상).',
+  bad_dates: '공개 시작일과 종료일을 확인해 주세요.', bad_email: '담당자 이메일을 확인해 주세요.',
+  not_a_pending_license: '이미 입금 확인된 계약입니다.'
 };
+var LICENSE = '라이선스 계약';
 
 var state = { data: null, tab: 'home', sp: 'pending', od: 'paid', open: null };
 
@@ -42,6 +46,25 @@ function when(iso){
 }
 function day(s){ return s ? s.replace(/-/g, '.') : ''; }
 function campName(id){ return NAMES[id] || id; }
+function publicUrl(bucket, path){ return API + '/storage/v1/object/public/' + bucket + '/' + path.split('/').map(encodeURIComponent).join('/'); }
+function addDaysIso(iso, n){ var d = new Date(iso + 'T00:00:00Z'); d.setUTCDate(d.getUTCDate() + n); return d.toISOString().slice(0, 10); }
+function isLicense(o){ return o && o.method === LICENSE; }
+// PUT a file to a signed Storage upload URL, reporting progress
+function upload(up, file, onProgress){
+  return new Promise(function(res, rej){
+    var x = new XMLHttpRequest(); x.open('PUT', up.signedUrl);
+    x.setRequestHeader('apikey', KEY); x.setRequestHeader('Content-Type', file.type); x.setRequestHeader('x-upsert', 'true');
+    x.upload.onprogress = function(e){ if (e.lengthComputable && onProgress) onProgress(Math.round(e.loaded * 100 / e.total)); };
+    x.onload = function(){ x.status >= 200 && x.status < 300 ? res() : rej(Object.assign(new Error('업로드 실패 (' + x.status + ')'), { code: 'upload' })); };
+    x.onerror = function(){ rej(Object.assign(new Error('업로드 중 연결이 끊겼습니다'), { code: 'upload' })); };
+    x.send(file);
+  });
+}
+function checkFile(file, kind){
+  if (!file) return null;
+  if (kind === 'video') return file.type !== 'video/mp4' ? '소개 영상은 MP4 파일이어야 합니다.' : file.size > 50 * 1024 * 1024 ? '소개 영상은 50MB 이하여야 합니다. 화질을 조금 낮춰 다시 저장해 주세요.' : null;
+  return !/^image\/(png|jpeg|webp)$/.test(file.type) ? '로고는 PNG, JPG, WEBP 파일이어야 합니다.' : file.size > 1024 * 1024 ? '로고는 1MB 이하여야 합니다.' : null;
+}
 function tag(text, kind){ return el('span', 'tag' + (kind ? ' tag--' + kind : ''), text); }
 function store(){ try { return window.localStorage; } catch (e) { return null; } }
 function show(node, on){ node.hidden = !on; }
@@ -133,12 +156,13 @@ function load(){
 /* ---------- 그리기 ---------- */
 function render(){
   var d = state.data; if (!d) return;
-  var pending = d.sponsors.filter(function(s){ return s.review_status === 'pending' && s.orders && s.orders.status === 'paid'; }).length;
+  var pending = d.sponsors.filter(function(s){ return s.source !== 'license' && s.review_status === 'pending' && s.orders && s.orders.status === 'paid'; }).length;
   var pc = $('#pendingCount'); pc.textContent = pending; show(pc, pending > 0);
   document.querySelectorAll('.tab').forEach(function(b){ b.setAttribute('aria-selected', String(b.getAttribute('data-tab') === state.tab)); });
-  ['home', 'sponsors', 'orders'].forEach(function(t){ show($('#tab-' + t), state.tab === t); });
+  ['home', 'sponsors', 'license', 'orders'].forEach(function(t){ show($('#tab-' + t), state.tab === t); });
   if (state.tab === 'home') renderHome(pending);
   if (state.tab === 'sponsors') renderSponsors();
+  if (state.tab === 'license') renderLicense();
   if (state.tab === 'orders') renderOrders();
 }
 
@@ -186,7 +210,7 @@ function renderHome(pending){
 function renderSponsors(){
   var d = state.data, list = $('#spList'); list.textContent = '';
   document.querySelectorAll('#spFilters .chip').forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-f') === state.sp)); });
-  var rows = d.sponsors.filter(function(s){ return s.review_status === state.sp; });
+  var rows = d.sponsors.filter(function(s){ return s.source !== 'license' && s.review_status === state.sp; });
   var unpaid = 0;
   if (state.sp === 'pending') {   // 결제를 끝내지 않은 신청은 검수할 것이 없으므로 숨깁니다
     unpaid = rows.filter(function(s){ return s.orders.status !== 'paid'; }).length;
@@ -237,6 +261,7 @@ function renderSponsors(){
 }
 
 function orderItem(o){
+  if (isLicense(o)) return '라이선스 계약' + (o.agreements && o.agreements.contract_no ? ' ' + o.agreements.contract_no : '');
   if (o.kind === 'reward' && o.reward_id) { var k = o.reward_id.split('-').pop(); return REWARD_NAMES[k] || o.reward_id; }
   if (o.kind === 'sponsor') return PACKAGE_NAMES[o.package_id] || o.package_id || '가치참여';
   return KIND[o.kind] || o.kind;
@@ -255,7 +280,9 @@ function renderOrders(){
     var card = el('article', 'card order');
     var a = el('div');
     var t = el('div', 'item__head'); t.appendChild(tag(KIND[o.kind] || o.kind, o.kind === 'sponsor' ? 'blue' : null)); t.appendChild(el('b', null, orderItem(o)));
-    var st = ORDER_STATUS[o.status] || [o.status, 'gray']; t.appendChild(tag(st[0], st[1])); a.appendChild(t);
+    var st = ORDER_STATUS[o.status] || [o.status, 'gray'];
+    if (isLicense(o)) { t.appendChild(tag('라이선스', 'blue')); if (o.status === 'ready') st = ['입금 대기', 'gray']; }
+    t.appendChild(tag(st[0], st[1])); a.appendChild(t);
     a.appendChild(el('p', 'sub', campName(o.campaign_id)));
     card.appendChild(a);
     var b = el('div', 'who2');
@@ -264,12 +291,107 @@ function renderOrders(){
     b.appendChild(el('p', 'sub mono', o.order_id + ' · ' + when(o.paid_at || o.created_at) + (o.method ? ' · ' + o.method : '')));
     card.appendChild(b);
     card.appendChild(el('div', 'amt', won(o.amount_krw)));
+    if (isLicense(o)) { licenseActions(card, o); list.appendChild(card); return; }
     if (o.status === 'paid') {
       card.appendChild(confirmBox('cancel:' + o.order_id, '환불', o.buyer_name + ' 님의 ' + won(o.amount_krw) + ' 결제를 전액 환불할까요?',
         function(note){ return call('cancel', { orderId: o.order_id, reason: note || '고객 요청 환불' }).then(function(r){ return r.refunded ? '환불했습니다.' : '환불하지 못했습니다(' + (r.error || r.skipped || '') + ').'; }); }, '환불 사유 (예: 고객 요청)'));
     }
     list.appendChild(card);
   });
+}
+
+function licenseActions(card, o){
+  if (o.status === 'ready') {
+    card.appendChild(confirmBox('paid:' + o.order_id, '입금 확인', won(o.amount_krw) + ' 입금을 확인했나요? 확인하면 바로 공개되고 모인 금액에 반영됩니다.',
+      function(){ return call('mark-paid', { orderId: o.order_id }).then(function(){ return '입금 확인했습니다. 지금부터 공개됩니다.'; }); }));
+  } else if (o.status === 'paid') {
+    card.appendChild(confirmBox('cancel:' + o.order_id, '계약 해지', '계약을 해지하면 소개 영상이 내려가고 모인 금액에서 빠집니다. 받은 금액은 계좌로 직접 돌려주셔야 합니다.',
+      function(note){ return call('cancel', { orderId: o.order_id, reason: note || '라이선스 계약 해지' }).then(function(){ return '계약을 해지했습니다. 받은 금액은 계좌로 직접 돌려주세요.'; }); }, '해지 사유'));
+  }
+}
+
+function renderLicense(){
+  var d = state.data, list = $('#licList'); list.textContent = '';
+  var rows = d.sponsors.filter(function(s){ return s.source === 'license'; });
+  if (!rows.length) { list.appendChild(el('p', 'empty', '등록된 라이선스 파트너가 없습니다.')); return; }
+  rows.forEach(function(s){
+    var o = s.orders || {}, card = el('article', 'card item');
+    var head = el('div', 'item__head'); head.appendChild(tag('라이선스', 'blue')); head.appendChild(el('h3', null, s.display_name));
+    if (o.status === 'ready') head.appendChild(tag('입금 대기', 'gray'));
+    else if (o.status === 'paid') {
+      var live = d.today >= (s.show_from || '') && d.today <= (s.show_until || '');
+      head.appendChild(tag(live ? '공개 중' : d.today < (s.show_from || '') ? '공개 예정' : '공개 끝', live ? 'ok' : 'gray'));
+    } else head.appendChild(tag((ORDER_STATUS[o.status] || [o.status])[0], 'red'));
+    card.appendChild(head);
+    var m = el('div', 'meta');
+    [['프로젝트', campName(s.campaign_id)], ['계약 금액', won(o.amount_krw)], ['계약번호', (o.agreements && o.agreements.contract_no) || '-'],
+     ['공개 기간', day(s.show_from) + ' ~ ' + day(s.show_until)], ['담당자', (o.buyer_name || '') + ' · ' + (o.buyer_email || '')], ['주문번호', o.order_id]].forEach(function(x){
+      var sp = el('span', null, x[0] + ' '); sp.appendChild(el('b', null, x[1] || '')); m.appendChild(sp);
+    });
+    card.appendChild(m);
+    var media = el('div', 'item__body');
+    var logo = el('div', 'logo');
+    if (s.logo_path) { var img = el('img'); img.alt = s.display_name + ' 로고'; img.src = publicUrl('sponsor-logos', s.logo_path); logo.appendChild(img); } else logo.textContent = s.display_name.slice(0, 1);
+    media.appendChild(logo);
+    var right = el('div'); right.style.display = 'grid'; right.style.gap = '8px';
+    if (s.video_path) { var v = el('video', 'film'); v.controls = true; v.preload = 'metadata'; v.src = publicUrl('sponsor-videos', s.video_path); right.appendChild(v); }
+    else right.appendChild(el('p', 'muted', '소개 영상이 아직 없습니다. 영상을 올리기 전까지는 레온 기본 소개("가치참여에 함께 했습니다")가 나옵니다.'));
+    var acts = el('div', 'actions');
+    acts.appendChild(filePicker(s.video_path ? '소개 영상 바꾸기' : '소개 영상 올리기', 'video/mp4', 'video', s));
+    acts.appendChild(filePicker(s.logo_path ? '로고 바꾸기' : '로고 올리기', 'image/png,image/jpeg,image/webp', 'logo', s));
+    right.appendChild(acts);
+    media.appendChild(right); card.appendChild(media);
+    licenseActions(card, o);
+    list.appendChild(card);
+  });
+}
+
+function filePicker(label, accept, kind, s){
+  var wrap = el('label', 'btn btn--line btn--s'); wrap.textContent = label;
+  var inp = el('input'); inp.type = 'file'; inp.accept = accept; inp.hidden = true; wrap.appendChild(inp);
+  inp.addEventListener('change', function(){
+    var f = inp.files && inp.files[0]; var bad = checkFile(f, kind);
+    if (!f) return; if (bad) { setErr(bad); return; }
+    wrap.textContent = '올리는 중…';
+    call('upload-url', { sponsorId: s.id, kind: kind, type: f.type })
+      .then(function(r){ return upload(r.upload, f, function(pc){ wrap.textContent = '올리는 중… ' + pc + '%'; }); })
+      .then(function(){ return load().then(function(){ flash(kind === 'video' ? '소개 영상을 올렸습니다.' : '로고를 올렸습니다.'); }); }, function(e){ setErr(errText(e)); wrap.textContent = label; });
+  });
+  return wrap;
+}
+
+function openLicenseForm(){
+  var d = state.data, sel = $('#licCamp'); sel.textContent = '';
+  d.campaigns.filter(function(c){ return c.status !== 'draft'; }).forEach(function(c){ var op = el('option', null, campName(c.id)); op.value = c.id; sel.appendChild(op); });
+  if (d.campaigns.some(function(c){ return c.id === 'c5'; })) sel.value = 'c5';
+  $('#licFrom').value = d.today; $('#licUntil').value = addDaysIso(d.today, 364);
+  show($('#licErr'), false); show($('#licForm'), true); $('#licName').focus();
+}
+
+function saveLicense(ev){
+  ev.preventDefault();
+  var err = $('#licErr'); show(err, false);
+  function fail(msg){ err.textContent = msg; show(err, true); }
+  var name = $('#licName').value.trim(), amount = Number(String($('#licAmount').value).replace(/[^0-9]/g, '')), email = $('#licEmail').value.trim();
+  var logo = $('#licLogo').files[0] || null, video = $('#licVideo').files[0] || null;
+  if (!name) return fail(ERR.bad_display_name);
+  if (!amount || amount < 1000) return fail(ERR.bad_amount);
+  if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) return fail(ERR.bad_email);
+  var bad = checkFile(logo, 'logo') || checkFile(video, 'video'); if (bad) return fail(bad);
+  var btn = $('#licSave'); btn.disabled = true; btn.textContent = '등록하는 중…';
+  call('add-license', {
+    campaignId: $('#licCamp').value, displayName: name, amountKrw: amount, contractNo: $('#licNo').value.trim(),
+    contactName: $('#licContact').value.trim(), contactEmail: email, showFrom: $('#licFrom').value, showUntil: $('#licUntil').value,
+    paid: $('#licPaid').checked, logoType: logo ? logo.type : '', video: !!video
+  }).then(function(r){
+    var steps = Promise.resolve();
+    if (logo && r.logoUpload) steps = steps.then(function(){ btn.textContent = '로고 올리는 중…'; return upload(r.logoUpload, logo); });
+    if (video && r.videoUpload) steps = steps.then(function(){ return upload(r.videoUpload, video, function(pc){ btn.textContent = '영상 올리는 중… ' + pc + '%'; }); });
+    return steps;
+  }).then(function(){
+    $('#licForm').reset(); show($('#licForm'), false); btn.disabled = false; btn.textContent = '등록하기';
+    return load().then(function(){ flash(name + ' 라이선스 계약을 등록했습니다.'); });
+  }, function(e){ btn.disabled = false; btn.textContent = '등록하기'; fail(errText(e)); load(); });
 }
 
 /* 되돌릴 수 없는 일은 한 번 더 묻습니다. 브라우저 확인창 대신 화면 안에서 묻습니다. */
@@ -311,6 +433,9 @@ function flash(msg){
 document.querySelectorAll('.tab').forEach(function(b){ b.addEventListener('click', function(){ state.tab = b.getAttribute('data-tab'); state.open = null; render(); }); });
 document.querySelectorAll('#spFilters .chip').forEach(function(b){ b.addEventListener('click', function(){ state.sp = b.getAttribute('data-f'); state.open = null; render(); }); });
 document.querySelectorAll('#odFilters .chip').forEach(function(b){ b.addEventListener('click', function(){ state.od = b.getAttribute('data-f'); state.open = null; render(); }); });
+$('#licNew').addEventListener('click', openLicenseForm);
+$('#licCancel').addEventListener('click', function(){ $('#licForm').reset(); show($('#licForm'), false); });
+$('#licForm').addEventListener('submit', saveLicense);
 $('#refresh').addEventListener('click', function(){ var b = this; b.disabled = true; load().then(function(){ b.disabled = false; }); });
 
 $('#loginForm').addEventListener('submit', function(ev){

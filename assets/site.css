@@ -600,3 +600,12 @@ input[type=file]{font:inherit;font-size:var(--t-s)}
 .policy section{display:flex;flex-direction:column;gap:10px}
 .policy h2{font-size:var(--t-l)}
 .policy ol,.policy ul{margin:0;padding-left:1.3em;display:flex;flex-direction:column;gap:6px}
+
+/* a license partner's own Leon introduction film: advertising label, virtual-character label, skip after 5 s */
+.pjad{position:absolute;inset:0;z-index:2;pointer-events:none}
+.pjad__badge,.pjad__skip{position:absolute;top:12px;font-size:13px;font-weight:700;padding:.35em .9em;border-radius:999px;
+  background:rgba(15,27,46,.72);border:1px solid rgba(244,239,231,.45);color:var(--on-navy);letter-spacing:.02em}
+.pjad__badge{left:12px}
+.pjad__skip{right:12px;pointer-events:auto;cursor:pointer;font:inherit;font-size:13px;font-weight:700}
+.pjad__skip[disabled]{cursor:default;opacity:.75}
+.pjad__tag{position:absolute;left:14px;bottom:16px;font-family:var(--f-logo);font-size:12px;letter-spacing:.2em;color:var(--leon);text-shadow:0 1px 3px rgba(0,0,0,.7)}
