@@ -1,0 +1,31 @@
+{
+  "name": "freeway-browser",
+  "productName": "Freeway",
+  "version": "1.0.0",
+  "description": "VPN 우회가 기본 적용된 광고 차단 브라우저",
+  "main": "src/main.js",
+  "author": "Freeway",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "test": "node test/proxy.test.js",
+    "dist:win": "electron-builder --win nsis portable --x64 --publish never",
+    "dist:mac": "electron-builder --mac dmg --publish never",
+    "dist:linux": "electron-builder --linux AppImage --publish never"
+  },
+  "devDependencies": {
+    "electron": "33.2.1",
+    "electron-builder": "25.1.8"
+  },
+  "build": {
+    "appId": "com.freeway.browser",
+    "productName": "Freeway",
+    "files": ["src/**/*", "build/icon.png", "package.json"],
+    "directories": { "output": "dist" },
+    "win": { "icon": "build/icon.png", "artifactName": "Freeway-${version}-${arch}-${target}.${ext}" },
+    "nsis": { "oneClick": false, "allowToChangeInstallationDirectory": true, "artifactName": "Freeway-Setup-${version}.${ext}" },
+    "portable": { "artifactName": "Freeway-Portable-${version}.${ext}" },
+    "mac": { "icon": "build/icon.png", "category": "public.app-category.productivity" },
+    "linux": { "icon": "build/icon.png", "category": "Network" }
+  }
+}

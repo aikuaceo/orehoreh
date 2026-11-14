@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="bg">#0F172A</color>
+    <color name="bar">#111827</color>
+    <color name="line">#1F2937</color>
+    <color name="text">#E5E7EB</color>
+    <color name="dim">#9CA3AF</color>
+    <color name="accent">#38BDF8</color>
+    <color name="on">#16A34A</color>
+</resources>

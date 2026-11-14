@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:">
+<title>Freeway</title>
+<style>
+  :root { --bg:#0f172a; --bar:#111827; --line:#1f2937; --text:#e5e7eb; --dim:#9ca3af; --on:#22c55e; --off:#6b7280; --accent:#38bdf8; }
+  * { box-sizing:border-box; }
+  html,body { margin:0; height:100%; background:var(--bg); color:var(--text); font:13px "Segoe UI","Malgun Gothic",system-ui,sans-serif; }
+  body { display:flex; flex-direction:column; }
+  #bar { display:flex; gap:6px; align-items:center; padding:8px; background:var(--bar); border-bottom:1px solid var(--line); }
+  button { background:transparent; color:var(--text); border:1px solid transparent; border-radius:8px; height:32px; min-width:32px; padding:0 9px; cursor:pointer; font:inherit; }
+  button:hover { background:#1f2937; }
+  button:disabled { opacity:.35; cursor:default; background:transparent; }
+  #url { flex:1; height:34px; border-radius:17px; border:1px solid var(--line); background:#0b1220; color:var(--text); padding:0 16px; font:inherit; font-size:14px; outline:none; }
+  #url:focus { border-color:var(--accent); }
+  .pill { display:flex; align-items:center; gap:6px; border:1px solid var(--line); border-radius:16px; padding:0 12px; }
+  .dot { width:9px; height:9px; border-radius:50%; background:var(--off); }
+  .pill.on .dot { background:var(--on); box-shadow:0 0 8px var(--on); }
+  #vid .n { background:var(--accent); color:#000; border-radius:9px; padding:0 6px; margin-left:4px; font-weight:700; }
+  #progress { height:2px; background:var(--accent); width:0; transition:width .2s, opacity .4s; }
+  webview { flex:1; width:100%; background:#fff; }
+  #downloads { position:fixed; right:12px; bottom:12px; display:flex; flex-direction:column; gap:6px; max-width:360px; }
+  .dl { background:#111827; border:1px solid var(--line); border-radius:10px; padding:9px 12px; box-shadow:0 6px 20px rgba(0,0,0,.4); cursor:pointer; }
+  .dl .name { white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .dl .track { height:4px; background:#1f2937; border-radius:2px; margin-top:6px; overflow:hidden; }
+  .dl .fill { height:100%; background:var(--accent); width:0; }
+  .dl.done .fill { background:var(--on); }
+  .dl.err { border-color:#ef4444; }
+  .dl .sub { color:var(--dim); font-size:12px; margin-top:4px; }
+</style>
+</head>
+<body>
+  <div id="bar">
+    <button id="back" title="뒤로 (Alt+←)">◀</button>
+    <button id="fwd" title="앞으로 (Alt+→)">▶</button>
+    <button id="reload" title="새로고침 (F5)">⟳</button>
+    <button id="home" title="홈">⌂</button>
+    <input id="url" spellcheck="false" placeholder="주소 또는 검색어 입력">
+    <button id="bypass" class="pill" title="통신사 차단(SNI·DNS) 우회. 켜져 있으면 모든 접속에 적용됩니다."><span class="dot"></span>VPN 우회</button>
+    <button id="adblock" class="pill" title="광고·팝업 차단"><span class="dot"></span>광고차단 <span id="blocked" style="color:var(--dim)"></span></button>
+    <button id="vid" title="이 페이지에서 감지된 동영상 다운로드">⬇ 동영상<span class="n" id="vcount" hidden>0</span></button>
+    <button id="dlfolder" title="다운로드 폴더 열기">📁</button>
+  </div>
+  <div id="progress"></div>
+  <div id="downloads"></div>
+  <script src="app.js"></script>
+</body>
+</html>
